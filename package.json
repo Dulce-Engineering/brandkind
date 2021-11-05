@@ -1,0 +1,9 @@
+{
+  "name": "brandkind",
+  "description": "Brandkind application.",
+  "scripts": 
+  {
+    "start": "firebase serve",
+    "deploy": "firebase deploy"
+  }
+}
