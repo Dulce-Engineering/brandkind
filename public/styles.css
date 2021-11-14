@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova&family=Cormorant+Infant:wght@500&family=Fraunces:wght@300&family=Libre+Caslon+Display&family=Libre+Caslon+Text&family=Sorts+Mill+Goudy&display=swap');
+
+body 
+{ 
+  background: #fff; 
+  color: #888; 
+  font-family: "Libre Caslon Text"; 
+  font-size: 16px;
+  margin: 0; 
+  padding: 0; 
+}
+header
+{
+  padding: 20px 80px;
+}
+main
+{
+  padding: 20px;
+}
+
+.logo
+{
+  width: 100%;
+}
+
+select
+{
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+}
+option
+{
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+}
+input
+{
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+}
+input:focus-visible
+{
+  border: 1px solid #000;
+  outline: 0;
+}
+button
+{
+  border: 1px solid black;
+  background: white;
+  font-family: sans-serif;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #888;
+  transition: all 0.25s ease-out;
+}
+button:hover
+{
+  background: #000;
+  color: #fff;
+}
+.form_section
+{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 10px;
+  row-gap: 15px;
+  align-items: center;
+}
+.form_section label
+{
+  justify-self: right;
+}
+.form_input
+{
+  justify-self: left;
+}

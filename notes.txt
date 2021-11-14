@@ -1,0 +1,18 @@
+{"severity":"ERROR","message":"Unhandled error FirebaseAppError: Firebase app named \"BrandKind\" does not exist. Make sure you call initializeApp() before using any of the Firebase services.
+   at FirebaseAppError.FirebaseError [as constructor] (C:\\projects\\brandkind\\functions\\node_modules\\firebase-admin\\lib\\utils\\error.js:44:28)
+   at FirebaseAppError.PrefixedFirebaseError [as constructor] (C:\\projects\\brandkind\\functions\\node_modules\\firebase-admin\\lib\\utils\\error.js:90:28)
+   at new FirebaseAppError (C:\\projects\\brandkind\\functions\\node_modules\\firebase-admin\\lib\\utils\\error.js:125:28)
+   at FirebaseNamespaceInternals.app (C:\\projects\\brandkind\\functions\\node_modules\\firebase-admin\\lib\\firebase-namespace.js:97:19)
+   at FirebaseNamespace.app (C:\\projects\\brandkind\\functions\\node_modules\\firebase-admin\\lib\\firebase-namespace.js:397:30)
+   at new De_Db_Firestore (C:\\projects\\brandkind\\functions\\Db_Firestore.js:9:25)
+   at Save_Registration (C:\\projects\\brandkind\\functions\\index.js:33:14)
+   at newHandler (C:\\Users\\esteb\\AppData\\Roaming\\npm\\node_modules\\firebase-tools\\lib\\emulator\\functionsEmulatorRuntime.js:314:16)
+   at fixedLen (C:\\projects\\brandkind\\functions\\node_modules\\firebase-functions\\lib\\providers\\https.js:66:41)
+   at C:\\projects\\brandkind\\functions\\node_modules\\firebase-functions\\lib\\common\\providers\\https.js:385:32 {
+  
+ errorInfo: {
+      code: 'app/no-app',
+    message: 'Firebase app named \"BrandKind\" does not exist. Make sure you call initializeApp() before using any of the Firebase services.'
+  },
+  codePrefix: 'app'
+  }"}

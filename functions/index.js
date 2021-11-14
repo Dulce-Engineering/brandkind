@@ -1,5 +1,6 @@
 const fb_fns = require('firebase-functions');
-//const firebase = require('firebase-admin');
+const Db_Firestore = require('./Db_Firestore');
+const firebase = require('firebase-admin');
 const nodemailer = require('nodemailer');
 
 const config = fb_fns.config();
@@ -10,6 +11,10 @@ const mailTransport = nodemailer.createTransport({
     pass: config.gmail.password,
   },
 });
+
+//const config = functions.config().firebase;
+firebase.initializeApp(config, "brandkind");
+const db = new Db_Firestore("brandkind");
 
 async function Register()
 {
@@ -27,4 +32,12 @@ async function Register()
   return "Thankyou for registering.";
 }
 
+async function Save_Registration(form)
+{
+  const res = await db.Save(form, "form");
+
+  return res;
+}
+
 exports.Register = fb_fns.https.onCall(Register);
+exports.Save_Registration = fb_fns.https.onCall(Save_Registration);

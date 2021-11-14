@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BrandKind - Registration Form</title>
+
+    <link href="/styles.css" rel="stylesheet">
+    <style media="screen">
+    </style>
+
+    <script type="module">
+      import Context from "./libs/index.js";
+
+      window.onload = Main;
+
+      function Main()
+      {
+        const ctx = new Context();
+        Context.Set_Id_Shortcuts(document, window);
+
+        save_reg_btn.addEventListener("click", async () => OnClick_SaveRegBtn(ctx));
+        form_level.addEventListener("change", OnChange_FormLevel);
+      }
+
+      async function OnClick_SaveRegBtn(ctx)
+      {
+        const form = Form_To_Obj(form_elem);
+        const fn_res = await ctx.Save_Registration(form);
+        alert(fn_res.data);
+      }
+
+      function Form_To_Obj(form_elem)
+      {
+        let form = {};
+
+        const id_elems = form_elem.querySelectorAll("[id]");
+        for (const id_elem of id_elems)
+        {
+          form[id_elem.id] = id_elem.value;
+        }
+
+        return form;
+      }
+
+      function OnChange_FormLevel()
+      {
+        if (form_level.value == "LEVEL_OTHER")
+        {
+          label_other_level.hidden = false;
+          form_other_level.hidden = false;
+        }
+        else
+        {
+          label_other_level.hidden = true;
+          form_other_level.hidden = true;
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <img src="images/logo-50.png" class="logo">
+    </header>
+    <main>
+      <section id="form_elem" class="form_section">
+        <label>Name</label><input id="form_name" type="text" class="form_input" autocomplete="name">
+        <label>Email</label><input id="form_email" type="email" class="form_input" autocomplete="email">
+        <label>LinkedIn Profile</label><input id="form_email" type="url" class="form_input" autocomplete="url">
+        <label>Mobile</label><input id="form_mobile" type="tel" class="form_input" autocomplete="tel">
+        <label>Current Role / Title</label><input id="form_title" class="form_input" autocomplete="honorific-prefix">
+        <label>City of Residence</label><input id="form_city" type="text" class="form_input" autocomplete="address-level2">
+        
+        <label>Level</label><select id="form_level" class="form_input">
+          <option>Senior Execs - Chief Marketing Officer</option>
+          <option>Mid-level Execs - Marketing Manager</option>
+          <option>Junior Practitioner - Marketing Coordinator</option>
+          <option>Senior Consultants</option>
+          <option>Mid-level Consultant</option>
+          <option value="LEVEL_OTHER">Other (specify)</option>
+        </select>
+        <label id="label_other_level" hidden="true">Other Level</label><input id="form_other_level" type="text" class="form_input" hidden="true">
+
+        <label>Expertise</label><span></span>
+        <label>Brand Strategy & Growth Development</label><input id="xxx" type="range" min="0" max="10" class="form_input" value="0">
+        <label>Insights and Research</label><input id="xxx" type="range" min="0" max="10" class="form_input" value="0">
+        <label>Brand Identity and Creative Design</label><input id="xxx" type="range" min="0" max="10" class="form_input" value="0">
+        <label>Marketing Strategy</label><input id="xxx" type="range" min="0" max="10" class="form_input" value="0">
+        <label>Comms Strategy</label><input id="xxx" type="range" min="0" max="10" class="form_input" value="0">
+        <label>Media / Channel Planning</label><input id="xxx" type="range" min="0" max="10" class="form_input" value="0">
+        <label>Content Strategy</label><input id="xxx" type="range" min="0" max="10" class="form_input" value="0">
+        <label>Social Media</label><input id="xxx" type="range" min="0" max="10" class="form_input" value="0">
+        <label>Communications / PR</label><input id="xxx" type="range" min="0" max="10" class="form_input" value="0">
+        <label>Degital Design</label><input id="xxx" type="range" min="0" max="10" class="form_input" value="0">
+        <label>Website Development</label><input id="xxx" type="range" min="0" max="10" class="form_input" value="0">
+
+        <label>Skills</label><input id="form_skills" type="text" class="form_input">
+
+        <label>Preferred Arrangement</label><span></span>
+        <label>Pro-Bono</label><input id="xxx" type="checkbox" class="form_input">
+        <label>Low-Bono</label><input id="xxx" type="checkbox" class="form_input">
+        <label>Pro-Bono (hrs/month)</label><input id="form_pro_bono" type="text" class="form_input">
+        <label>Lo-Bono (hrs/month)</label><input id="form_lo_bono" type="text" class="form_input">
+        <label>Preferred Days</label><input id="form_pref_days" type="text" class="form_input">
+        <label>Preferred Times</label><input id="form_pref_times" type="text" class="form_input">
+
+        <label>Passion Points</label><input id="form_passion" type="text" class="form_input">
+
+        <span></span><button id="save_reg_btn" class="form_input">Save</button>
+      </section>
+    </main>
+  </body>
+</html>
