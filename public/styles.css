@@ -106,3 +106,7 @@ button:hover
   font-weight: bold;
   color: black
 }
+.form_section_description
+{
+  grid-column: 1 / 3;
+}
