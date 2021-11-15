@@ -20,7 +20,7 @@
         Context.Set_Id_Shortcuts(document, window);
 
         save_reg_btn.addEventListener("click", async () => OnClick_SaveRegBtn(ctx));
-        form_level.addEventListener("change", OnChange_FormLevel);
+        level.addEventListener("change", OnChange_FormLevel);
         EXP_SOC_ENT.addEventListener("change", OnChange_FormExpSoc);
         const section_pp_elems = section_pp.querySelectorAll("[id]");
         for (const elem of section_pp_elems)
@@ -31,9 +31,36 @@
 
       async function OnClick_SaveRegBtn(ctx)
       {
+        invalid_data.hidden = true;
+        please_wait.hidden = false;
+
         const form = Form_To_Obj(form_elem);
-        const fn_res = await ctx.Save_Registration(form);
-        alert(fn_res.data);
+        if (Form_Is_Valid(form))
+        {
+          const fn_res = await ctx.Save_Registration(form);
+          //const fn_res = {data: false};
+          if (fn_res.data)
+          {
+            window.location.href = "form_ok.html";
+          }
+          else
+          {
+            window.location.href = "form_fail.html";
+          }
+        }
+        else
+        {
+          invalid_data.hidden = false;
+        }
+
+        please_wait.hidden = true;
+      }
+
+      function Form_Is_Valid(form)
+      {
+        return Has_Data(form.name) && 
+          Has_Data(form.email) && 
+          Has_Data(form.mobile);
       }
 
       function Form_To_Obj(form_elem)
@@ -43,7 +70,11 @@
         const id_elems = form_elem.querySelectorAll("[id]");
         for (const id_elem of id_elems)
         {
-          form[id_elem.id] = id_elem.value;
+          const value = Get_Value(id_elem);
+          if (Has_Data(value))
+          {
+            form[id_elem.id] = value;
+          }
         }
 
         return form;
@@ -51,8 +82,8 @@
 
       function OnChange_FormLevel()
       {
-        If_Show(form_level.value == "LEVEL_OTHER", label_other_level);
-        If_Show(form_level.value == "LEVEL_OTHER", form_other_level);
+        If_Show(level.value == "LEVEL_OTHER", label_level_other);
+        If_Show(level.value == "LEVEL_OTHER", level_other);
       }
 
       function OnChange_FormExpSoc()
@@ -77,6 +108,74 @@
             elem.value = null;
           }
         }
+      }
+
+      function Get_Value(elem)
+      {
+        let res = null;
+
+        if (elem.tagName == "INPUT")
+        {
+          if (elem.type == "checkbox")
+          {
+            if (elem.checked == true)
+            {
+              res = true;
+            }
+          }
+          else if (elem.type == "radio")
+          {
+            const radio_elem = document.querySelector('input[name="' + elem.name + '"]:checked');
+            if (radio_elem && radio_elem == elem)
+            {
+              res = true;
+            }
+          }
+          else if (elem.type == "range")
+          {
+            if (elem.value != "" && elem.value != "0")
+            {
+              res = parseInt(elem.value);
+            }
+          }
+          else if (elem.type == "number")
+          {
+            if (elem.value != "" && elem.value != "0")
+            {
+              res = parseInt(elem.value);
+            }
+          }
+          else //if (elem.type == "text")
+          {
+            res = elem.value;
+          }
+        }
+        else if (elem.tagName == "SELECT")
+        {
+          res = elem.value;
+        }
+        else if (elem.tagName == "TEXTAREA")
+        {
+          res = elem.value;
+        }
+
+        return res;
+      }
+
+      function Has_Data(value)
+      {
+        let res = false;
+
+        if (value != null && value != undefined)
+        {
+          res = true;
+          if (typeof(value) == "string" && value == "")
+          {
+            res = false;
+          }
+        }
+
+        return res;
       }
 
       function Count_Data(elems)
@@ -116,78 +215,149 @@
     <header>
       <img src="images/logo-50.png" class="logo">
     </header>
-    <main>
-      <section id="form_elem" class="form_section">
-        <h3 class="heading">Personal Details</h3>
-        <label>Name</label><input id="form_name" type="text" class="form_input" autocomplete="name">
-        <label>Email</label><input id="form_email" type="email" class="form_input" autocomplete="email">
-        <label>LinkedIn Profile</label><input id="form_email" type="url" class="form_input" autocomplete="url" style="width:400px;">
-        <label>Mobile</label><input id="form_mobile" type="tel" class="form_input" autocomplete="tel">
-        <label>Current Role / Title</label><input id="form_title" class="form_input" autocomplete="honorific-prefix">
-        <label>City of Residence</label><input id="form_city" type="text" class="form_input" autocomplete="address-level2">
-        <label>Level</label><select id="form_level" class="form_input">
-          <option>Senior Execs - Chief Marketing Officer</option>
-          <option>Mid-level Execs - Marketing Manager</option>
-          <option>Junior Practitioner - Marketing Coordinator</option>
-          <option>Senior Consultants</option>
+    <main id="form_elem">
+
+      <section class="form_section">
+        <h2 class="heading">ABOUT YOU: What you’re bringing to the Community</h2>
+        <span class="form_section_description">
+          We are so happy to see you here! Tell us a bit more about yourself and we can find ways to help build brands together as a community. 
+        </span>
+      </section>
+
+      <section class="form_section">
+        <h3 class="heading">General Profile</h3>
+        <label>Name</label>
+        <input id="name" type="text" class="form_input" autocomplete="name">
+        <label>Email</label>
+        <input id="email" type="email" class="form_input" autocomplete="email">
+        <label>LinkedIn Profile</label>
+        <input id="linkedin" type="url" class="form_input" autocomplete="url" style="width:400px;">
+        <label>Mobile</label>
+        <input id="mobile" type="tel" class="form_input" autocomplete="tel">
+        <label>How do you describe what you do?</label>
+        <input id="describe" type="text" class="form_input">
+        <label>City of Residence</label>
+        <input id="city" type="text" class="form_input" autocomplete="address-level2">
+        <label>Level</label>
+        <select id="level" class="form_input">
+          <option value="">None</option>
+          <option>Senior Execs - eg, CMO or Partner</option>
+          <option>Mid-level Execs - eg, Marketing Director</option>
+          <option>Junior Practitioner - eg, Graphic Designer</option>
+          <option>Senior Consultants - eg, Founder</option>
           <option>Mid-level Consultant</option>
           <option value="LEVEL_OTHER">Other (specify)</option>
         </select>
-        <label id="label_other_level" hidden="true">Other Level</label><input id="form_other_level" type="text" class="form_input" hidden="true">
+        <label id="label_level_other" hidden="true">Other Level</label>
+        <input id="level_other" type="text" class="form_input" hidden="true">
       </section>
 
       <section class="form_section">
         <h3 class="heading">Expertise</h3>
-          <label>Brand Strategy & Growth Development</label><input id="EXP_BRA_STR" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
-          <label>Insights and Research</label><input id="EXP_INS_RES" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
-          <label>Brand Identity and Creative Design</label><input id="EXP_BRA_IDE" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
-          <label>Marketing Strategy</label><input id="EXP_MAR_STR" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
-          <label>Comms Strategy</label><input id="EXP_COM_STR" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
-          <label>Media / Channel Planning</label><input id="EXP_CHA_PLA" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
-          <label>Content Strategy</label><input id="EXP_CON_STR" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
-          <label>Social Media</label><input id="EXP_SOC_MED" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
-          <label>Communications / PR</label><input id="EXP_COM_PR" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
-          <label>Digital Design</label><input id="EXP_DIG_DES" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
-          <label>Website Development</label><input id="EXP_WEB_DEV" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
+          <label>Brand Strategy & Growth Development</label>
+          <input id="EXP_BRA_STR" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
+          <label>Insights and Research</label>
+          <input id="EXP_INS_RES" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
+          <label>Brand Identity and Creative Design</label>
+          <input id="EXP_BRA_IDE" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
+          <label>Marketing Strategy</label>
+          <input id="EXP_MAR_STR" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
+          <label>Comms Strategy</label>
+          <input id="EXP_COM_STR" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
+          <label>Media / Channel Planning</label>
+          <input id="EXP_CHA_PLA" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
+          <label>Social Media</label>
+          <input id="EXP_SOC_MED" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
+          <label>Communications / PR</label>
+          <input id="EXP_COM_PR" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
+          <label>Digital Design</label>
+          <input id="EXP_DIG_DES" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
+          <label>Website Development</label>
+          <input id="EXP_WEB_DEV" type="range" min="0" max="10" class="form_input" value="0" style="width:400px;">
+      </section>
+        
+      <section class="form_section">
+        <h2 class="heading">ABOUT YOU AND US: how, why and when would you like to get involved?</h2>
+      </section>
+
+      <section class="form_section">
+        <label>I have experience in Social Enterprise or Not for Profit Sector</label>
+        <input id="EXP_SOC_ENT" type="checkbox" class="form_input">
+        <label id="form_orgs" hidden="true">Which Organisations?</label>
+        <textarea id="ORGS" class="form_input" style="width:400px;height:100px;" hidden="true"></textarea>
+      </section>
+
+      <section id="section_pp" class="form_section">
+        <h3 class="heading">Passion Points</h3>
+        <span class="form_section_description">If I could work on a project, I would like it to be about helping... (choose top 3)</span>
+        <label>Disadvantaged Youth</label>
+        <input id="PP_DIS_YOU" type="checkbox" class="form_input">
+        <label>Refugees, Asylum Seekers, Migrants</label>
+        <input id="PP_REF_ASY" type="checkbox" class="form_input">
+        <label>The Disabled Community</label>
+        <input id="PP_DIS_COM" type="checkbox" class="form_input">
+        <label>The Homeless</label>
+        <input id="PP_HOMLESS" type="checkbox" class="form_input">
+        <label>The Ex Incarcerated</label>
+        <input id="PP_EX_INC" type="checkbox" class="form_input">
+        <label>Animals</label>
+        <input id="PP_ANIMALS" type="checkbox" class="form_input">
+        <label>End Poverty</label>
+        <input id="PP_END_POV" type="checkbox" class="form_input">
+        <label>Zero Hunger, Achieve Food Security</label>
+        <input id="PP_ZER_HUN" type="checkbox" class="form_input">
+        <label>Good Health and Wellbeing </label>
+        <input id="PP_GOO_HEA" type="checkbox" class="form_input">
+        <label>Quality Education and learning opportunities for all</label>
+        <input id="PP_QUA_EDU" type="checkbox" class="form_input">
+        <label>Gender Equality</label>
+        <input id="PP_GEN_EQU" type="checkbox" class="form_input">
+        <label>Clean Water and Sanitation</label>
+        <input id="PP_CLE_WAT" type="checkbox" class="form_input">
+        <label>Responsible Consumption and Production (Food Wastage, Sustainable Practices)</label>
+        <input id="PP_RES_CON" type="checkbox" class="form_input">
+        <label>Safe Cities</label>
+        <input id="PP_SAF_CIT" type="checkbox" class="form_input">
+        <label>Climate Action</label>
+        <input id="PP_CLI_ACT" type="checkbox" class="form_input">
+        <label>The Environment (eg, Protect the Oceans)</label>
+        <input id="PP_THE_ENV" type="checkbox" class="form_input">
+        <label>Others</label>
+        <input id="PP_OTHERS" type="text" class="form_input" style="width:400px;">
+      </section>
+
+      <section class="form_section">
+        <label class="heading">Areas I Could Give my Time and Talent to</label><span></span>
+        <label>Capability Building including Training and Masterclasses</label>
+        <input id="TALENT_CAP_BUI" type="checkbox" class="form_input">
+        <label>Coaching and Mentoring</label>
+        <input id="TALENT_COA_MEN" type="checkbox" class="form_input">
+        <label>Consultancy and Projects</label>
+        <input id="TALENT_CON_PRO" type="checkbox" class="form_input">
+
         <label class="heading">Preferred Arrangement</label><span></span>
           <label>Pro-Bono</label><input id="ARR_PRO_BONO" type="checkbox" class="form_input">
           <label>Low-Bono</label><input id="ARR_LOW_BONO" type="checkbox" class="form_input">
-        <label>Hours Available Per Month for Pro-Bono Work</label><input id="PRO_BONO_HRS" type="text" class="form_input">
-        <label>Hours Available Per Month for Low-Bono Work</label><input id="LOW_BONO_HRS" type="text" class="form_input">
+        <label>Hours Available Per Month for Pro-Bono Work</label><input id="PRO_BONO_HRS" type="number" class="form_input">
+        <label>Hours Available Per Month for Low-Bono Work</label><input id="LOW_BONO_HRS" type="number" class="form_input">
         <label class="heading">Preferred Days Working</label><span></span>
           <label>Weekdays</label><input id="PREF_WEEKDAYS" name="PREF_DAYS" type="radio" class="form_input">
           <label>Weekends</label><input id="PREF_WEEKENDS" name="PREF_DAYS" type="radio" class="form_input">
         <label class="heading">Preferred Times Working</label><span></span>
           <label>Daytime</label><input id="PREF_DAYTIME" name="PREF_TIMES" type="radio" class="form_input">
           <label>Nightime</label><input id="PREF_NIGHTIME" name="PREF_TIMES" type="radio" class="form_input">
-        <label>Experience in Social Enterprise or Not for Profit Sector</label><input id="EXP_SOC_ENT" type="checkbox" class="form_input">
-        <label id="form_orgs" hidden="true">Which Organisations?</label><textarea id="ORGS" class="form_input" style="width:400px;height:100px;" hidden="true"></textarea>
+        <label>Finally, tell us what being kind means to you?</label>
+        <textarea id="form_kind" class="form_input" style="width:400px;height:100px;"></textarea>
       </section>
 
-      <section id="section_pp" class="form_section">
-        <h3 class="heading">Passion Points</h3>
-        <span class="form_section_description">If I could work on a project, I would like it to be about helping... (choose top 3)</span>
-        <label>Disadvantaged Youth</label><input id="PP_DIS_YOU" type="checkbox" class="form_input">
-        <label>Refugees, Asylum Seekers, Migrants</label><input id="PP_REF_ASY" type="checkbox" class="form_input">
-        <label>The Disabled Community</label><input id="PP_DIS_COM" type="checkbox" class="form_input">
-        <label>The Homeless</label><input id="PP_HOMLESS" type="checkbox" class="form_input">
-        <label>The Ex Incarcerated</label><input id="PP_EX_INC" type="checkbox" class="form_input">
-        <label>Animals</label><input id="PP_ANIMALS" type="checkbox" class="form_input">
-        <label>End Poverty</label><input id="PP_END_POV" type="checkbox" class="form_input">
-        <label>Zero Hunger, Achieve Food Security</label><input id="PP_ZER_HUN" type="checkbox" class="form_input">
-        <label>Good Health and Wellbeing </label><input id="PP_GOO_HEA" type="checkbox" class="form_input">
-        <label>Quality Education and learning opportunities for all</label><input id="PP_QUA_EDU" type="checkbox" class="form_input">
-        <label>Gender Equality</label><input id="PP_GEN_EQU" type="checkbox" class="form_input">
-        <label>Clean Water and Sanitation</label><input id="PP_CLE_WAT" type="checkbox" class="form_input">
-        <label>Responsible Consumption and Production (Food Wastage, Sustainable Practices)</label><input id="PP_RES_CON" type="checkbox" class="form_input">
-        <label>Safe Cities</label><input id="PP_SAF_CIT" type="checkbox" class="form_input">
-        <label>Climate Action</label><input id="PP_CLI_ACT" type="checkbox" class="form_input">
-        <label>The Environment (eg, Protect the Oceans)</label><input id="PP_THE_ENV" type="checkbox" class="form_input">
-        <label>Others</label><input id="PP_OTHERS" type="text" class="form_input" style="width:400px;">
-      </section>
-        
       <section class="form_section">
-        <h3 class="heading"></h3>
+        <h2 class="heading"></h2>
+        <span id="please_wait" class="form_section_description" hidden="true">
+          Please wait while we save your details...
+        </span>
+        <span id="invalid_data" class="form_section_description" hidden="true">
+          Please make sure you have included a valid name, e-mail, and mobile number.
+        </span>
         <span></span><button id="save_reg_btn" class="form_input">Save</button>
       </section>
     </main>
