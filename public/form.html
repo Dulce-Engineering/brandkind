@@ -227,17 +227,22 @@
       <section class="form_section">
         <h3 class="heading">General Profile</h3>
         <label>Name</label>
-        <input id="name" type="text" class="form_input" autocomplete="name">
+          <input id="name" type="text" class="form_input" autocomplete="name">
         <label>Email</label>
-        <input id="email" type="email" class="form_input" autocomplete="email">
+          <input id="email" type="email" class="form_input" autocomplete="email">
         <label>LinkedIn Profile</label>
-        <input id="linkedin" type="url" class="form_input" autocomplete="url" style="width:400px;">
+          <input id="linkedin" type="url" class="form_input" autocomplete="url" style="width:400px;">
         <label>Mobile</label>
-        <input id="mobile" type="tel" class="form_input" autocomplete="tel">
+          <input id="mobile" type="tel" class="form_input" autocomplete="tel">
         <label>How do you describe what you do?</label>
-        <input id="describe" type="text" class="form_input">
+          <input id="describe" type="text" class="form_input">
+        <label class="heading">Working Status</label><span></span>
+          <label>Full Time</label><input id="status_fulltime" name="work_status" type="radio" class="form_input">
+          <label>Part Time</label><input id="status_parttime" name="work_status" type="radio" class="form_input">
+          <label>Freelance</label><input id="status_freelance" name="work_status" type="radio" class="form_input">
+          <label>Owner / Founder</label><input id="status_owner" name="work_status" type="radio" class="form_input">
         <label>City of Residence</label>
-        <input id="city" type="text" class="form_input" autocomplete="address-level2">
+          <input id="city" type="text" class="form_input" autocomplete="address-level2">
         <label>Level</label>
         <select id="level" class="form_input">
           <option value="">None</option>
@@ -249,7 +254,9 @@
           <option value="LEVEL_OTHER">Other (specify)</option>
         </select>
         <label id="label_level_other" hidden="true">Other Level</label>
-        <input id="level_other" type="text" class="form_input" hidden="true">
+          <input id="level_other" type="text" class="form_input" hidden="true">
+        <label>No. of Years Experience in Branding and Marketing</label>
+          <input id="exp_years" type="number" class="form_input">
       </section>
 
       <section class="form_section">
@@ -282,68 +289,70 @@
 
       <section class="form_section">
         <label>I have experience in Social Enterprise or Not for Profit Sector</label>
-        <input id="EXP_SOC_ENT" type="checkbox" class="form_input">
-        <label id="form_orgs" hidden="true">Which Organisations?</label>
-        <textarea id="ORGS" class="form_input" style="width:400px;height:100px;" hidden="true"></textarea>
+          <input id="EXP_SOC_ENT" type="checkbox" class="form_input">
+        <label id="form_orgs" hidden="true">I have done work for (specify max of 5)</label>
+          <textarea id="ORGS" class="form_input" style="width:400px;height:100px;" hidden="true"></textarea>
       </section>
 
       <section id="section_pp" class="form_section">
         <h3 class="heading">Passion Points</h3>
         <span class="form_section_description">If I could work on a project, I would like it to be about helping... (choose top 3)</span>
         <label>Disadvantaged Youth</label>
-        <input id="PP_DIS_YOU" type="checkbox" class="form_input">
+          <input id="PP_DIS_YOU" type="checkbox" class="form_input">
         <label>Refugees, Asylum Seekers, Migrants</label>
-        <input id="PP_REF_ASY" type="checkbox" class="form_input">
+          <input id="PP_REF_ASY" type="checkbox" class="form_input">
         <label>People with Disabilities</label>
-        <input id="PP_DIS_COM" type="checkbox" class="form_input">
-        <label>The Homeless</label>
-        <input id="PP_HOMLESS" type="checkbox" class="form_input">
-        <label>The Ex Incarcerated</label>
-        <input id="PP_EX_INC" type="checkbox" class="form_input">
-        <label>Animals</label>
-        <input id="PP_ANIMALS" type="checkbox" class="form_input">
-        <label>End Poverty</label>
-        <input id="PP_END_POV" type="checkbox" class="form_input">
-        <label>Zero Hunger, Achieve Food Security</label>
-        <input id="PP_ZER_HUN" type="checkbox" class="form_input">
-        <label>Good Health and Wellbeing </label>
-        <input id="PP_GOO_HEA" type="checkbox" class="form_input">
+          <input id="PP_DIS_COM" type="checkbox" class="form_input">
+        <label>Individuals experiencing housing instability</label>
+          <input id="PP_HOMLESS" type="checkbox" class="form_input">
+        <label>Previously Incarcerated Individuals</label>
+          <input id="PP_EX_INC" type="checkbox" class="form_input">
+        <label>Animal safety, protection, ethics</label>
+          <input id="PP_ANIMALS" type="checkbox" class="form_input">
+        <label>Indigenous advocacy and community support</label>
+          <input id="PP_INDI" type="checkbox" class="form_input">
+        <label>Closing the Poverty Gap</label>
+          <input id="PP_END_POV" type="checkbox" class="form_input">
+        <label>Food Security</label>
+          <input id="PP_ZER_HUN" type="checkbox" class="form_input">
+        <label>Mental Health and Wellbeing </label>
+          <input id="PP_GOO_HEA" type="checkbox" class="form_input">
         <label>Quality Education and learning opportunities for all</label>
-        <input id="PP_QUA_EDU" type="checkbox" class="form_input">
+          <input id="PP_QUA_EDU" type="checkbox" class="form_input">
         <label>Gender Equality</label>
-        <input id="PP_GEN_EQU" type="checkbox" class="form_input">
+          <input id="PP_GEN_EQU" type="checkbox" class="form_input">
         <label>Clean Water and Sanitation</label>
-        <input id="PP_CLE_WAT" type="checkbox" class="form_input">
-        <label>Responsible Consumption and Production (Food Wastage, Sustainable Practices)</label>
-        <input id="PP_RES_CON" type="checkbox" class="form_input">
+          <input id="PP_CLE_WAT" type="checkbox" class="form_input">
+        <label>Sustainable Consumption and Production (Food Wastage, Sustainable Practices)</label>
+          <input id="PP_RES_CON" type="checkbox" class="form_input">
         <label>Safe Cities</label>
-        <input id="PP_SAF_CIT" type="checkbox" class="form_input">
-        <label>Climate Action</label>
-        <input id="PP_CLI_ACT" type="checkbox" class="form_input">
-        <label>The Environment (eg, Protect the Oceans)</label>
-        <input id="PP_THE_ENV" type="checkbox" class="form_input">
+          <input id="PP_SAF_CIT" type="checkbox" class="form_input">
+        <label>Climate Action and the Environment (eg, Protect the Oceans)</label>
+          <input id="PP_CLI_ACT" type="checkbox" class="form_input">
         <label>Others</label>
-        <input id="PP_OTHERS" type="text" class="form_input" style="width:400px;">
+          <input id="PP_OTHERS" type="text" class="form_input" style="width:400px;">
       </section>
 
       <section class="form_section">
         <label class="heading">Areas I Could Give my Time and Talent to</label><span></span>
         <label>Capability Building including Training and Masterclasses</label>
-        <input id="TALENT_CAP_BUI" type="checkbox" class="form_input">
+          <input id="TALENT_CAP_BUI" type="checkbox" class="form_input">
         <label>Coaching and Mentoring</label>
-        <input id="TALENT_COA_MEN" type="checkbox" class="form_input">
+          <input id="TALENT_COA_MEN" type="checkbox" class="form_input">
         <label>Consultancy and Projects</label>
-        <input id="TALENT_CON_PRO" type="checkbox" class="form_input">
-
+          <input id="TALENT_CON_PRO" type="checkbox" class="form_input">
+        <label>Are you available now?</label>
+          <input id="avail_now" type="checkbox" class="form_input">
         <label class="heading">Preferred Arrangement</label><span></span>
-          <label>You may select both.</label><spna></spna>
-          <label>Pro-Bono</label>
+        <label>You may select both.</label><spna></spna>
+        <label>Pro-Bono</label>
           <input id="ARR_PRO_BONO" type="checkbox" class="form_input">
-          <label>Low-Bono</label>
+        <label>Low-Bono</label>
           <input id="ARR_LOW_BONO" type="checkbox" class="form_input">
-
-        <label>Hours Available Per Month for Pro-Bono Work</label><input id="PRO_BONO_HRS" type="number" class="form_input">
-        <label>Hours Available Per Month for Low-Bono Work</label><input id="LOW_BONO_HRS" type="number" class="form_input">
+        <label>Hours Available Per Month for Pro-Bono Work</label>
+          <input id="PRO_BONO_HRS" type="number" class="form_input">
+        <label>Hours Available Per Month for Low-Bono Work</label>
+          <input id="LOW_BONO_HRS" type="number" class="form_input">
         <label class="heading">Preferred Days Working</label><span></span>
           <label>Weekdays</label><input id="PREF_WEEKDAYS" name="PREF_DAYS" type="radio" class="form_input">
           <label>Weekends</label><input id="PREF_WEEKENDS" name="PREF_DAYS" type="radio" class="form_input">
@@ -351,7 +360,9 @@
           <label>Daytime</label><input id="PREF_DAYTIME" name="PREF_TIMES" type="radio" class="form_input">
           <label>Nightime</label><input id="PREF_NIGHTIME" name="PREF_TIMES" type="radio" class="form_input">
         <label>Finally, tell us what being kind means to you?</label>
-        <textarea id="form_kind" class="form_input" style="width:400px;height:100px;"></textarea>
+          <textarea id="form_kind" class="form_input" style="width:400px;height:100px;"></textarea>
+        <label>Referred By (if applicable)</label>
+          <input id="referred_by" type="text" class="form_input">
       </section>
 
       <section class="form_section">
