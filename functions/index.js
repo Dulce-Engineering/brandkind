@@ -12,7 +12,6 @@ const mailTransport = nodemailer.createTransport({
   },
 });
 
-//const config = functions.config().firebase;
 firebase.initializeApp(config, "brandkind");
 const db = new Db_Firestore("brandkind");
 
@@ -24,24 +23,33 @@ async function Register(to)
     to,
     subject: "Welcome to BrandKind!",
     text: 
-      "Hi! Thankyou for registering your interest. The following link will take you to a form " +
-      "through which we can collect your details.\n\n" +
-      "https://brandkind.net.au/form.html",
+      "BRANDKIND\n" +
+      "Email introduction\n\n" +
+      "Welcome to the Brandkind Community! We already love your generous spirit and can’t wait to get you " +
+      "involved with the other nice and smart folks here.\n\n" +
+      "We just need to get to know you even more so kindly complete the form at the following link.\n" +
+      "https://brandkindcommunity.com/form.html\n\n" +
+      "Then we will give you a shout to have a chat - and together, we can find ways for you to help out " +
+      "and be a part of Brandkind in ways that suit you best.\n\n" +
+      "See you soon!",
     html: `
       <html>
         <body>
-          <p>Hi! Thankyou for registering your interest. The following link will take you to a form
-          through which we can collect your details.</p>
-          <p><a href="https://brandkind.net.au/form.html">https://brandkind.net.au/form.html</a></p>
+          <p>BRANDKIND<br>
+          Email introduction</p>
+          <p>Welcome to the Brandkind Community! We already love your generous spirit and can’t wait to get you 
+          involved with the other nice and smart folks here.</p>
+          <p>We just need to get to know you even more so kindly complete the form at the following link.</p>
+          <p><a href="https://brandkindcommunity.com/form.html">https://brandkindcommunity.com/form.html</a></p>
+          <p>Then we will give you a shout to have a chat - and together, we can find ways for you to help out 
+          and be a part of Brandkind in ways that suit you best.</p> 
+          <p>See you soon!</p> 
         </body>
       </html>
-      `,
+    `,
   };
 
-  // The user subscribed to the newsletter.
-
   const info = await mailTransport.sendMail(mailOptions);
-  console.log("functions.Register()", info);
   const res = info.accepted.includes(to);
   
   return res;
