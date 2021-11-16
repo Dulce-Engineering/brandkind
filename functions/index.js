@@ -16,20 +16,35 @@ const mailTransport = nodemailer.createTransport({
 firebase.initializeApp(config, "brandkind");
 const db = new Db_Firestore("brandkind");
 
-async function Register()
+async function Register(to)
 {
   const mailOptions = 
   {
     from: "noreply@brandkind.com",
-    to: "netssrmrz@yahoo.com.au",
+    to,
+    subject: "Welcome to BrandKind!",
+    text: 
+      "Hi! Thankyou for registering your interest. The following link will take you to a form " +
+      "through which we can collect your details.\n\n" +
+      "https://brandkind.net.au/form.html",
+    html: `
+      <html>
+        <body>
+          <p>Hi! Thankyou for registering your interest. The following link will take you to a form
+          through which we can collect your details.</p>
+          <p><a href="https://brandkind.net.au/form.html">https://brandkind.net.au/form.html</a></p>
+        </body>
+      </html>
+      `,
   };
 
   // The user subscribed to the newsletter.
-  mailOptions.subject = "Welcome to BrandKind!";
-  mailOptions.text = "Hi there! Welcome to BrandKind. I hope you will enjoy our service.";
-  await mailTransport.sendMail(mailOptions);
+
+  const info = await mailTransport.sendMail(mailOptions);
+  console.log("functions.Register()", info);
+  const res = info.accepted.includes(to);
   
-  return "Thankyou for registering.";
+  return res;
 }
 
 async function Save_Registration(form)

@@ -43,30 +43,46 @@
       {
         margin: 10px
       }
+      .email
+      {
+        margin: 20px;
+        display: inline-block;
+      }
+      #reg_email
+      {
+        width: 400px;
+      }
     </style>
 
-    <script src="/__/firebase/8.10.0/firebase.js"></script>
-    <script src="/__/firebase/8.10.0/firebase-functions.js"></script>
-    <script src="/__/firebase/init.js?useEmulator=true"></script>
-
     <script type="module">
+      import Context from "./libs/index.js";
 
-      let Register;
       window.onload = Main;
-
       function Main()
       {
-        const fb_fns = firebase.functions();
-        Register = fb_fns.httpsCallable('Register');
+        const ctx = new Context();
+        Context.Set_Id_Shortcuts(document, window);
 
-        const reg_btn = document.getElementById("reg_btn");
-        reg_btn.addEventListener("click", OnClick_RegBtn);
+        reg_btn.addEventListener("click", async () => OnClick_RegBtn(ctx));
       }
 
-      async function OnClick_RegBtn()
+      async function OnClick_RegBtn(ctx)
       {
-        const res = await Register();
-        alert(res.data);
+        reg_wait.hidden = false;
+        reg_ok.hidden = true;
+        reg_fail.hidden = true;
+
+        const reg_res = await ctx.Register(reg_email.value);
+        if (reg_res.data == true)
+        {
+          reg_ok.hidden = false;
+        }
+        else
+        {
+          reg_fail.hidden = false;
+        }
+
+        reg_wait.hidden = true;
       }
     </script>
   </head>
@@ -74,9 +90,14 @@
   <body>
     <div id="title">
       <img id="logo" src="images/logo-2.png">
-      <div id="invite">To register your interest just enter your email address.</div>
-      <input type="email">
-      <button id="reg_btn">Register</button>
+      <div id="reg_invite">To register your interest just enter your email address.</div>
+      <span class="email">
+        <input id="reg_email" type="email">
+        <button id="reg_btn">Register</button>
+      </span>
+      <div id="reg_wait" hidden="true">Please wait while we send you an email...</div>
+      <div id="reg_ok" hidden="true">Your email has been sent.</div>
+      <div id="reg_fail" hidden="true">Sorry. We couldn't send you that email.</div>
     </div>
   </body>
 </html>
