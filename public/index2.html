@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BrandKind</title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
+      body 
+      { 
+        background: #467E82; 
+        color: #fff; 
+        font-family: Montserrat; 
+        font-weight: 400;
+        font-size: 25px;
+        margin: 0; 
+        padding: 0; 
+
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr;;
+        align-items: center;
+        justify-items: center;
+        overflow: hidden;
+      }
+      #title
+      {
+        animation-duration: 4s;
+        animation-name: fadein;
+        animation-timing-function: ease-in;
+        animation-fill-mode: forwards;
+        display: inline-block;
+        width: 80%;
+        text-align: center;
+      }
+      #logo
+      {
+        width: 100%;
+      }
+      @keyframes fadein
+      {
+        from
+        {
+          opacity: 0;
+        }
+        to
+        {
+          opacity: 1;
+        }
+      }
+      #reg_invite
+      {
+        margin: 40px 0px 0px 0px;
+        display: inline-block;
+        border: 3px solid #fff;
+        padding: 20px 0px;
+      }
+      #reg_invite_text
+      {
+        margin: 0px 40px;
+      }
+      .email
+      {
+        margin: 20px;
+        display: inline-block;
+      }
+      #reg_email
+      {
+        width: 300px;
+        border: 1px solid #fff;
+        background-color: #467E82;
+        font-family: 'Montserrat';
+        font-size: 20px;
+        color: #fff;
+        padding: 10px;
+      }
+      #reg_btn
+      {
+        border: 1px solid #73D2DD;
+        background-color: #73D2DD;
+        font-family: 'Montserrat';
+        font-size: 20px;
+        padding: 10px;
+        color: #000;
+      }
+      #hands
+      {
+        width: 50vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+
+      #reg_wait
+      {
+        margin-top: 10px;
+      }
+      #reg_ok
+      {
+        margin-top: 10px;
+      }
+      #reg_fail
+      {
+        margin-top: 10px;
+      }
+    </style>
+
+    <script type="module">
+      import Context from "./libs/index.js";
+
+      window.onload = Main;
+      function Main()
+      {
+        const ctx = new Context();
+        Context.Set_Id_Shortcuts(document, window);
+
+        reg_btn.addEventListener("click", async () => OnClick_RegBtn(ctx));
+      }
+
+      async function OnClick_RegBtn(ctx)
+      {
+        reg_wait.hidden = false;
+        reg_ok.hidden = true;
+        reg_fail.hidden = true;
+
+        const reg_res = await ctx.Register(reg_email.value);
+        if (reg_res.data == true)
+        {
+          reg_ok.hidden = false;
+        }
+        else
+        {
+          reg_fail.hidden = false;
+        }
+
+        reg_wait.hidden = true;
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="title">
+      <img id="logo" src="images/logo-3.png">
+
+      <div id="reg_invite">
+        <div id="reg_invite_text">
+          JOIN US!<br>
+          ENTER YOUR EMAIL NOW<br>
+        </div>
+        <span class="email">
+          <input id="reg_email" type="email">
+          <button id="reg_btn">Register</button>
+        </span>
+      </div>
+
+      <div id="reg_wait" hidden="true">Please wait while we send you an email...</div>
+      <div id="reg_ok" hidden="true">Your email has been sent.</div>
+      <div id="reg_fail" hidden="true">Sorry. We couldn't send you that email.</div>
+    </div>
+
+    <img id="hands" src="images/hands.png">
+  </body>
+</html>
