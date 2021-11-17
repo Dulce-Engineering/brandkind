@@ -4,15 +4,26 @@
     <meta charset="utf-8">
     <title>BrandKind</title>
 
-    <link href="/styles.css" rel="stylesheet">
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
       body 
       { 
+        background: #467E82; 
+        color: #fff; 
+        font-family: Montserrat; 
+        font-weight: 400;
+        font-size: 25px;
+        margin: 0; 
+        padding: 0; 
+
         height: 100vh;
         width: 100vw;
         display: grid;
+        grid-template-columns: 1fr 1fr;;
         align-items: center;
         justify-items: center;
+        overflow: hidden;
       }
       #title
       {
@@ -39,9 +50,16 @@
           opacity: 1;
         }
       }
-      #invite
+      #reg_invite
       {
-        margin: 10px
+        margin: 40px 0px 0px 0px;
+        display: inline-block;
+        border: 3px solid #fff;
+        padding: 20px 0px;
+      }
+      #reg_invite_text
+      {
+        margin: 0px 40px;
       }
       .email
       {
@@ -50,7 +68,42 @@
       }
       #reg_email
       {
-        width: 200px;
+        width: 300px;
+        border: 1px solid #fff;
+        background-color: #467E82;
+        font-family: 'Montserrat';
+        font-size: 20px;
+        color: #fff;
+        padding: 10px;
+      }
+      #reg_btn
+      {
+        margin-top: 10px;
+        border: 1px solid #73D2DD;
+        background-color: #73D2DD;
+        font-family: 'Montserrat';
+        font-size: 20px;
+        padding: 10px;
+        color: #000;
+      }
+      #hands
+      {
+        width: 50vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+
+      #reg_wait
+      {
+        margin-top: 10px;
+      }
+      #reg_ok
+      {
+        margin-top: 10px;
+      }
+      #reg_fail
+      {
+        margin-top: 10px;
       }
     </style>
 
@@ -89,15 +142,24 @@
 
   <body>
     <div id="title">
-      <img id="logo" src="images/logo-2.png">
-      <div id="reg_invite">To register your interest just enter your email address.</div>
-      <span class="email">
-        <input id="reg_email" type="email">
-        <button id="reg_btn">Register</button>
-      </span>
+      <img id="logo" src="images/logo-3.png">
+
+      <div id="reg_invite">
+        <div id="reg_invite_text">
+          JOIN US!<br>
+          ENTER YOUR EMAIL NOW<br>
+        </div>
+        <span class="email">
+          <input id="reg_email" type="email">
+          <button id="reg_btn">Register</button>
+        </span>
+      </div>
+
       <div id="reg_wait" hidden="true">Please wait while we send you an email...</div>
       <div id="reg_ok" hidden="true">Your email has been sent.</div>
       <div id="reg_fail" hidden="true">Sorry. We couldn't send you that email.</div>
     </div>
+
+    <img id="hands" src="images/hands.png">
   </body>
 </html>
