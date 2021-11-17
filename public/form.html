@@ -11,13 +11,14 @@
       import Context from "./libs/index.js";
 
       window.onload = Main;
-
       function Main()
       {
         const ctx = new Context();
         Context.Set_Id_Shortcuts(document, window);
 
-        save_reg_btn.addEventListener("click", async () => OnClick_SaveRegBtn(ctx));
+        const start_time = new Date();
+
+        save_reg_btn.addEventListener("click", async () => OnClick_SaveRegBtn(ctx, start_time));
         level.addEventListener("change", OnChange_FormLevel);
         EXP_SOC_ENT.addEventListener("change", OnChange_FormExpSoc);
         const section_pp_elems = section_pp.querySelectorAll("[id]");
@@ -27,7 +28,7 @@
         }
       }
 
-      async function OnClick_SaveRegBtn(ctx)
+      async function OnClick_SaveRegBtn(ctx, start_time)
       {
         invalid_data.hidden = true;
         please_wait.hidden = false;
@@ -35,6 +36,9 @@
         const form = Form_To_Obj(form_elem);
         if (Form_Is_Valid(form))
         {
+          form.start_time = start_time.getTime();
+          form.exec_time = Date.now() - form.start_time;
+          
           const fn_res = await ctx.Save_Registration(form);
           //const fn_res = {data: false};
           if (fn_res.data)
