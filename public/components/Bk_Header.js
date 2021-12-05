@@ -188,7 +188,7 @@ class Bk_Header extends HTMLElement
   Render()
   {
     const html =
-      `<menu-buddy-btn id="main_menu" btn-style-src="/components/menu-btn.css" menu-style-src="/components/menu.css" show-pos="bottom">
+      `<menu-buddy-btn id="main_menu" btn-style-src="/components/menu-btn.css" show-pos="bottom">
         <img src="/images/menu_white_24dp.svg">
       </menu-buddy-btn>
       <span id="title" class="bk-header-title">
@@ -212,6 +212,37 @@ class Bk_Header extends HTMLElement
 
     const m =
     {
+      title: "Galaxies",
+      class_name: "menu",
+      options: 
+      [
+        {
+          title: "Andromeda",
+          class_name: "menu",
+          options: 
+          [
+            {
+              title: "Sirius",
+              class_name: "menu",
+              options: 
+              [
+                {title: "Mercury"},
+                {title: "Venus"},
+                {title: "Mars"},
+                {title: "Jupiter"}
+              ]
+            },
+            {title: "Rigel"}, 
+            {title: "Vega"},
+            {title: "Antares"}
+          ]
+        },
+        {title: "Milky Way"}, 
+        {title: "Cygnus A"}
+      ]
+    };
+    /*const m =
+    {
       title: "BrandKind",
       class_name: "menu",
       options: 
@@ -219,7 +250,7 @@ class Bk_Header extends HTMLElement
         {title: "Home"}, 
         {title: "Registration Forms"}
       ]
-    };
+    };*/
 
     const main_menu = document.getElementById("main_menu");
     main_menu.menu = m;
