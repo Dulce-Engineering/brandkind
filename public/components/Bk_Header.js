@@ -212,37 +212,6 @@ class Bk_Header extends HTMLElement
 
     const m =
     {
-      title: "Galaxies",
-      class_name: "menu",
-      options: 
-      [
-        {
-          title: "Andromeda",
-          class_name: "menu",
-          options: 
-          [
-            {
-              title: "Sirius",
-              class_name: "menu",
-              options: 
-              [
-                {title: "Mercury"},
-                {title: "Venus"},
-                {title: "Mars"},
-                {title: "Jupiter"}
-              ]
-            },
-            {title: "Rigel"}, 
-            {title: "Vega"},
-            {title: "Antares"}
-          ]
-        },
-        {title: "Milky Way"}, 
-        {title: "Cygnus A"}
-      ]
-    };
-    /*const m =
-    {
       title: "BrandKind",
       class_name: "menu",
       options: 
@@ -250,10 +219,11 @@ class Bk_Header extends HTMLElement
         {title: "Home"}, 
         {title: "Registration Forms"}
       ]
-    };*/
+    };
 
     const main_menu = document.getElementById("main_menu");
     main_menu.menu = m;
+    main_menu.menu_buddy.style.width = "200px";
     main_menu.menu_buddy.addEventListener("clickoption", this.On_Main_Menu_Clicked);
 
     const sign_in_btn = document.getElementById("sign_in_btn");
