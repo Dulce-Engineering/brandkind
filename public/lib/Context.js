@@ -1,17 +1,19 @@
 import '/__/firebase/9.4.0/firebase-app-compat.js'
 import '/__/firebase/9.4.0/firebase-functions-compat.js'
 import '/__/firebase/9.4.0/firebase-analytics-compat.js'
+import '/__/firebase/9.4.0/firebase-auth-compat.js'
 import '/__/firebase/init.js?useEmulator=true'
 
 class Context
 {
-  constructor()
+  constructor(app_name)
   {
+    //this.fb_app = firebase.app(app_name);
+    this.fb_app = firebase.app();
     this.fb_anl = firebase.analytics();
     this.fb_fns = firebase.functions();
-    
-    //this.Register = fb_fns.httpsCallable('Register');
-    //this.Save_Registration = fb_fns.httpsCallable('Save_Registration');
+    //this.fb_auth = firebase.auth(this.fb_app);
+    this.fb_auth = firebase.auth();
   }
 
   static Set_Id_Shortcuts(src_elem, dest_elem)

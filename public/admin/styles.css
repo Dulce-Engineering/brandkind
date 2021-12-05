@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+body
+{
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+  color: #000;
+  background-color: #fff;
+}
+
+bk-header
+{
+  background-color: #f00b;
+  height: 200px;
+}
+main
+{
+  padding: 40px;
+}
+
+button
+{
+  background-color: #f00b;
+  border: 5px solid #fff;
+  border-radius: 50px;
+  box-shadow: 0 5px 8px 0 rgb(61 82 96 / 20%);
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 5px 10px;
+  transition: all 0.25s linear;
+  vertical-align: middle;
+}
+button:hover
+{
+  background-color: #303945;
+}
+button:disabled
+{
+  border-color: #555;
+  color: #555;
+  cursor: default;
+}
+
+#form
+{
+  border-top: 4px double #000;
+  border-bottom: 1px solid #000;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px 10px;
+}
+#form label
+{
+  justify-self: end;
+}
+.field_value
+{
+  justify-self: start; 
+}
+a
+{
+  color: inherit;
+  text-decoration: none;
+}
+a:hover
+{
+  color: #555;
+}
+a:visited
+{
+  color: inherit;
+}
+
+table
+{
+  width: 100%;
+  border-collapse: collapse;
+}
+thead
+{
+  border-bottom: 4px double #fff;
+}
+tfoot
+{
+  border-top: 1px solid #fff;
+}
+th
+{
+  text-align: left;
+  padding: 10px;
+}
+td
+{
+  padding: 10px;
+}
+
+.de-dropdown
+{
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: fixed;
+  border: 1px solid #fff;
+  box-shadow: 0px 0px 10px 10px #000;
+  background-color: #000;
+}
+.de-dropdown-item
+{
+  font-size: 13px;
+  font-weight: normal;
+  padding: 5px 10px;
+}
+.de-dropdown-item:hover
+{
+  background-color: #555;
+}
+.de-dropdown-header
+{
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 5px;
+  text-align: right;
+}
+
+.de-dialog
+{
+  display: none;
+  position: fixed;
+  border: 1px solid #fff;
+  background-color: #000;
+  box-shadow: 0px 0px 10px 10px #000;
+}
+.de-dialog-header
+{
+  margin: 15px;
+  font-weight: bold;
+}
+.de-dialog-body
+{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5px;
+  padding: 0px 15px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.de-dialog label
+{
+  justify-self: end;
+}  
+.de-dialog-footer
+{
+  margin: 15px;
+  text-align: right;
+}
+
+.bk-header
+{
+  margin-bottom: 50px;
+  height: 80px;
+  display: block;
+  padding: 15px 15px 0px 15px;
+  color: #fff;
+}
+.bk-header-action
+{
+  float: right;
+}
+.bk-header-title
+{
+  font-size: 25px;
+}
+.bk-header-user
+{
+  --def-display: inline-block;
+  display: none;
+}
+.bk-header-signin
+{
+  --def-display: inline-block;
+  display: none;
+}

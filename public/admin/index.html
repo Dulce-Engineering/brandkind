@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BrandKind - Admin</title>
+
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css"/>
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link type="text/css" rel="stylesheet" href="styles.css"  />
+
+    <style>
+    </style>
+    
+    <script type="module">
+      import Context from "../lib/Context.js";
+      import "../components/index.js";
+
+      window.onload = Main;
+      function Main()
+      {
+        Context.Set_Id_Shortcuts(document, window);
+
+        const ctx = new Context();
+        header_elem.fb_ctx = ctx;
+      }
+    </script>
+  </head>
+
+  <body>
+    <bk-header id="header_elem" title="Dashboard"></bk-header>
+  </body>
+</html>

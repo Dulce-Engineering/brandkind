@@ -1,0 +1,26 @@
+{
+  "name": "public",
+  "version": "1.0.0",
+  "description": "BrandKind website",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dulce-Engineering/brandkind.git"
+  },
+  "author": "Dulce Engineering",
+  "bugs": {
+    "url": "https://github.com/Dulce-Engineering/brandkind/issues"
+  },
+  "homepage": "https://github.com/Dulce-Engineering/brandkind#readme",
+  "dependencies": {
+    "filter-buddy": "^1.1.0",
+    "menu-buddy": "^1.0.0",
+    "table-buddy": "^1.0.0"
+  }
+}
