@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BrandKind - Admin</title>
+
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css"/>
+    <link type="text/css" rel="stylesheet" href="styles.css"  />
+
+    <style>
+    </style>
+    
+    <script type="module">
+      import Context from "../lib/Context.js";
+      import "../components/index.js";
+      import Datasource from "../node_modules/table-buddy/Datasource.mjs";
+      import Form from "../lib/Form.js";
+
+      class Forms_Ds extends Datasource.Memory
+      {
+        Get_Columns()
+        {
+          return [
+            {title: "Name"}, 
+            {title: "E-Mail"}, 
+            {title: "City"}];
+        }
+
+        async Update_Data(filter_by, sort_by)
+        {
+          this.data = await Form.Select(this.ctx.db);
+        }
+        
+        Get_Cell_Data(col_id, form)
+        {
+          let res = "";
+
+          switch(col_id)
+          {
+            case 0: res = form.name; break;
+            case 1: res = form.email; break;
+            case 2: res = form.city; break;
+          }
+
+          return res;
+        }
+      }
+
+      window.onload = Main;
+      function Main()
+      {
+        Context.Set_Id_Shortcuts(document, window);
+
+        const ctx = new Context();
+        header_elem.fb_ctx = ctx;
+
+        const ds = new Forms_Ds();
+        ds.ctx = ctx;
+        reg_forms.datasource = ds;
+      }
+    </script>
+  </head>
+
+  <body>
+    <bk-header id="header_elem" title="Home"></bk-header>
+    <table-buddy id="reg_forms"></table-buddy>
+  </body>
+</html>
