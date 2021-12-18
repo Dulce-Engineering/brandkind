@@ -161,11 +161,12 @@ td
 
 .bk-header
 {
-  margin-bottom: 50px;
+  margin-bottom: 5px;
   height: 80px;
   display: block;
   padding: 15px 15px 0px 15px;
   color: #fff;
+  text-align: left;
 }
 .bk-header-action
 {

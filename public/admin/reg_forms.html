@@ -9,6 +9,14 @@
     <link type="text/css" rel="stylesheet" href="styles.css"  />
 
     <style>
+      body
+      {
+        text-align: center;
+      }
+      #reg_forms
+      {
+        width: 100%;
+      }
     </style>
     
     <script type="module">
@@ -17,33 +25,26 @@
       import Datasource from "../node_modules/table-buddy/Datasource.mjs";
       import Form from "../lib/Form.js";
 
+      const align_left = "text-align: left;";
+      const align_right = "text-align: right;";
+      
       class Forms_Ds extends Datasource.Memory
       {
         Get_Columns()
         {
           return [
-            {title: "Name"}, 
-            {title: "E-Mail"}, 
-            {title: "City"}];
+            {title: "Name", field_name: "name", style: align_left}, 
+            {title: "E-Mail", field_name: "email", style: align_left}, 
+            {title: "City", field_name: "city", style: align_left},
+            {title: "LinkedIn", field_name: "linkedin", render_as: "url", style: align_left},
+            {title: "Mobile", field_name: "mobile", style: align_right},
+            {title: "Reg. Date", field_name: "start_time", render_as: "date", style: align_right},
+          ];
         }
 
         async Update_Data(filter_by, sort_by)
         {
           this.data = await Form.Select(this.ctx.db);
-        }
-        
-        Get_Cell_Data(col_id, form)
-        {
-          let res = "";
-
-          switch(col_id)
-          {
-            case 0: res = form.name; break;
-            case 1: res = form.email; break;
-            case 2: res = form.city; break;
-          }
-
-          return res;
         }
       }
 
@@ -58,12 +59,19 @@
         const ds = new Forms_Ds();
         ds.ctx = ctx;
         reg_forms.datasource = ds;
+        reg_forms.addEventListener("clickrow", Reg_Forms_Click_Row);
+      }
+
+      function Reg_Forms_Click_Row(event)
+      {
+        const form = event.detail;
+        window.open("reg_form.html?form_id=" + form.id, "_self");
       }
     </script>
   </head>
 
   <body>
     <bk-header id="header_elem" title="Home"></bk-header>
-    <table-buddy id="reg_forms"></table-buddy>
+    <table-buddy id="reg_forms" style-src="styles/table-buddy.css"></table-buddy>
   </body>
 </html>

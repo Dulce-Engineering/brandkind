@@ -1,0 +1,75 @@
+:host
+{
+  display: inline-block;
+}
+#tableContainer
+{
+  position: relative;
+}
+#tableOverlay
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: #000;
+  background-color: #dddc;
+  border-radius: 4px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+#tableOverlayGear 
+{
+  animation: rotate 2s linear infinite;
+  transform-origin: center center;
+}
+@keyframes rotate { 100% { transform:rotate(360deg); } }
+.disabled-row {
+  opacity: .8;
+  background: #cccccc;
+  pointer-events: none;
+}
+
+#tableElem
+{
+  width: 100%;
+  xborder-spacing: 10px 5px;
+  border-collapse: collapse;
+  background-color: #eee;
+}
+#tableElem tbody tr
+{
+  border-top: 4px solid #fff;
+}
+#tableElem tbody tr:hover
+{
+  background-color: #f002;
+  cursor: pointer;
+}
+
+#tableElem th
+{
+  padding: 20px 5px;
+}
+#tableElem th:first-child
+{
+  padding-left: 30px;
+}
+#tableElem th:last-child
+{
+  padding-right: 30px;
+}
+
+#tableElem td
+{
+  padding: 20px 5px;
+}
+#tableElem td:first-child
+{
+  padding-left: 30px;
+}
+#tableElem td:last-child
+{
+  padding-right: 30px;
+}
