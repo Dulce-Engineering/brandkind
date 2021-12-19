@@ -33,18 +33,34 @@
         Get_Columns()
         {
           return [
-            {title: "Name", field_name: "name", style: align_left}, 
-            {title: "E-Mail", field_name: "email", style: align_left}, 
-            {title: "City", field_name: "city", style: align_left},
-            {title: "LinkedIn", field_name: "linkedin", render_as: "url", style: align_left},
-            {title: "Mobile", field_name: "mobile", style: align_right},
-            {title: "Reg. Date", field_name: "start_time", render_as: "date", style: align_right},
+            {title: "Question", field_name: "question", style: align_left}, 
+            {title: "Answer", field_fn: this.Render_Answer, style: align_left, render_as: "html"}, 
           ];
+        }
+
+        Render_Answer(form)
+        {
+          let res;
+
+          if (Array.isArray(form.answer))
+          {
+            res = form.answer.map(a => "<li>" + a + "</li>");
+            res = "<ul>" + res.join("") + "</ul>";
+          }
+          else
+          {
+            res = form.answer;
+          }
+
+          return res;
         }
 
         async Update_Data(filter_by, sort_by)
         {
-          this.data = await Form.Select(this.ctx.db);
+          const search_params = new URLSearchParams(window.location.search);
+          const id = search_params.get('form_id'); 
+          const form = await Form.Select_By_Id(this.ctx.db, id);
+          this.data = form.To_Array();
         }
       }
 
@@ -59,19 +75,12 @@
         const ds = new Forms_Ds();
         ds.ctx = ctx;
         reg_forms.datasource = ds;
-        reg_forms.addEventListener("clickrow", Reg_Forms_Click_Row);
-      }
-
-      function Reg_Forms_Click_Row(event)
-      {
-        const form = event.detail;
-        window.open("reg_form.html?form_id=" + form.id, "_self");
       }
     </script>
   </head>
 
   <body>
     <bk-header id="header_elem" title="Home"></bk-header>
-    <table-buddy id="reg_forms" style-src="styles/reg_forms.css"></table-buddy>
+    <table-buddy id="reg_forms" style-src="styles/reg_form.css"></table-buddy>
   </body>
 </html>
