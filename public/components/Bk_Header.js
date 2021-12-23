@@ -70,7 +70,11 @@ class Bk_Header extends HTMLElement
 
   Sign_In(signin_fn)
   {
-    let signInSuccessWithAuthResult = (auth_result, redirect_url) => false;
+    let signInSuccessWithAuthResult = function (auth_result, redirect_url)
+    {
+      return false;
+    };
+
     if (signin_fn)
     {
       signInSuccessWithAuthResult = function (auth_result, redirect_url)
@@ -121,12 +125,16 @@ class Bk_Header extends HTMLElement
   On_User_Has_Signed_In(user)
   {
     this.Render_Signed_In(user.displayName);
+    const event = new Event('signedin');
+    this.dispatchEvent(event);
   }
 
   On_User_Has_Signed_Out()
   {
     Utils.Show("signin_info", this);
     Utils.Hide("user_info", this);
+    const event = new Event('signedout');
+    this.dispatchEvent(event);
   }
 
   On_Sign_In_Clicked()

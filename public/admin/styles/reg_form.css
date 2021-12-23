@@ -34,7 +34,7 @@
 #tableElem
 {
   width: 100%;
-  xborder-spacing: 10px 5px;
+  word-break: break-word;
   border-collapse: collapse;
   background-color: #eee;
 }

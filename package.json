@@ -3,7 +3,7 @@
   "description": "Brandkind application.",
   "scripts": 
   {
-    "start": "firebase serve --port 80",
+    "start": "firebase serve --port 80 --host 192.168.0.13",
     "deploy": "firebase deploy"
   }
 }

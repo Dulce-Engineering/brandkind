@@ -3,10 +3,11 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BrandKind - Admin</title>
 
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css"/>
-    <link type="text/css" rel="stylesheet" href="styles.css"  />
+    <link type="text/css" rel="stylesheet" href="styles/styles.css"  />
 
     <style>
       body
@@ -27,19 +28,36 @@
 
       const align_left = "text-align: left;";
       const align_right = "text-align: right;";
+      let ctx;
       
       class Forms_Ds extends Datasource.Memory
       {
         Get_Columns()
         {
-          return [
-            {title: "Name", field_name: "name", style: align_left}, 
-            {title: "E-Mail", field_name: "email", style: align_left}, 
-            {title: "City", field_name: "city", style: align_left},
-            {title: "LinkedIn", field_name: "linkedin", render_as: "url", style: align_left},
-            {title: "Mobile", field_name: "mobile", style: align_right},
-            {title: "Reg. Date", field_name: "start_time", render_as: "date", style: align_right},
-          ];
+          let cols;
+
+          if (Is_Mobile())
+          {
+            cols =
+            [
+              {title: "Name", field_name: "name", style: align_left}, 
+              {title: "Reg. Date", field_name: "start_time", render_as: "date", style: align_right},
+            ];
+          }
+          else
+          {
+            cols =
+            [
+              {title: "Name", field_name: "name", style: align_left}, 
+              {title: "E-Mail", field_name: "email", style: align_left}, 
+              {title: "City", field_name: "city", style: align_left},
+              {title: "LinkedIn", field_name: "linkedin", render_as: "url", style: align_left},
+              {title: "Mobile", field_name: "mobile", style: align_right},
+              {title: "Reg. Date", field_name: "start_time", render_as: "date", style: align_right},
+            ];
+          }
+
+          return cols;
         }
 
         async Update_Data(filter_by, sort_by)
@@ -48,24 +66,46 @@
         }
       }
 
+      function Is_Mobile()
+      {
+        //console.log("width:", window.screen.width);
+        //console.log("pixelRatio:", window.devicePixelRatio);
+        //const dpi = window.screen.width * window.devicePixelRatio;
+        //console.log("dpi:", dpi);
+
+        return window.devicePixelRatio > 1;
+      }
+
       window.onload = Main;
       function Main()
       {
         Context.Set_Id_Shortcuts(document, window);
 
-        const ctx = new Context();
+        ctx = new Context();
         header_elem.fb_ctx = ctx;
-
-        const ds = new Forms_Ds();
-        ds.ctx = ctx;
-        reg_forms.datasource = ds;
-        reg_forms.addEventListener("clickrow", Reg_Forms_Click_Row);
+        header_elem.addEventListener("signedin", Header_Signed_In);
+        header_elem.addEventListener("signedout", Header_Signed_Out);
       }
 
       function Reg_Forms_Click_Row(event)
       {
         const form = event.detail;
         window.open("reg_form.html?form_id=" + form.id, "_self");
+      }
+
+      function Header_Signed_In()
+      {
+        const ds = new Forms_Ds();
+        ds.ctx = ctx;
+        reg_forms.datasource = ds;
+        reg_forms.addEventListener("clickrow", Reg_Forms_Click_Row);
+      }
+
+      async function Header_Signed_Out()
+      {
+        await reg_forms.Set_Datasource(null);
+        reg_forms.removeEventListener("clickrow", Reg_Forms_Click_Row);
+        reg_forms.Render_Msg("You must sign in.");
       }
     </script>
   </head>
