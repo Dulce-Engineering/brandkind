@@ -195,13 +195,16 @@ class Bk_Header extends HTMLElement
 
   Render()
   {
-    const html =
-      `<menu-buddy-btn id="main_menu" btn-style-src="/components/menu-btn.css" show-pos="bottom">
-        <img src="/images/menu_teal_24dp.svg">
-      </menu-buddy-btn>
-      <span id="title" class="bk-header-title">
-        <a href="/"><span>BranKind</span></a> - <span id="title_span"></span>
-      </span>
+    const html = `
+      <div id="bk-header-bar">
+        <menu-buddy-btn id="main_menu" btn-style-src="/components/menu-btn.css" show-pos="bottom">
+          <img src="/images/menu_teal_24dp.svg">
+        </menu-buddy-btn>
+        <span id="title" class="bk-header-title">
+          <a href="/"><span>BranKind</span></a> - <span id="title_span"></span>
+        </span>
+      </div>
+
       <div id="firebaseui-auth-container"></div>
       <div id="btn_bar" class="bk-header-action">
         <div id="user_info" class="bk-header-user">

@@ -158,14 +158,17 @@ td
   background-color: #467E82;
   color: #73D2DD;
   margin-bottom: 5px;
-  height: 80px;
   display: block;
-  padding: 15px 15px 0px 15px;
+  padding: 10px;
   text-align: left;
+}
+#bk-header-bar
+{
+  display: flex;
 }
 .bk-header-action
 {
-  float: right;
+  text-align: right;
 }
 .bk-header-title
 {
