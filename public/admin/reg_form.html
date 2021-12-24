@@ -29,7 +29,8 @@
 
       const align_left = "text-align: left;";
       const align_right = "text-align: right;";
-      
+      let ctx;
+
       class Forms_Ds extends Datasource.Memory
       {
         Get_Columns()
@@ -47,7 +48,7 @@
           if (Array.isArray(form.answer))
           {
             res = form.answer.map(a => "<li>" + a + "</li>");
-            res = "<ul>" + res.join("") + "</ul>";
+            res = "<ul style=\"margin:0;padding-inline-start:20px;\">" + res.join("") + "</ul>";
           }
           else
           {
@@ -71,18 +72,29 @@
       {
         Context.Set_Id_Shortcuts(document, window);
 
-        const ctx = new Context();
+        ctx = new Context();
         header_elem.fb_ctx = ctx;
+        header_elem.addEventListener("signedin", Header_Signed_In);
+        header_elem.addEventListener("signedout", Header_Signed_Out);
+      }
 
+      function Header_Signed_In()
+      {
         const ds = new Forms_Ds();
         ds.ctx = ctx;
         reg_forms.datasource = ds;
+      }
+
+      async function Header_Signed_Out()
+      {
+        await reg_forms.Set_Datasource(null);
+        reg_forms.Render_Msg("You must sign in.");
       }
     </script>
   </head>
 
   <body>
-    <bk-header id="header_elem" title="Home"></bk-header>
+    <bk-header id="header_elem" title="Reg. Form Details"></bk-header>
     <table-buddy id="reg_forms" style-src="styles/reg_form.css"></table-buddy>
   </body>
 </html>

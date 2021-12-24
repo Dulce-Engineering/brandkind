@@ -7,7 +7,26 @@
 
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css"/>
     <link type="text/css" rel="stylesheet" href="styles/styles.css"  />
-    
+
+    <style>
+      body
+      {
+        text-align: center;
+      }
+      #signin_div
+      {
+        padding: 20px 30px;;
+        background-color: #DF877D88;
+        margin: 0px 5px;
+      }
+      #welcome_div
+      {
+        padding: 20px 30px;;
+        background-color: #73D2DD44;
+        margin: 0px 5px;
+      }
+    </style>
+
     <script type="module">
       import Context from "../lib/Context.js";
       import "../components/index.js";
@@ -19,11 +38,30 @@
 
         const ctx = new Context();
         header_elem.fb_ctx = ctx;
+        header_elem.addEventListener("signedin", Header_Signed_In);
+        header_elem.addEventListener("signedout", Header_Signed_Out);
+      }
+      
+      function Header_Signed_In()
+      {
+        welcome_div.hidden = false;
+        signin_div.hidden = true;
+      }
+
+      async function Header_Signed_Out()
+      {
+        welcome_div.hidden = true;
+        signin_div.hidden = false;
       }
     </script>
   </head>
 
   <body>
     <bk-header id="header_elem" title="Home"></bk-header>
+    <div id="signin_div" hidden=true>Please sign in.</div>
+    <div id="welcome_div" hidden=true>
+      Welcome to the BrandKind Administration System. 
+      Please use the menu on the top left of the screen to navigate.
+    </div>
   </body>
 </html>

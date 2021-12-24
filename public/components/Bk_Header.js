@@ -197,7 +197,7 @@ class Bk_Header extends HTMLElement
   {
     const html =
       `<menu-buddy-btn id="main_menu" btn-style-src="/components/menu-btn.css" show-pos="bottom">
-        <img src="/images/menu_white_24dp.svg">
+        <img src="/images/menu_teal_24dp.svg">
       </menu-buddy-btn>
       <span id="title" class="bk-header-title">
         <a href="/"><span>BranKind</span></a> - <span id="title_span"></span>
@@ -207,11 +207,11 @@ class Bk_Header extends HTMLElement
         <div id="user_info" class="bk-header-user">
           <span></span>
           <span id="user_name"></span>
-          <button id="acc_btn">Account</button>
+          <!--button id="acc_btn">Account</button-->
           <button id="sign_out_btn">Sign Out</button>
         </div>
         <div id="signin_info" class="bk-header-signin">
-          <button id="sign_up_btn">Sign Up</button>
+          <!--button id="sign_up_btn">Sign Up</button-->
           <button id="sign_in_btn">Sign In</button>
         </div>
       </div>`;
@@ -237,14 +237,14 @@ class Bk_Header extends HTMLElement
     const sign_in_btn = document.getElementById("sign_in_btn");
     sign_in_btn.addEventListener("click", this.On_Sign_In_Clicked);
 
-    const sign_up_btn = document.getElementById("sign_up_btn");
-    sign_up_btn.addEventListener("click", this.On_Sign_Up_Clicked);
+    //const sign_up_btn = document.getElementById("sign_up_btn");
+    //sign_up_btn.addEventListener("click", this.On_Sign_Up_Clicked);
 
     const sign_out_btn = document.getElementById("sign_out_btn");
     sign_out_btn.addEventListener("click", this.On_Sign_Out_Clicked);
 
-    const acc_btn = this.querySelector("#acc_btn");
-    acc_btn.addEventListener("click", this.On_Acc_Clicked);
+    //const acc_btn = this.querySelector("#acc_btn");
+    //acc_btn.addEventListener("click", this.On_Acc_Clicked);
 
     this.title = this.init_title;
   }

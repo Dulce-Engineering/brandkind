@@ -9,11 +9,6 @@ body
   font-size: 14px;
 }
 
-bk-header
-{
-  background-color: #f00b;
-  height: 200px;
-}
 main
 {
   padding: 40px;
@@ -21,7 +16,7 @@ main
 
 button
 {
-  background-color: #f00b;
+  background-color: #467E82;
   border: 5px solid #fff;
   border-radius: 50px;
   box-shadow: 0 5px 8px 0 rgb(61 82 96 / 20%);
@@ -36,7 +31,7 @@ button
 }
 button:hover
 {
-  background-color: #303945;
+  background-color: #73D2DD;
 }
 button:disabled
 {
@@ -160,11 +155,12 @@ td
 
 .bk-header
 {
+  background-color: #467E82;
+  color: #73D2DD;
   margin-bottom: 5px;
   height: 80px;
   display: block;
   padding: 15px 15px 0px 15px;
-  color: #fff;
   text-align: left;
 }
 .bk-header-action
@@ -184,4 +180,9 @@ td
 {
   --def-display: inline-block;
   display: none;
+}
+#user_name
+{
+  margin-right: 10px;
+  color: #fff;
 }

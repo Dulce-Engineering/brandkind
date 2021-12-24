@@ -34,7 +34,6 @@
 #tableElem
 {
   width: 100%;
-  xborder-spacing: 10px 5px;
   border-collapse: collapse;
   background-color: #eee;
 }
@@ -44,7 +43,7 @@
 }
 #tableElem tbody tr:hover
 {
-  background-color: #f002;
+  background-color: #73D2DD22;
   cursor: pointer;
 }
 
