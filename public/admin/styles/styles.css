@@ -163,6 +163,7 @@ td
 #bk-header-bar
 {
   display: flex;
+  align-items: center;
 }
 .bk-header-action
 {
@@ -171,6 +172,7 @@ td
 .bk-header-title
 {
   font-size: 2em;
+  margin-left: 10px;
 }
 .bk-header-user
 {
