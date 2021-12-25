@@ -125,7 +125,7 @@ class Bk_Header extends HTMLElement
   On_User_Has_Signed_In(user)
   {
     this.Render_Signed_In(user.displayName);
-    const event = new Event('signedin');
+    const event = new CustomEvent('signedin', {detail: user});
     this.dispatchEvent(event);
   }
 
@@ -210,7 +210,7 @@ class Bk_Header extends HTMLElement
         <div id="user_info" class="bk-header-user">
           <span></span>
           <span id="user_name"></span>
-          <!--button id="acc_btn">Account</button-->
+          <button id="acc_btn">Account</button>
           <button id="sign_out_btn">Sign Out</button>
         </div>
         <div id="signin_info" class="bk-header-signin">
@@ -246,8 +246,8 @@ class Bk_Header extends HTMLElement
     const sign_out_btn = document.getElementById("sign_out_btn");
     sign_out_btn.addEventListener("click", this.On_Sign_Out_Clicked);
 
-    //const acc_btn = this.querySelector("#acc_btn");
-    //acc_btn.addEventListener("click", this.On_Acc_Clicked);
+    const acc_btn = this.querySelector("#acc_btn");
+    acc_btn.addEventListener("click", this.On_Acc_Clicked);
 
     this.title = this.init_title;
   }
