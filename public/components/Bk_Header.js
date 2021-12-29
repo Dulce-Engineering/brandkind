@@ -174,11 +174,11 @@ class Bk_Header extends HTMLElement
   {
     if (event.detail.title == "Home")
     {
-      window.open("/admin/index.html", "self");
+      window.open("/admin/index.html", "_self");
     }
     if (event.detail.title == "Registration Forms")
     {
-      window.open("/admin/reg_forms.html", "self");
+      window.open("/admin/reg_forms.html", "_self");
     }
   }
 
@@ -196,6 +196,8 @@ class Bk_Header extends HTMLElement
   Render()
   {
     const html = `
+      <menu-buddy-panel id="main_menu2" menu-style-src="/components/menu-panel.css"></menu-buddy-panel>
+
       <div id="bk-header-bar">
         <menu-buddy-btn id="main_menu" btn-style-src="/components/menu-btn.css" show-pos="bottom">
           <img src="/images/menu_teal_24dp.svg">
