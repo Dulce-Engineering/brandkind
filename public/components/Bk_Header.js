@@ -3,7 +3,7 @@ import 'https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js'
 
 class Bk_Header extends HTMLElement 
 {
-  static name = "bk-header";
+  static tname = "bk-header";
 
   // Lifecycle ====================================================================================
 
