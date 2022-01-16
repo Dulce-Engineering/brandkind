@@ -4,7 +4,8 @@ import '/__/firebase/9.4.0/firebase-analytics-compat.js';
 import '/__/firebase/9.4.0/firebase-auth-compat.js';
 import '/__/firebase/9.4.0/firebase-firestore-compat.js';
 import '/__/firebase/init.js?useEmulator=true';
-import Db from "../lib/De_Db_Firestore.js";
+import Db from "./De_Db_Firestore.js";
+import Client_Cache_Local from "../node_modules/cache-buddy/Client_Cache_Local.js";
 
 class Context
 {
@@ -18,6 +19,7 @@ class Context
     this.fb_auth = firebase.auth();
     this.fb_db = firebase.firestore();
     this.db = new Db(this.fb_db);
+    this.cache = new Client_Cache_Local();
   }
 
   static Set_Id_Shortcuts(src_elem, dest_elem)

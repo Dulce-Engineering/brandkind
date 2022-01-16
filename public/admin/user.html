@@ -27,9 +27,7 @@
       {
         Context.Set_Id_Shortcuts(document, window);
 
-        header_elem.fb_ctx = ctx;
-        header_elem.addEventListener("signedin", Header_Signed_In);
-        //header_elem.addEventListener("signedout", Header_Signed_Out);
+        header_elem.Init(ctx, Header_Signed_In);
       }
 
       function Header_Signed_Out()

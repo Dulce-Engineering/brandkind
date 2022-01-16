@@ -4,7 +4,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>BrandKind Admin - Reg. Form Details</title>
 
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css"/>
@@ -73,9 +72,7 @@
         Context.Set_Id_Shortcuts(document, window);
 
         ctx = new Context();
-        header_elem.fb_ctx = ctx;
-        header_elem.addEventListener("signedin", Header_Signed_In);
-        header_elem.addEventListener("signedout", Header_Signed_Out);
+        header_elem.Init(ctx, Header_Signed_In, Header_Signed_Out);
       }
 
       function Header_Signed_In()

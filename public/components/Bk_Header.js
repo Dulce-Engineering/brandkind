@@ -61,11 +61,49 @@ class Bk_Header extends HTMLElement
 
   // API ==========================================================================================
 
-  Init(ctx)
+  Init(ctx, on_signed_in_fn, on_signed_out_fn)
   {
+    if (on_signed_in_fn)
+      header_elem.addEventListener("signedin", on_signed_in_fn);
+    if (on_signed_out_fn)
+      header_elem.addEventListener("signedout", on_signed_out_fn);
+
     this.ctx = ctx;
     this.ui = new firebaseui.auth.AuthUI(this.ctx.fb_auth);
-    this.ctx.fb_auth.onAuthStateChanged(this.On_Auth_State_Changed);
+
+    const user = this.Get_Logged_In_User();
+    if (user)
+    {
+      this.On_Auth_State_Changed(user, true);
+    }
+    else
+    {
+      this.Set_OnAuthStateChanged();
+    }
+  }
+
+  Get_Logged_In_User()
+  {
+    let user;
+    const user_str = localStorage.getItem("Bk_Header.user");
+    if (user_str)
+    {
+      user = JSON.parse(user_str);
+      const now = Date.now();
+      if (now >= user.expireAt)
+        user = null;
+    }
+
+    return user;
+  }
+
+  Set_OnAuthStateChanged()
+  {
+    if (!this.onAuthStateChanged_set)
+    {
+      this.ctx.fb_auth.onAuthStateChanged(this.On_Auth_State_Changed);
+      this.onAuthStateChanged_set = true;
+    }
   }
 
   Sign_In(signin_fn)
@@ -110,15 +148,24 @@ class Bk_Header extends HTMLElement
   
   // Events =======================================================================================
 
-  On_Auth_State_Changed(user)
+  On_Auth_State_Changed(user, skip_user_update)
   {
     if (user)
     {
       this.On_User_Has_Signed_In(user);
+      if (!skip_user_update)
+      {
+        const now = Date.now();
+        const day = 86400000;
+        user.expireAt = now + day;
+        const user_str = JSON.stringify(user);
+        localStorage.setItem("Bk_Header.user", user_str);
+      }
     }
     else
     {
       this.On_User_Has_Signed_Out();
+      localStorage.removeItem("Bk_Header.user");
     }
   }
 
@@ -140,6 +187,7 @@ class Bk_Header extends HTMLElement
   On_Sign_In_Clicked()
   {
     this.Sign_In();
+    this.Set_OnAuthStateChanged();
   }
 
   On_Sign_Up_Clicked()
@@ -152,6 +200,7 @@ class Bk_Header extends HTMLElement
     if (this.ctx)
     {
       await this.ctx.fb_auth.signOut();
+      this.Set_OnAuthStateChanged();
     }
   }
 

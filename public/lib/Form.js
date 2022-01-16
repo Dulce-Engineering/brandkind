@@ -7,9 +7,12 @@ class Form
     Utils.To_Class_Obj(obj, this);
   }
 
-  static Select(db)
+  static Select(ctx)
   {
-    return db.Select_Objs("form", Form);
+    const key = "Form.Select()";
+    const hour = 3600000;
+    return ctx.cache.use(key, () => ctx.db.Select_Objs("form", Form), hour);
+    //return db.Select_Objs("form", Form);
   }
 
   static Select_By_Id(db, id)

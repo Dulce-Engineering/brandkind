@@ -62,7 +62,7 @@
 
         async Update_Data(filter_by, sort_by)
         {
-          this.data = await Form.Select(this.ctx.db);
+          this.data = await Form.Select(this.ctx);
         }
       }
 
@@ -82,9 +82,7 @@
         Context.Set_Id_Shortcuts(document, window);
 
         ctx = new Context();
-        header_elem.fb_ctx = ctx;
-        header_elem.addEventListener("signedin", Header_Signed_In);
-        header_elem.addEventListener("signedout", Header_Signed_Out);
+        header_elem.Init(ctx, Header_Signed_In, Header_Signed_Out);
       }
 
       function Reg_Forms_Click_Row(event)
