@@ -203,7 +203,7 @@ class Bk_Header extends HTMLElement
           <img src="/images/menu_teal_24dp.svg">
         </menu-buddy-btn>
         <span id="title" class="bk-header-title">
-          <a href="/"><span>BranKind</span></a> - <span id="title_span"></span>
+          <a href="/"><span>BrandKind</span></a> - <span id="title_span"></span>
         </span>
       </div>
 
