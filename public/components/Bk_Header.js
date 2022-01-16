@@ -150,6 +150,7 @@ class Bk_Header extends HTMLElement
 
   On_Auth_State_Changed(user, skip_user_update)
   {
+    this.ctx.user = user;
     if (user)
     {
       this.On_User_Has_Signed_In(user);

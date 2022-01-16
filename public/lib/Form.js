@@ -11,14 +11,14 @@ class Form
 
   static Select(ctx)
   {
-    const key = "Form.Select()";
+    const key = ctx.user.uid + ".Form.Select()";
     return ctx.cache.use(key, () => ctx.db.Select_Objs("form", Form), hour);
     //return db.Select_Objs("form", Form);
   }
 
   static Select_By_Id(ctx, id)
   {
-    const key = "Form.Select_By_Id(" + id + ")";
+    const key = ctx.user.uid + ".Form.Select_By_Id(" + id + ")";
     return ctx.cache.use(key, () => ctx.db.Select_Obj_By_Id(id, "form", Form), hour, (obj) => new Form(obj));
     //return db.Select_Obj_By_Id(id, "form", Form);
   }
