@@ -1,5 +1,7 @@
 import Utils from "./Utils.js";
 
+const hour = 3600000;
+
 class Form
 {
   constructor(obj)
@@ -10,14 +12,15 @@ class Form
   static Select(ctx)
   {
     const key = "Form.Select()";
-    const hour = 3600000;
     return ctx.cache.use(key, () => ctx.db.Select_Objs("form", Form), hour);
     //return db.Select_Objs("form", Form);
   }
 
-  static Select_By_Id(db, id)
+  static Select_By_Id(ctx, id)
   {
-    return db.Select_Obj_By_Id(id, "form", Form);
+    const key = "Form.Select_By_Id(" + id + ")";
+    return ctx.cache.use(key, () => ctx.db.Select_Obj_By_Id(id, "form", Form), hour, (obj) => new Form(obj));
+    //return db.Select_Obj_By_Id(id, "form", Form);
   }
 
   To_Array()

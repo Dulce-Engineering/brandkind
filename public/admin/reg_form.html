@@ -61,7 +61,7 @@
         {
           const search_params = new URLSearchParams(window.location.search);
           const id = search_params.get('form_id'); 
-          const form = await Form.Select_By_Id(this.ctx.db, id);
+          const form = await Form.Select_By_Id(this.ctx, id);
           this.data = form.To_Array();
         }
       }
