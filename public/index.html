@@ -2,108 +2,228 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BrandKind</title>
 
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
-
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;500;700&family=Cormorant:wght@300;500;700&family=Montserrat:wght@300;500;700&display=swap');      
+      
       body 
       { 
-        background: #467E82; 
-        color: #fff; 
-        font-family: Montserrat; 
-        font-weight: 400;
-        font-size: 25px;
+        font-family: Montserrat, sans-serif; 
+        font-weight: 300;
+        font-size: 16px;
         margin: 0; 
         padding: 0; 
-
-        height: 100vh;
-        width: 100vw;
-        display: grid;
-        grid-template-columns: 1fr 1fr;;
-        align-items: center;
-        justify-items: center;
-        overflow: hidden;
       }
-      #title
+      section
       {
-        animation-duration: 4s;
-        animation-name: fadein;
-        animation-timing-function: ease-in;
-        animation-fill-mode: forwards;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      article
+      {
+        padding: 30px 50px;
+      }
+      ol
+      {
+        counter-reset: item;
+        list-style: none;
+        margin-left: -30px;
+      }
+      li::before
+      {
+        counter-increment: item;
+        content: counter(item);
+        opacity: 0.15;
+        color: #87037b; 
+        font-family: "Cormorant Infant", serif; 
+        font-size: 7rem;
+        position: absolute;
+        margin: -20px 0px 0px -20px;
+      }
+      .t1
+      {
+        font-family: "Cormorant Infant", serif; 
+        font-weight: 500;
+        font-size: 3rem;
+        padding: 0;
+        margin: 0;
+      }
+      .t2
+      {
+        text-transform: uppercase;
+        font-size: 0.75rem;
+      }
+      .t3
+      {
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        font-weight: 300;
+      }
+      .t4
+      {
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin: 0;
+      }
+      .seperator
+      {
+        width: 40px;
+        margin: 10px 0 10px 0;
+      }
+      .seperator2
+      {
+        font-size: 85px;
+        font-weight: 700;
+        text-shadow: 4px 4px 5px #000;
+        transform: rotateZ(90deg);
         display: inline-block;
-        width: 80%;
+        line-height: 0px;
+        position: relative;
+        top: 35px;
+        z-index: 1;
+      }
+
+      .white
+      {
+        color: #fff; 
+      }
+      .green
+      {
+        color: #477a7b; 
+      }
+      .lgreen
+      {
+        color: #05868e;
+      }
+      .purple
+      {
+        color: #87037b; 
+      }
+      .orange
+      {
+        color: #ff6720; 
+      }
+      .red
+      {
+        color: #dc3513; 
+      }
+      .bkwhite
+      {
+        background-color: #fff; 
+      }
+      .bkgreen
+      {
+        background-color: #477a7b; 
+      }
+      .bklgreen
+      {
+        background-color: #05868e;
+      }
+      .bkpurple
+      {
+        background-color: #87037b; 
+      }
+      .bkorange
+      {
+        background-color: #ff6720; 
+      }
+      .bkred
+      {
+        background-color: #dc3513; 
+      }
+      .circle
+      {
+        border-radius: 50%;
+        height: 60vw;
+        width: 60vw;
         text-align: center;
+        display: flex;
+        font-weight: 700;
+        padding: 40px;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .scircle
+      {
+        border-radius: 50%;
+        height: 40vw;
+        width: 40vw;
+        text-align: center;
+        display: flex;
+        font-weight: 700;
+        padding: 40px;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .centre
+      {
+        text-align: center;
+      }
+      .centre2
+      {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .line
+      {
+        border-left: 4px solid #87037b;
+        padding-left: 15px;
+      }
+
+      #hands
+      {
+        width: 100vw;
+        height: 50vh;
+        object-fit: cover;
+      }
+      #hands2
+      {
+        display: none;
       }
       #logo
       {
         width: 100%;
-      }
-      @keyframes fadein
-      {
-        from
-        {
-          opacity: 0;
-        }
-        to
-        {
-          opacity: 1;
-        }
-      }
-      #reg_invite
-      {
-        margin: 40px 0px 0px 0px;
-        display: inline-block;
-        border: 3px solid #fff;
-        padding: 20px 0px;
-      }
-      #reg_invite_text
-      {
-        margin: 0px 40px;
-      }
-      .email
-      {
-        margin: 20px;
-        display: inline-block;
+        margin: 20px 0 0 0;
       }
       #reg_email
       {
-        width: 300px;
+        width: 80%;
         border: 1px solid #fff;
-        background-color: #467E82;
-        font-family: 'Montserrat';
-        font-size: 20px;
-        color: #fff;
+        font-size: 1rem;
         padding: 10px;
       }
       #reg_btn
       {
         margin-top: 10px;
-        border: 1px solid #73D2DD;
-        background-color: #73D2DD;
-        font-family: 'Montserrat';
-        font-size: 20px;
+        border: none;
+        font-size: 1rem;
+        font-weight: 500;
         padding: 10px;
-        color: #000;
       }
-      #hands
+      .msg
       {
-        width: 50vw;
-        height: 100vh;
-        object-fit: cover;
+        margin-top: 10px;
       }
 
-      #reg_wait
+      @media (min-width: 700px)
       {
-        margin-top: 10px;
-      }
-      #reg_ok
-      {
-        margin-top: 10px;
-      }
-      #reg_fail
-      {
-        margin-top: 10px;
+        #hands
+        {
+          display: none;
+        }
+        #hands2
+        {
+          display: inline-block;
+        }
       }
     </style>
 
@@ -141,25 +261,239 @@
   </head>
 
   <body>
-    <div id="title">
-      <img id="logo" src="images/logo-3.png">
+    <header></header>
 
-      <div id="reg_invite">
-        <div id="reg_invite_text">
-          JOIN US!<br>
-          ENTER YOUR EMAIL NOW<br>
-        </div>
-        <span class="email">
-          <input id="reg_email" type="email">
-          <button id="reg_btn">Register</button>
-        </span>
-      </div>
+    <main>
+      <section id="s1" class="white bkgreen">
+        <img id="hands" src="images/hands.png">
+        <article>
+          <h1 class="t1">Brands That Do Good Deserve To Succeed</h1>
+          <p>
+            Imagine the impact small social enterprises could have if they had even 1% of the 
+            marketing resources of big corporate organisations?
+          </p>
+          <p>
+            What if you could help make that happen? 
+          </p>
+        </article>
+        <img id="hands2" src="images/hands.png">
+      </section>
 
-      <div id="reg_wait" hidden="true">Please wait while we send you an email...</div>
-      <div id="reg_ok" hidden="true">Your email has been sent.</div>
-      <div id="reg_fail" hidden="true">Sorry. We couldn't send you that email.</div>
-    </div>
+      <section>
+        <article class="green">
+          <img id="logo" src="images/Brandkind Logo_FA_Full_teal.png">
+          <p>
+            We are a community of brand & marketing specialists bringing the strategic rigour & 
+            creative strength of large corporate organisations to social enterprises so they can 
+            create impact and sustainable growth.
+          </p>
+        </article>
 
-    <img id="hands" src="images/hands.png">
+        <article class="red">
+          <h1 class="t1">WE ARE</h2>
+          <h2 class="t2">BRAND & MARKETING PROFESSIONALS</h3>
+          <p>
+            We provide ways for our community members to share their brand & marketing expertise 
+            to create societal impact.
+          </p>
+        </article>
+
+        <article class="red">
+          <h1 class="t1">WE SERVE</h2>
+          <h2 class="t2">SOCIAL ENTERPRISES</h3>
+          <p>We deliver affordable and accessible brand & marketing expertise so they 
+          increase their brand value and impact in their community.</p>
+        </article>
+
+        <article class="red">
+          <h1 class="t1">WE PARTNER WITH</h2>
+          <h2 class="t2">CORPORATES</h3>
+          <p>
+            We provide opportunities to 
+            make progress on their ESG goals and 
+            build their reputation through collaboration and contribution to our programs.
+          </p>
+          <h2 class="t2">PHILANTHROPISTS & IMPACT INVESTORS</h3>
+          <p>
+            We ensure their funding has greater impact by providing social enterprises with the 
+            expertise to leverage investment and support.
+          </p>
+        </article>
+      </section>
+
+      <section>
+        <article>
+          <h1 class="t1 green">A unique business model</h1>
+        </article>
+
+        <article class="bkpurple white circle">
+          <h2>A Not For Profit Social Enterprise</h2>
+          <p>All funds are put towards our cause of helping other social enterprises</p>
+        </article>
+
+        <article class="bkorange white circle">
+          <h2>Low-Bono or Pro-Bono</h2>
+          <p>Depending on the project, our members  offer their services  pro-bono or at heavily discounted rates</p>
+        </article>
+        
+        <article class="bkred white circle">
+          <h2>Subsidised by Funding</h2>
+          <p>We use corporate partnerships and philanthropic funding to cover our operating costs and subsidise our services</p>
+        </article>
+        
+        <article class="bkgreen white circle">
+          <h2>Community Gig-Work</h2>
+          <p>Our community members have day jobs, they offer their services when they can on a project by project basis</p>
+        </article>
+      </section>
+
+      <section>
+        <article>
+          <h1 class="t1 green">We cover the marketing spectrum from</h1>
+          <div style="margin:20px 0 0 0;">
+            <div class="t3 line red" style="padding-bottom: 10px;">START UP</div>
+            <div class="t3 line orange" style="padding-bottom: 10px;">
+              <span class="purple" style="margin-left:-29px;">&#9660;</span>
+              SPEED UP
+            </div>
+            <div class="t3 line purple">SCALE UP</div>
+          </div>
+          <ol>
+            <li>
+              <p class="t4 centre">OPPORTUNITY DEFINITION</p>
+              <p class="centre">How do I identify and define where I operate, for whom, and what is the best 
+              business idea for impact?</p>
+            </li>
+            <li>
+              <p class="t4 centre">BRAND STRATEGY DEVELOPMENT</p>
+              <p class="centre">How do I translate my business vision and purpose into a brand that creates 
+              value?  How do I deliver a heart & mind story?</p>
+            </li>
+            <li>
+              <p class="t4 centre">BRAND IDENTITY CREATION</p>
+              <p class="centre">How do I bring my brand  to life visually, in look and  feel and communicate 
+              this  consistently across internal  and external targets?</p>
+            </li>
+            <li>
+              <p class="t4 centre">BRAND COMMUNICATIONS</p>
+              <p class="centre">How do I develop core  messages for relevant  audiences and communicate 
+              effectively across channels?</p>
+            </li>
+            <li>
+              <p class="t4 centre">BRAND ACTIVATION</p>
+              <p class="centre">How do I connect my  brand to my customers and  stakeholders and generate 
+              demand and loyalty for growth?</p>
+            </li>
+          </ol>
+          <div class="t4 centre">MARKET MAP<br><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">PURPOSE AND  MANIFESTO<br><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">BRAND POSITIONING,  BRAND ON A PAGE<br><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">LOGO, DESIGN,  BRAND GUIDELINES<br><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">COMMUNICATIONS STRATEGY<br><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">MARKETING &  CONTENT PLAN<br><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">WEBSITE DEVELOPMENT<br><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">SOCIAL MEDIA MANAGEMENT<br><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">NEW BIZ PITCHES  & COLLATERALS</div>
+        </article>
+      </section>
+
+      <section>
+        <article>
+          <h1 class="t1 green" style="font-size:2rem;">
+            brandkind community members have  helped enterprises across a variety of sectors & 
+            branding programs
+          </h1>
+          <img src="images/members.png" width="100%" style="margin-top: 20px;">
+        </article>
+        
+      </section>
+
+      <section>
+        <article class="white bkpurple centre" style="padding-bottom:0;">
+          <h1 class="t3">1 Sign Up</h1>
+          <p>Register your interest to be part of our branding and marketing community, tell 
+          us about your skills, social impact interests and how you want to get involved.</p>
+          <div class="seperator2">&rsaquo;</div>
+        </article>
+        
+        <article class="white bkgreen centre" style="padding-bottom:0;">
+          <h1 class="t3">2 Explore</h1>
+          <p>A community member will chat to you to determine whether joining the Brandkind community is 
+          right for you and 
+          ways you could work with us. You will help create your profile.</p>
+          <div class="seperator2">&rsaquo;</div>
+        </article>
+
+        <article class="white bkorange centre" style="padding-bottom:0;">
+          <h1 class="t3">3 Engage</h1>
+          <p>We will contact you once a project lands that would suit you. A Brandkind core member will join a diagnostics meeting with you to assess the client’s needs. 
+          You will be involved in creating a project scope and will sign an engagement form 
+          outlining outcomes, timings and fees. </p>
+          <div class="seperator2">&rsaquo;</div>
+        </article>
+
+        <article class="white bkred centre" style="padding-bottom:0;">
+          <h1 class="t3">4 Experience</h1>
+          <p>You will execute the project and dependent on the project plan this might be on your own,
+          in conjunction with other community members, or with involvement and support from 
+          the core Brandkind team.  </p>
+          <div class="seperator2">&rsaquo;</div>
+        </article>
+        
+        <article class="white bklgreen centre">
+          <h1 class="t3">5 Transform</h1>
+          <p>Together, we will review deliverables against key goals set up in the project plan and build case studies. You will have 
+          the opportunity to share your work in your social media and in future Brandkind 
+          training modules. </p>
+        </article>
+      </section>
+
+      <section>
+        <article>
+          <h1 class="t1 green">What's in it for you?</h1>
+        </article>
+
+        <article class="centre2">
+          <h2 class="t3 centre purple">Flexibility</h2>
+          <p class="scircle white bkpurple">Choice Balance</p>
+          <p class="purple">
+            Choose the work you find rewarding and how you want to interact with the community. 
+            Then fit it in around your life.
+          </p>
+        </article>
+
+        <article class="centre2">
+          <h2 class="t3 centre green">Fun</h2>
+          <p class="scircle white bkgreen">Connection Network Support</p>
+          <p class="green">
+            Choose to participate in project teams, an online communications platform, and 
+            community socials.
+          </p>
+        </article>
+        
+        <article class="centre2">
+          <h2 class="t3 centre red">Fulfillment</h2>
+          <p class="scircle white bkred">Positive Impact Unique Challenges Upskilling</p>
+          <p class="red">
+            Participate in meaningful work that makes a positive difference in people’s lives. 
+            Share knowledge and learn about marketing in the social enterprise sector.  
+          </p>
+        </article>
+      </section>
+
+      <section class="white bkgreen">
+        <article>
+          <h1 class="t1">Join Us!</h1>
+          <h2 class="t2">Enter your email now.</h2>
+          <input id="reg_email" class="white bkgreen" type="email">
+          <button id="reg_btn" class="green bkwhite">Register</button>
+          <div id="reg_wait" hidden="true" class="msg">Please wait while we send you an email...</div>
+          <div id="reg_ok" hidden="true" class="msg">Your email has been sent.</div>
+          <div id="reg_fail" hidden="true" class="msg">Sorry. We couldn't send you that email.</div>
+        </article>
+      </section>
+    </main>
+
+    <footer></footer>
   </body>
 </html>
