@@ -181,7 +181,7 @@
 
       #hands
       {
-        width: 100vw;
+        width: 100%;
         height: 50vh;
         object-fit: cover;
       }
@@ -246,13 +246,14 @@
         reg_fail.hidden = true;
 
         const reg_res = await ctx.Register(reg_email.value);
-        if (reg_res.data == true)
+        if (reg_res.ok)
         {
           reg_ok.hidden = false;
         }
         else
         {
           reg_fail.hidden = false;
+          console.error("Unable to send email to " + reg_email.value + ".", reg_res.message);
         }
 
         reg_wait.hidden = true;
@@ -482,7 +483,7 @@
       </section>
 
       <section class="white bkgreen">
-        <article>
+        <article style="margin-bottom: 50px;">
           <h1 class="t1">Join Us!</h1>
           <h2 class="t2">Enter your email now.</h2>
           <input id="reg_email" class="white bkgreen" type="email">

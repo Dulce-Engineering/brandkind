@@ -39,7 +39,7 @@ class Context
     const fn = this.fb_fns.httpsCallable('Register');
     const res = await fn(to);
 
-    return res;
+    return res.data;
   }
 
   async Save_Registration(form)
