@@ -177,8 +177,12 @@
       {
         border-left: 4px solid #87037b;
         padding-left: 15px;
+        padding-bottom: 10px;
       }
-
+      .arrow
+      {
+        margin-left:-29px;
+      }
       #hands
       {
         width: 100%;
@@ -209,20 +213,193 @@
         font-weight: 500;
         padding: 10px;
       }
+      #s4a1e1
+      {
+        margin:20px 0 0 0;
+      }
       .msg
       {
         margin-top: 10px;
       }
-
-      @media (min-width: 700px)
+      #s7 svg
       {
-        #xhands
+        display: none;
+      }
+
+      @media (min-width: 1000px)
+      {
+        section
+        {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          margin-bottom: 100px;
+        }
+        article
+        {
+          width: 250px;
+        }
+        ol
+        {
+          display: flex;
+        }
+        li
+        {
+          margin: 0 20px;
+        }
+        .circle
+        {
+          height: 15vw;
+          width: 15vw;
+          font-size: 0.9rem;
+          font-weight: 300;
+        }
+        .scircle
+        {
+          height: 5vw;
+          width: 5vw;
+          font-size: 0.9rem;
+          font-weight: 300;
+        }
+        .small
+        {
+          width: 220px;
+        }
+        .centre2
+        {
+          flex-direction: row;
+        }
+        .centre3
+        {
+          width: 50%;
+          padding: 0 25%;
+          text-align: center;
+        }
+        .hide
         {
           display: none;
         }
-        #xhands2
+        .seperator
+        {
+          transform: rotateZ(-90deg);
+          vertical-align: middle;
+        }
+        .seperator2
+        {
+          transform: none;
+          position: absolute;
+          left: 237px;
+          top: 140px;
+        }
+        .line
+        {
+          border-bottom: 4px solid #87037b;
+          border-left: none;
+          padding-left: 0;
+          padding-bottom: 10px;
+          margin-bottom: 40px;
+          width: 300px;
+          text-align: center;
+        }
+        .arrow
+        {
+          transform: rotateZ(-90deg);
+          display: inline-block;
+          position: relative;
+          top: 27px;
+          left: 80px;
+          margin-left: 0;
+        }
+        #hands
+        {
+          display: none;
+        }
+        #hands2
         {
           display: inline-block;
+        }
+        #s1
+        {
+          justify-content: end;
+        }
+        #s1 img
+        {
+          width: 45%;
+        }
+        #s1 article
+        {
+          width: 35%;
+          padding: 0 10% 0 10%;
+        }
+        #s3a1
+        {
+          margin-bottom: 20px;
+        }
+        #s4a1
+        {
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+        }
+        #s4a1e1
+        {
+          margin: 20px 0 0 0;
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          align-items: flex-end;
+          flex-direction: row;
+        }
+        #s6
+        {
+          justify-content: center;
+          align-items: stretch;
+        }
+        #s6 article
+        {
+          padding: 0px 25px 25px 25px;
+          width: 200px;
+          position: relative;
+        }
+        #s7
+        {
+          position: relative;
+          justify-content: flex-end;
+        }
+        #s7 article
+        {
+          width: 55vw;
+          justify-content: space-evenly;
+          padding: 0;
+        }
+        #s7 p
+        {
+          margin: 10px 20px;
+        }
+        #s7a1
+        {
+          position: absolute;
+          left: 50px;
+          top: 0px;
+        }
+        #s7a2
+        {
+        }
+        #s7a3
+        {
+          margin-right: 100px;
+        }
+        #s7a4
+        {
+          margin-right: 300px;
+        }
+        #s7 svg
+        {
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          z-index: -1;
+          display: block;
         }
       }
     </style>
@@ -265,7 +442,7 @@
     <header></header>
 
     <main>
-      <section class="white bkgreen">
+      <section id="s1" class="white bkgreen">
         <img id="hands" src="images/hands.png">
         <article>
           <h1 class="t1">Brands That Do Good Deserve To Succeed</h1>
@@ -280,8 +457,8 @@
         <img id="hands2" src="images/hands.png">
       </section>
 
-      <section style="align-items:flex-start;">
-        <article class="green">
+      <section id="s2" style="align-items:flex-start;">
+        <article id="s2a1" class="green centre3">
           <img id="logo" src="images/Brandkind Logo_FA_Full_teal.png">
           <p>
             We are a community of brand & marketing specialists bringing the strategic rigour & 
@@ -290,7 +467,7 @@
           </p>
         </article>
 
-        <article class="red">
+        <article id="s2a2" class="red">
           <h1 class="t1">WE ARE</h2>
           <h2 class="t2">BRAND & MARKETING PROFESSIONALS</h3>
           <p>
@@ -299,14 +476,14 @@
           </p>
         </article>
 
-        <article class="red">
+        <article id="s2a3" class="red">
           <h1 class="t1">WE SERVE</h2>
           <h2 class="t2">SOCIAL ENTERPRISES</h3>
           <p>We deliver affordable and accessible brand & marketing expertise so they 
           increase their brand value and impact in their community.</p>
         </article>
 
-        <article class="red">
+        <article id="s2a4" class="red">
           <h1 class="t1">WE PARTNER WITH</h2>
           <h2 class="t2">CORPORATES</h3>
           <p>
@@ -322,43 +499,43 @@
         </article>
       </section>
 
-      <section>
-        <article>
+      <section id="s3">
+        <article id="s3a1" class="centre3">
           <h1 class="t1 green">A unique business model</h1>
         </article>
 
-        <article class="bkpurple white circle">
+        <article id="s3a2" class="bkpurple white circle">
           <h2>A Not For Profit Social Enterprise</h2>
           <p>All funds are put towards our cause of helping other social enterprises</p>
         </article>
 
-        <article class="bkorange white circle">
+        <article id="s3a3" class="bkorange white circle">
           <h2>Low-Bono or Pro-Bono</h2>
           <p>Depending on the project, our members  offer their services  pro-bono or at heavily discounted rates</p>
         </article>
         
-        <article class="bkred white circle">
+        <article id="s3a4" class="bkred white circle">
           <h2>Subsidised by Funding</h2>
           <p>We use corporate partnerships and philanthropic funding to cover our operating costs and subsidise our services</p>
         </article>
         
-        <article class="bkgreen white circle">
+        <article id="s3a5" class="bkgreen white circle">
           <h2>Community Gig-Work</h2>
           <p>Our community members have day jobs, they offer their services when they can on a project by project basis</p>
         </article>
 
-        <article>
+        <article id="s3a6" class="centre3">
           <a class="t1 red" href="#reg_email">Join us!</a>
         </article>
       </section>
 
-      <section>
-        <article>
-          <h1 class="t1 green">We cover the marketing spectrum from</h1>
-          <div style="margin:20px 0 0 0;">
-            <div class="t3 line red" style="padding-bottom: 10px;">START UP</div>
-            <div class="t3 line orange" style="padding-bottom: 10px;">
-              <span class="purple" style="margin-left:-29px;">&#9660;</span>
+      <section id="s4">
+        <article id="s4a1">
+          <h1 class="t1 green centre3">We cover the marketing spectrum from</h1>
+          <div id="s4a1e1">
+            <div class="t3 line red">START UP</div>
+            <div class="t3 line orange">
+              <span class="purple arrow">&#9660;</span>
               SPEED UP
             </div>
             <div class="t3 line purple">SCALE UP</div>
@@ -390,34 +567,33 @@
               demand and loyalty for growth?</p>
             </li>
           </ol>
-          <div class="t4 centre">MARKET MAP<br><img src="images/seperator.svg" class="seperator"></div>
-          <div class="t4 centre">PURPOSE AND  MANIFESTO<br><img src="images/seperator.svg" class="seperator"></div>
-          <div class="t4 centre">BRAND POSITIONING,  BRAND ON A PAGE<br><img src="images/seperator.svg" class="seperator"></div>
-          <div class="t4 centre">LOGO, DESIGN,  BRAND GUIDELINES<br><img src="images/seperator.svg" class="seperator"></div>
-          <div class="t4 centre">COMMUNICATIONS STRATEGY<br><img src="images/seperator.svg" class="seperator"></div>
-          <div class="t4 centre">MARKETING &  CONTENT PLAN<br><img src="images/seperator.svg" class="seperator"></div>
-          <div class="t4 centre">WEBSITE DEVELOPMENT<br><img src="images/seperator.svg" class="seperator"></div>
-          <div class="t4 centre">SOCIAL MEDIA MANAGEMENT<br><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">MARKET MAP<br class="hide"><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">PURPOSE AND  MANIFESTO<br class="hide"><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">BRAND POSITIONING,  BRAND ON A PAGE<br class="hide"><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">LOGO, DESIGN,  BRAND GUIDELINES<br class="hide"><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">COMMUNICATIONS STRATEGY<br class="hide"><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">MARKETING &  CONTENT PLAN<br class="hide"><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">WEBSITE DEVELOPMENT<br class="hide"><img src="images/seperator.svg" class="seperator"></div>
+          <div class="t4 centre">SOCIAL MEDIA MANAGEMENT<br class="hide"><img src="images/seperator.svg" class="seperator"></div>
           <div class="t4 centre">NEW BIZ PITCHES  & COLLATERALS</div>
         </article>
 
-        <article>
+        <article id="s4a2" class="centre3">
           <a class="t1 red" href="#reg_email">Join us!</a>
         </article>
       </section>
 
-      <section>
-        <article>
+      <section id="s5">
+        <article class="centre3">
           <h1 class="t1 green" style="font-size:2rem;">
             brandkind community members have  helped enterprises across a variety of sectors & 
             branding programs
           </h1>
           <img src="images/members.png" width="100%" style="margin-top: 20px;">
         </article>
-        
       </section>
 
-      <section>
+      <section id="s6">
         <article class="white bkpurple centre" style="padding-bottom:0;">
           <h1 class="t3">1 Sign Up</h1>
           <p>Register your interest to be part of our branding and marketing community, tell 
@@ -457,40 +633,47 @@
         </article>
       </section>
 
-      <section>
-        <article>
+      <section id="s7">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="10" cy="0" rx="80" ry="50" fill="none" stroke="#ff6720" stroke-width="0.1"/>
+        </svg>
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="0" cy="-5" rx="68" ry="50" fill="none" stroke="#ff6720" stroke-width="0.1"/>
+        </svg>
+
+        <article id="s7a1">
           <h1 class="t1 green">What's in it for you?</h1>
         </article>
 
-        <article class="centre2">
-          <h2 class="t3 centre purple">Flexibility</h2>
+        <article id="s7a2" class="centre2">
+          <h2 class="t3 centre purple bkwhite">Flexibility</h2>
           <p class="scircle white bkpurple">Choice Balance</p>
-          <p class="purple">
+          <p class="purple bkwhite small">
             Choose the work you find rewarding and how you want to interact with the community. 
             Then fit it in around your life.
           </p>
         </article>
 
-        <article class="centre2">
-          <h2 class="t3 centre green">Fun</h2>
+        <article id="s7a3" class="centre2">
+          <h2 class="t3 centre green bkwhite">Fun</h2>
           <p class="scircle white bkgreen">Connection Network Support</p>
-          <p class="green">
+          <p class="green bkwhite small">
             Choose to participate in project teams, an online communications platform, and 
             community socials.
           </p>
         </article>
         
-        <article class="centre2">
-          <h2 class="t3 centre red">Fulfillment</h2>
+        <article id="s7a4" class="centre2">
+          <h2 class="t3 centre red bkwhite">Fulfillment</h2>
           <p class="scircle white bkred">Positive Impact Unique Challenges Upskilling</p>
-          <p class="red">
+          <p class="red bkwhite small">
             Participate in meaningful work that makes a positive difference in people’s lives. 
             Share knowledge and learn about marketing in the social enterprise sector.  
           </p>
         </article>
       </section>
 
-      <section class="white bkgreen">
+      <section id="s8" class="white bkgreen">
         <article style="margin-bottom: 50px;">
           <h1 class="t1">Join Us!</h1>
           <h2 class="t2">Enter your email now.</h2>
