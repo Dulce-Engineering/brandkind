@@ -16,6 +16,34 @@
         margin: 0; 
         padding: 0; 
       }
+      header
+      {
+        position: fixed;
+        background-color: #fff4;
+        width: 100%;
+        color: #fff;
+        padding: 10px 0;
+        font-family: 'Cormorant Infant';
+        font-style: italic;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        backdrop-filter: blur(5px);
+        z-index: 10;
+        transition: background-color 1s;
+      }
+      header span
+      {
+        width: 100%;
+        text-align: center;
+      }
+      header img
+      {
+        margin-right: 10px;
+        cursor: pointer;
+      }
       section
       {
         display: flex;
@@ -43,6 +71,7 @@
         position: absolute;
         margin: -20px 0px 0px -20px;
       }
+
       .t1
       {
         font-family: "Cormorant Infant", serif; 
@@ -86,7 +115,6 @@
         top: 35px;
         z-index: 1;
       }
-
       .white
       {
         color: #fff; 
@@ -183,6 +211,11 @@
       {
         margin-left:-29px;
       }
+      .hdr_alt
+      {
+        background-color: #0004;
+      }
+
       #hands
       {
         width: 100%;
@@ -414,6 +447,7 @@
         Context.Set_Id_Shortcuts(document, window);
 
         reg_btn.addEventListener("click", async () => OnClick_RegBtn(ctx));
+        document.addEventListener("scroll", OnScroll);
       }
 
       async function OnClick_RegBtn(ctx)
@@ -435,11 +469,31 @@
 
         reg_wait.hidden = true;
       }
+
+      function OnScroll()
+      {
+        const hdr_rect = hdr.getBoundingClientRect();
+        const s1_rect = s1.getBoundingClientRect();
+        if (window.scrollY + hdr_rect.bottom > s1_rect.height)
+        {
+          hdr.classList.add("hdr_alt");
+        }
+        else
+        {
+          hdr.classList.remove("hdr_alt");
+        }
+      }
     </script>
   </head>
 
   <body>
-    <header></header>
+    <header id="hdr">
+      <span>
+        This is the beginning of our community so we ask for your kindness
+        and patience as we create our offers and our website.
+      </span>
+      <img src="images/menu_white_24dp.svg">
+    </header>
 
     <main>
       <section id="s1" class="white bkgreen">
