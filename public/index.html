@@ -25,12 +25,12 @@
         padding: 10px 0;
         font-family: 'Cormorant Infant';
         font-style: italic;
-        font-size: 1.2rem;
+        font-size: 1rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-direction: row;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(10px);
         z-index: 10;
         transition: background-color 1s;
       }
@@ -38,10 +38,11 @@
       {
         width: 100%;
         text-align: center;
+        margin-left: 10px;
       }
       header img
       {
-        margin-right: 10px;
+        margin: 0 10px;
         cursor: pointer;
       }
       section
@@ -439,15 +440,56 @@
 
     <script type="module">
       import Context from "./lib/Context.js";
+      import Menu_Buddy from "./node_modules/menu-buddy/Menu_Buddy.mjs";
+      import Menu_Buddy_Button from "./node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
+      import Menu_Buddy_Panel from "./node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
+      customElements.define(Menu_Buddy.tname, Menu_Buddy);
+      customElements.define(Menu_Buddy_Button.tname, Menu_Buddy_Button);
+      customElements.define(Menu_Buddy_Panel.tname, Menu_Buddy_Panel);
 
       window.onload = Main;
       function Main()
       {
         const ctx = new Context();
         Context.Set_Id_Shortcuts(document, window);
+        Init_Menu();
+
+        nav_panel.z_index_show = "15";
 
         reg_btn.addEventListener("click", async () => OnClick_RegBtn(ctx));
         document.addEventListener("scroll", OnScroll);
+        menu_btn.addEventListener("click", OnClick_MenuBtn)
+
+        OnScroll();
+      }
+
+      function Init_Menu()
+      {
+        const m =
+        {
+          title: "BrandKind Menu",
+          class_name: "menu",
+          options: 
+          [
+            {title: "Home", section_id: "s1", on_click_fn}, 
+            {title: "Who We Are & What We Do", section_id: "s2", on_click_fn},
+            {title: "What Makes Us Different", section_id: "s3", on_click_fn},
+            {title: "Our Services", section_id: "s4", on_click_fn},
+            {title: "Our Experience", section_id: "s5", on_click_fn},
+            {title: "How It Works", section_id: "s6", on_click_fn},
+            {title: "Why Join Us", section_id: "s7", on_click_fn},
+            {title: "Join Us!", section_id: "s8", on_click_fn}
+          ]
+        };
+
+        nav_panel.menu = m;
+      }
+
+      function on_click_fn(event, option)
+      {
+        location.hash = "#" + option.section_id;
+        const hdr_rect = hdr.getBoundingClientRect();
+        window.scrollBy(0, -hdr_rect.height);
       }
 
       async function OnClick_RegBtn(ctx)
@@ -483,16 +525,23 @@
           hdr.classList.remove("hdr_alt");
         }
       }
+
+      function OnClick_MenuBtn()
+      {
+        nav_panel.Toggle();
+      }
     </script>
   </head>
 
   <body>
+    <menu-buddy-panel id="nav_panel" menu-style-src="styles/panel.css" show="true" fixed-width="350px"></menu-buddy-panel>
+
     <header id="hdr">
       <span>
         This is the beginning of our community so we ask for your kindness
         and patience as we create our offers and our website.
       </span>
-      <img src="images/menu_white_24dp.svg">
+      <img id="menu_btn" src="images/menu_white_24dp.svg">
     </header>
 
     <main>
