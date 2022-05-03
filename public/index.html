@@ -177,6 +177,11 @@
         flex-direction: column;
         justify-content: center;
         margin-bottom: 10px;
+        transition: transform .3s ease-out;
+      }
+      .circle:hover
+      {
+        transform: scale(1.5);
       }
       .scircle
       {
@@ -265,6 +270,23 @@
         position: absolute;
         width: 200px;
         align-self: flex-start;
+      }
+      #s3a1 h1
+      {
+        text-transform: uppercase;
+        font-size: 3.5rem;      
+      }
+      #s3a6
+      {
+        margin-top: 25px;
+      }
+      .btn
+      {
+        text-decoration: none;
+        text-transform: uppercase;
+        border-radius: 30px;
+        padding: 10px 70px;
+        font-size: 0.8rem;
       }
 
       @media (min-width: 1000px)
@@ -639,7 +661,7 @@
         </article>
 
         <article id="s3a6" class="centre3">
-          <a class="t1 red" href="#reg_email">Join us!</a>
+          <a class="btn bkgreen white" href="#reg_email">Join us!</a>
         </article>
       </section>
 
