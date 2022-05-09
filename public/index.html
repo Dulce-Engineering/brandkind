@@ -236,6 +236,11 @@
       {
         width: 100%;
         margin: 20px 0 0 0;
+        opacity: 0;
+      }
+      #logo_text
+      {
+        opacity: 0;
       }
       #reg_email
       {
@@ -459,7 +464,18 @@
           display: block;
         }
       }
-    </style>
+
+      .fade_in_anim
+      {
+        animation: fade_in 10s;
+        animation-fill-mode: forwards;
+      }
+      @keyframes fade_in 
+      {
+        0% {opacity:0;}
+        100% {opacity:1;
+      }
+}    </style>
 
     <script type="module">
       import Context from "./lib/Context.js";
@@ -490,9 +506,35 @@
       function Init_Logo()
       {
         const hdr_rect = hdr.getBoundingClientRect();
-        console.log(hdr_rect);
+        //console.log(hdr_rect);
         s1_logo.style.top = hdr_rect.bottom + "px";
         s1_logo.hidden = false;
+      }
+
+      function Type_Logo_Text()
+      {
+        const text = logo_text.innerText;
+
+        const vis_elem = document.createElement("span");
+        vis_elem.style.opacity = 1;
+        const hid_elem = document.createElement("span");
+        hid_elem.style.opacity = 0;
+        hid_elem.innerText = text;
+        logo_text.replaceChildren(vis_elem, hid_elem);
+
+        logo_text.style.opacity = 1;
+        setTimeout(Add_Letter);
+
+        function Add_Letter()
+        {
+          const curr_length = vis_elem.innerText.length;
+          if (curr_length < text.length)
+          {
+            vis_elem.innerText = text.substring(0, curr_length + 1);
+            hid_elem.innerText = text.substring(curr_length + 1);
+            setTimeout(Add_Letter, 50);
+          }
+        }
       }
 
       function Init_Menu()
@@ -548,6 +590,8 @@
       {
         const hdr_rect = hdr.getBoundingClientRect();
         const s1_rect = s1.getBoundingClientRect();
+        const s2_rect = s2.getBoundingClientRect();
+
         if (window.scrollY + hdr_rect.bottom > s1_rect.height)
         {
           hdr.classList.add("hdr_alt");
@@ -555,6 +599,15 @@
         else
         {
           hdr.classList.remove("hdr_alt");
+        }
+
+        if (window.innerHeight/2 > s2_rect.top)
+        {
+          if (!logo.classList.contains("fade_in_anim"))
+          {
+            logo.classList.add("fade_in_anim");
+            setTimeout(Type_Logo_Text, 4000);
+          }
         }
       }
 
@@ -596,7 +649,7 @@
       <section id="s2" style="align-items:flex-start;">
         <article id="s2a1" class="green centre3">
           <img id="logo" src="images/Brandkind Logo_FA_Full_teal.png">
-          <p>
+          <p id="logo_text">
             We are a community of brand & marketing specialists bringing the strategic rigour & 
             creative strength of large corporate organisations to social enterprises so they can 
             create impact and sustainable growth.
