@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;500;700&family=Cormorant:wght@300;500;700&family=Montserrat:wght@300;500;700&display=swap');      
+      
+body 
+{ 
+  font-family: Montserrat, sans-serif; 
+  font-weight: 300;
+  font-size: 16px;
+  margin: 0; 
+  padding: 0; 
+}
+header
+{
+  position: fixed;
+  background-color: #fff4;
+  width: 100%;
+  color: #fff;
+  padding: 10px 0;
+  font-family: 'Cormorant Infant';
+  font-style: italic;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  transition: background-color 1s;
+}
+header span
+{
+  width: 100%;
+  text-align: center;
+  margin-left: 10px;
+  padding-left: 120px;
+}
+header img
+{
+  margin: 0 10px;
+  cursor: pointer;
+}
+section
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+article
+{
+  padding: 30px 50px;
+}
+ol
+{
+  counter-reset: item;
+  list-style: none;
+  margin-left: -30px;
+}
+li::before
+{
+  counter-increment: item;
+  content: counter(item);
+  opacity: 0.15;
+  color: #87037b; 
+  font-family: "Cormorant Infant", serif; 
+  font-size: 7rem;
+  position: absolute;
+  margin: -20px 0px 0px -20px;
+}
+
+.t1
+{
+  font-family: "Cormorant Infant", serif; 
+  font-weight: 300;
+  font-size: 4rem;
+  padding: 0;
+  margin: 0;
+}
+.t2
+{
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+.t3
+{
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+.t4
+{
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+.seperator
+{
+  width: 40px;
+  margin: 10px 0 10px 0;
+}
+.seperator2
+{
+  font-size: 85px;
+  font-weight: 700;
+  text-shadow: 4px 4px 5px #000;
+  transform: rotateZ(90deg);
+  display: inline-block;
+  line-height: 0px;
+  position: relative;
+  top: 35px;
+  z-index: 1;
+}
+.white
+{
+  color: #fff; 
+}
+.green
+{
+  color: #477a7b; 
+}
+.lgreen
+{
+  color: #05868e;
+}
+.purple
+{
+  color: #87037b; 
+}
+.orange
+{
+  color: #ff6720; 
+}
+.red
+{
+  color: #dc3513; 
+}
+.bkwhite
+{
+  background-color: #fff; 
+}
+.bkgreen
+{
+  background-color: #05868e; 
+}
+.bklgreen
+{
+  background-color: #05868e;
+}
+.bkpurple
+{
+  background-color: #87037b; 
+}
+.bkorange
+{
+  background-color: #ff6720; 
+}
+.bkred
+{
+  background-color: #dc3513; 
+}
+.circle
+{
+  border-radius: 50%;
+  height: 60vw;
+  width: 60vw;
+  text-align: center;
+  display: flex;
+  font-weight: 700;
+  padding: 40px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  transition: transform .3s ease-out;
+}
+.circle:hover
+{
+  transform: scale(1.5);
+}
+.scircle
+{
+  border-radius: 50%;
+  height: 40vw;
+  width: 40vw;
+  text-align: center;
+  display: flex;
+  font-weight: 700;
+  padding: 40px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.centre
+{
+  text-align: center;
+}
+.centre2
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.line
+{
+  border-left: 4px solid #87037b;
+  padding-left: 15px;
+  padding-bottom: 10px;
+}
+.arrow
+{
+  margin-left:-29px;
+}
+.hdr_alt
+{
+  background-color: #0004;
+}
+
+#hands
+{
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+}
+#hands2
+{
+  display: none;
+}
+#logo
+{
+  width: 100%;
+  margin: 20px 0 0 0;
+  opacity: 0;
+}
+#logo_text
+{
+  opacity: 0;
+}
+#reg_email
+{
+  width: 80%;
+  border: 1px solid #fff;
+  font-size: 1rem;
+  padding: 10px;
+}
+#reg_btn
+{
+  margin-top: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px;
+}
+#s4a1e1
+{
+  margin:20px 0 0 0;
+}
+.msg
+{
+  margin-top: 10px;
+}
+#s7 svg
+{
+  display: none;
+}
+
+#s1_logo
+{
+  position: fixed;
+  width: 100px;
+  top: 0px;
+  left: 0px;
+  margin: 5px 10px;
+}
+#s3a1 h1
+{
+  text-transform: uppercase;
+  font-size: 3.5rem;      
+}
+#s3a6
+{
+  margin-top: 25px;
+}
+.btn
+{
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 30px;
+  padding: 10px 70px;
+  font-size: 0.8rem;
+}
+
+.fade_in_anim
+{
+  animation: fade_in 10s;
+  animation-fill-mode: forwards;
+}
+@keyframes fade_in 
+{
+  0% {opacity:0;}
+  100% {opacity:1;}
+}

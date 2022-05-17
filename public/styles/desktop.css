@@ -1,0 +1,181 @@
+@media (min-width: 1000px)
+{
+  section
+  {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 100px;
+  }
+  article
+  {
+    width: 250px;
+  }
+  ol
+  {
+    display: flex;
+  }
+  li
+  {
+    margin: 0 20px;
+  }
+
+  .circle
+  {
+    height: 15vw;
+    width: 15vw;
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
+  .scircle
+  {
+    height: 5vw;
+    width: 5vw;
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
+  .small
+  {
+    width: 220px;
+  }
+  .centre2
+  {
+    flex-direction: row;
+  }
+  .centre3
+  {
+    width: 50%;
+    padding: 0 25%;
+    text-align: center;
+  }
+  .hide
+  {
+    display: none;
+  }
+  .seperator
+  {
+    transform: rotateZ(-90deg);
+    vertical-align: middle;
+  }
+  .seperator2
+  {
+    transform: none;
+    position: absolute;
+    left: 237px;
+    top: 140px;
+  }
+  .line
+  {
+    border-bottom: 4px solid #87037b;
+    border-left: none;
+    padding-left: 0;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    width: 300px;
+    text-align: center;
+  }
+  .arrow
+  {
+    transform: rotateZ(-90deg);
+    display: inline-block;
+    position: relative;
+    top: 27px;
+    left: 80px;
+    margin-left: 0;
+  }
+
+  #hands
+  {
+    display: none;
+  }
+  #hands2
+  {
+    display: flex;
+    width: 45%;
+    height: 765px;
+    overflow: hidden;
+    position: relative;
+  }
+  #hands2 img
+  {
+    object-fit: cover;
+    position: absolute;
+    transition: opacity 5s ease-in-out;
+  }
+  #s1
+  {
+    justify-content: start;
+  }
+  #s1 article
+  {
+    width: 35%;
+    padding: 0 10% 0 10%;
+  }
+  #s3a1
+  {
+    margin-bottom: 20px;
+  }
+  #s4a1
+  {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  #s4a1e1
+  {
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: flex-end;
+    flex-direction: row;
+  }
+  #s6
+  {
+    justify-content: center;
+    align-items: stretch;
+  }
+  #s6 article
+  {
+    padding: 0px 25px 25px 25px;
+    width: 200px;
+    position: relative;
+  }
+  #s7
+  {
+    position: relative;
+    justify-content: flex-end;
+  }
+  #s7 article
+  {
+    width: 55vw;
+    justify-content: space-evenly;
+    padding: 0;
+  }
+  #s7 p
+  {
+    margin: 10px 20px;
+  }
+  #s7a1
+  {
+    position: absolute;
+    left: 50px;
+    top: 0px;
+  }
+  #s7a3
+  {
+    margin-right: 100px;
+  }
+  #s7a4
+  {
+    margin-right: 300px;
+  }
+  #s7 svg
+  {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    display: block;
+  }
+}
