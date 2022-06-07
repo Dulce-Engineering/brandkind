@@ -4,19 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BrandKind</title>
-    <link rel="stylesheet" href="styles/mobile.css">
-    <link rel="stylesheet" href="styles/desktop.css">
+    <!--link rel="stylesheet" href="styles/mobile.css"-->
+    <link rel="stylesheet" href="styles/desktop2.css">
 
     <script type="module">
-      import Context from "./lib/Context.js";
+      //import Context from "./lib/Context.js";
       import Menu_Buddy from "./node_modules/menu-buddy/Menu_Buddy.mjs";
       import Menu_Buddy_Button from "./node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
       import Menu_Buddy_Panel from "./node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
+      import Carousel from "./components/Carousel.js";
       customElements.define(Menu_Buddy.tname, Menu_Buddy);
       customElements.define(Menu_Buddy_Button.tname, Menu_Buddy_Button);
       customElements.define(Menu_Buddy_Panel.tname, Menu_Buddy_Panel);
+      customElements.define(Carousel.tname, Carousel);
 
-      window.onload = Main;
+      //window.onload = Main;
       function Main()
       {
         const ctx = new Context();
@@ -31,22 +33,6 @@
 
         OnScroll();
         //setTimeout(Init_Logo);
-        xxx();
-      }
-
-      function xxx()
-      {
-        const imgs = hands2.children;
-        let curr_img = 0;
-        setTimeout(Show_Next_Img, 5000);
-
-        function Show_Next_Img()
-        {
-          imgs[curr_img].style.opacity = 0;
-          curr_img = (curr_img + 1) % imgs.length;
-          imgs[curr_img].style.opacity = 1;
-          setTimeout(Show_Next_Img, 10000);
-        }
       }
 
       function Init_Logo()
@@ -165,7 +151,7 @@
   </head>
 
   <body>
-    <menu-buddy-panel 
+    <!--menu-buddy-panel 
       id="nav_panel" 
       menu-style-src="styles/panel.css" 
       show="true" 
@@ -173,37 +159,35 @@
     </menu-buddy-panel>
 
     <header id="hdr">
-      <img id="s1_logo" src="images/logo-round.png">
+      <img id="s1_logo" src="images/logo-5.png">
       <span>
         This is the beginning of our community so we ask for your kindness
         and patience as we create our offers and our website.
       </span>
       <img id="menu_btn" src="images/menu_white_24dp.svg">
-    </header>
+    </header-->
 
     <main>
       <section id="s1" class="white bkgreen">
-        <img id="hands" src="images/carousel/hands.png">
         <article>
-          <h1 class="t1">Brands That Do Good Deserve To Succeed</h1>
-          <p>
+          <h1>Brands That Do Good Deserve To Succeed</h1>
+          <p class="tiny-text">
             Imagine the impact small social enterprises could have if they had even 1% of the 
             marketing resources of big corporate organisations?
           </p>
-          <p>
+          <p class="small-text">
             What if you could help make that happen? 
           </p>
         </article>
-        <!--img id="hands2" src="images/carousel/hands.png"-->
-        <div id="hands2">
-          <img src="images/carousel/hands.png" class="show-img" style="opacity: 1;">
-          <img src="images/carousel/coffee.png" class="show-img2" style="opacity: 0;">
-          <img src="images/carousel/drinks.png" class="show-img3" style="opacity: 0;">
-          <img src="images/carousel/wall.png" class="show-img4" style="opacity: 0;">
-        </div>
+        <de-carousel>
+          <img src="images/carousel/hands.png" style="opacity: 1;">
+          <img src="images/carousel/coffee.png" style="opacity: 0;">
+          <img src="images/carousel/drinks.png" style="opacity: 0;">
+          <img src="images/carousel/wall.png" style="opacity: 0;">
+        </de-carousel>
       </section>
 
-      <section id="s2" style="align-items:flex-start;">
+      <!--section id="s2" style="align-items:flex-start;">
         <article id="s2a1" class="green centre3">
           <img id="logo" src="images/Brandkind Logo_FA_Full_teal.png">
           <p id="logo_text">
@@ -429,7 +413,7 @@
           <div id="reg_ok" hidden="true" class="msg">Your email has been sent.</div>
           <div id="reg_fail" hidden="true" class="msg">Sorry. We couldn't send you that email.</div>
         </article>
-      </section>
+      </section-->
     </main>
 
     <footer></footer>
