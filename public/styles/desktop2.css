@@ -354,4 +354,170 @@
     font-weight: 300;
     font-size: 1.2rem;
   }
+
+  #s8
+  {
+    color: #05868e;
+    display: flex;
+    padding: 10% 10%;
+  }
+  #s8a1
+  {
+    width: 50%;
+  }
+  #s8 h1
+  {
+    font-family: "Cormorant";
+    font-weight: 300;
+    font-size: 5rem;
+    line-height: 4.9rem;
+    margin: 0 0 80px 0;
+  }
+  #s8 p
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.2rem;
+    padding: 0 24% 0 0;
+  }
+  #s8 button
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.2rem;
+    background-color: #05868e;
+    border: none;
+    padding: 10px 100px;
+    margin: 40px 0 0 0;
+    border-radius: 30px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  #s8 div
+  {
+    position: relative;
+    padding-left: 7%;
+  }
+  #s8a2
+  {
+    border: 1px solid #05868e;
+    border-radius: 1000px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 18vw;
+    height: 18vw;
+    padding: 2vw;
+    position: relative;
+    top: -6vw;
+  }
+  #s8 h2
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.4rem;
+    margin: 0;
+  }
+  #s8 span
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-top: 30px;
+  }
+  #s8 img
+  {
+    position: absolute;
+    left: 16vw;
+    top: 9vw;
+  }
+
+  #s9
+  {
+    background-color: #87037b;
+    margin: 0;
+    padding: 6% 0 7% 0;
+    color: #fff;
+    display: flex;
+  }
+  #s9 article
+  {
+    width: 50%;
+    padding: 0 0 0 10%;
+  }
+  #s9 span
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: orange;
+  }
+  #s9 h1
+  {
+    font-family: "Cormorant";
+    font-weight: 300;
+    font-size: 7rem;
+    margin: 0;
+  }
+  #s9 h2
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding-top: 80px;
+  }
+  #s9 hr
+  {
+    margin: 0;
+    padding: 0;
+  }
+  #s9 h3
+  {
+    font-family: "Cormorant";
+    font-weight: 300;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: orange;
+    margin: 20px 0 0 0;
+  }
+  #s9 p
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.2rem;
+    padding-right: 32%;
+    margin: 0 0 40px 0;
+  }
+
+  #s10
+  {
+    background-image: url("/images/josep-martins-nAsdr5DC2Ss-unsplash.png");
+    text-align: center;
+    padding: 5% 20% 5% 20%;
+  }
+  #s10 p
+  {
+    font-family: "Cormorant";
+    font-weight: 300;
+    font-size: 5rem;
+    color: #fff;
+    padding: 0 13% 5% 13%;
+    margin: 0;
+  }
+  #s10 button
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.2rem;
+    background-color: #05868e;
+    border: none;
+    padding: 10px 100px;
+    margin: 0;
+    border-radius: 30px;
+    color: #fff;
+    text-transform: uppercase;
+  }
 }
