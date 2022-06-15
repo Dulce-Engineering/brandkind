@@ -280,6 +280,7 @@
     color: #fff;
     padding: 5% 0 5% 0;
     text-align: center;
+    overflow: hidden;
   }
   #s7 h1
   {
@@ -336,7 +337,7 @@
   }
   #s7 p
   {
-    height: 180px;
+    xheight: 180px;
   }
   #s7 h3
   {
@@ -360,6 +361,7 @@
     color: #05868e;
     display: flex;
     padding: 10% 10%;
+    overflow: hidden;
   }
   #s8a1
   {
@@ -378,9 +380,9 @@
     font-family: "Montserrat";
     font-weight: 300;
     font-size: 1.2rem;
-    padding: 0 24% 0 0;
+    padding: 0 24% 40px 0;
   }
-  #s8 button
+  #s8 a
   {
     font-family: "Montserrat";
     font-weight: 300;
@@ -388,10 +390,11 @@
     background-color: #05868e;
     border: none;
     padding: 10px 100px;
-    margin: 40px 0 0 0;
+    margin: 0 0 0 0;
     border-radius: 30px;
     color: #fff;
     text-transform: uppercase;
+    text-decoration: none;
   }
   #s8 div
   {
@@ -406,8 +409,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 18vw;
-    height: 18vw;
+    width: 20vw;
+    height: 20vw;
     padding: 2vw;
     position: relative;
     top: -6vw;
@@ -416,7 +419,7 @@
   {
     font-family: "Montserrat";
     font-weight: 300;
-    font-size: 1.4rem;
+    font-size: 1.5vw;
     margin: 0;
   }
   #s8 span
@@ -430,8 +433,8 @@
   #s8 img
   {
     position: absolute;
-    left: 16vw;
-    top: 9vw;
+    left: 19vw;
+    top: 11vw;
   }
 
   #s9
@@ -495,6 +498,7 @@
   #s10
   {
     background-image: url("/images/josep-martins-nAsdr5DC2Ss-unsplash.png");
+    background-size: cover;
     text-align: center;
     padding: 5% 20% 5% 20%;
   }
@@ -507,6 +511,27 @@
     padding: 0 13% 5% 13%;
     margin: 0;
   }
+  #s10 label
+  {
+    display: block;
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #fff;
+  }
+  #s10 #reg_email
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.2rem;
+    display: block;
+    margin: 10px 0;
+    border: none;
+    background-color: #04575c;
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+  }
   #s10 button
   {
     font-family: "Montserrat";
@@ -515,9 +540,28 @@
     background-color: #05868e;
     border: none;
     padding: 10px 100px;
-    margin: 0;
+    margin: 0 0 5% 0;
     border-radius: 30px;
     color: #fff;
     text-transform: uppercase;
+    cursor: pointer;
+  }
+  #s10 #reg_wait
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.2rem;
+  }
+  #s10 #reg_ok
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.2rem;
+  }
+  #s10 #reg_fail
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.2rem;
   }
 }

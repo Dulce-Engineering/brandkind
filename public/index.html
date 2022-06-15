@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/desktop2.css">
 
     <script type="module">
-      //import Context from "./lib/Context.js";
+      import Context from "./lib/Context.js";
       import Menu_Buddy from "./node_modules/menu-buddy/Menu_Buddy.mjs";
       import Menu_Buddy_Button from "./node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
       import Menu_Buddy_Panel from "./node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
@@ -18,20 +18,20 @@
       customElements.define(Menu_Buddy_Panel.tname, Menu_Buddy_Panel);
       customElements.define(Carousel.tname, Carousel);
 
-      //window.onload = Main;
+      window.onload = Main;
       function Main()
       {
         const ctx = new Context();
         Context.Set_Id_Shortcuts(document, window);
-        Init_Menu();
+        //Init_Menu();
 
-        nav_panel.z_index_show = "15";
+        //nav_panel.z_index_show = "15";
 
         reg_btn.addEventListener("click", async () => OnClick_RegBtn(ctx));
-        document.addEventListener("scroll", OnScroll);
-        menu_btn.addEventListener("click", OnClick_MenuBtn)
+        //document.addEventListener("scroll", OnScroll);
+        //menu_btn.addEventListener("click", OnClick_MenuBtn)
 
-        OnScroll();
+        //OnScroll();
         //setTimeout(Init_Logo);
       }
 
@@ -335,7 +335,7 @@
           <p>Our founding members have delivered branding projects
             across sectors and we can't wait to grow so we can help even
             more social enterprises</p>
-          <button>Get Inpired Here</button>
+          <a href="#reg_email">Get Inpired Here</a>
         </article>
         <div>
           <article id="s8a2">
@@ -374,7 +374,12 @@
       <section id="s10">
         <img src="images\Brandkind Logo_FA_Full_white.png">
         <p>Ready to be part of the brandkind community and create brands with impact?</p>
-        <button>Join Now</button>
+        <label for="reg_email">Enter your email now.</label>
+        <input id="reg_email" type="email">
+        <button id="reg_btn">Join Now</button>
+        <p id="reg_wait" hidden>Please wait</p>
+        <p id="reg_ok" hidden>Registration succeeded</p>
+        <p id="reg_fail" hidden>Registration failed</p>
       </section>
     </main>
 
