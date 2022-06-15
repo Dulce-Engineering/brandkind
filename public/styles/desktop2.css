@@ -8,18 +8,65 @@
     padding: 0;
     margin: 0;
   }
+  header
+  {
+    position: fixed;
+    background-color: #fff4;
+    width: 100%;
+    color: #fff;
+    padding: 10px 0;
+    font-family: 'Cormorant';
+    font-style: italic;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    transition: background-color 1s;
+  }
+  header span
+  {
+    width: 100%;
+    text-align: center;
+    margin-left: 10px;
+    padding-left: 120px;
+  }
+  header #hdr_logo
+  {
+    width: 340px;
+    position: fixed;
+    left: calc(10% - 60px);
+    top: 55px;
+    transition: all 1s;
+  }
+  header #menu_btn
+  {
+    cursor: pointer;
+    width: 40px;
+    margin: 0 20px 0 0;
+  }
+  .hdr_alt
+  {
+    background-color: #0004;
+  }
+  .hdr_alt #hdr_logo
+  {
+    left: 0;
+    top: 0;
+    height: 53px;
+    width: 141px;
+  }
 
-  #s0
+  #s1
   {
     background-color: #05868e;
     color: #fff;
     display: grid;
     grid-template-columns: 56% 44%;
   }
-  #s0 article
-  {
-  }
-  #s0 h1
+  #s1 h1
   {
     font-family: "Cormorant";
     font-weight: 300;
@@ -28,25 +75,25 @@
     letter-spacing: -0.3rem;
     margin: 30% 10% 20px 10%;
   }
-  #s0 .tiny-text 
+  #s1 .tiny-text 
   {
     font-family: "Montserrat";
     font-size: 1.2rem;
     font-weight: 300;
     margin: 0 10% 0 10%;
   }
-  #s0 .small-text 
+  #s1 .small-text 
   {
     font-family: "Montserrat";
     font-size: 1.6rem;
     font-weight: 300;
     margin: 20px 10% 20% 10%;
   }
-  #s0 de-carousel
+  #s1 de-carousel
   {
     position: relative;
   }
-  #s0 de-carousel img
+  #s1 de-carousel img
   {
     width: 100%;
     height: 100%;

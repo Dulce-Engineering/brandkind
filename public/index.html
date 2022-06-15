@@ -28,10 +28,11 @@
         //nav_panel.z_index_show = "15";
 
         reg_btn.addEventListener("click", async () => OnClick_RegBtn(ctx));
-        //document.addEventListener("scroll", OnScroll);
         //menu_btn.addEventListener("click", OnClick_MenuBtn)
 
-        //OnScroll();
+        OnScroll();
+        document.addEventListener("scroll", OnScroll);
+        
         //setTimeout(Init_Logo);
       }
 
@@ -133,14 +134,14 @@
           hdr.classList.remove("hdr_alt");
         }
 
-        if (window.innerHeight/2 > s2_rect.top)
+        /*if (window.innerHeight/2 > s2_rect.top)
         {
           if (!logo.classList.contains("fade_in_anim"))
           {
             logo.classList.add("fade_in_anim");
             setTimeout(Type_Logo_Text, 4000);
           }
-        }
+        }*/
       }
 
       function OnClick_MenuBtn()
@@ -156,20 +157,17 @@
       menu-style-src="styles/panel.css" 
       show="true" 
       fixed-width="350px">
-    </menu-buddy-panel>
+    </menu-buddy-panel-->
 
     <header id="hdr">
-      <img id="s1_logo" src="images/logo-5.png">
-      <span>
-        This is the beginning of our community so we ask for your kindness
-        and patience as we create our offers and our website.
-      </span>
+      <img id="hdr_logo" src="images/Brandkind Logo_FA_Full_white.png">
+      <span></span>
       <img id="menu_btn" src="images/menu_white_24dp.svg">
-    </header-->
+    </header>
 
     <main>
 
-      <section id="s0">
+      <section id="s1">
         <article>
           <h1>Brands That Do Good Deserve To Succeed</h1>
           <p class="tiny-text">
