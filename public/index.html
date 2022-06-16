@@ -23,16 +23,16 @@
       {
         const ctx = new Context();
         Context.Set_Id_Shortcuts(document, window);
-        //Init_Menu();
 
-        //nav_panel.z_index_show = "15";
+        Init_Menu();
+        menu_btn.addEventListener("click", OnClick_MenuBtn)
 
         reg_btn.addEventListener("click", async () => OnClick_RegBtn(ctx));
-        //menu_btn.addEventListener("click", OnClick_MenuBtn)
 
         OnScroll();
         document.addEventListener("scroll", OnScroll);
-        
+
+        //nav_panel.z_index_show = "15";
         //setTimeout(Init_Logo);
       }
 
@@ -74,18 +74,16 @@
       {
         const m =
         {
-          title: "BrandKind Menu",
+          title: "",
           class_name: "menu",
           options: 
           [
             {title: "Home", section_id: "s1", on_click_fn}, 
-            {title: "Who We Are & What We Do", section_id: "s2", on_click_fn},
-            {title: "What Makes Us Different", section_id: "s3", on_click_fn},
-            {title: "Our Services", section_id: "s4", on_click_fn},
-            {title: "Our Experience", section_id: "s5", on_click_fn},
-            {title: "How It Works", section_id: "s6", on_click_fn},
-            {title: "Why Join Us", section_id: "s7", on_click_fn},
-            {title: "Join Us!", section_id: "s8", on_click_fn}
+            {title: "Our Manifesto", section_id: "s2", on_click_fn},
+            {title: "Our Vision & Belief", section_id: "s3", on_click_fn},
+            {title: "What to Expect", section_id: "s4", on_click_fn},
+            {title: "How to Join", section_id: "s5", on_click_fn},
+            {title: "Contact Us", section_id: "s6", on_click_fn},
           ]
         };
 
@@ -123,8 +121,6 @@
       {
         const hdr_rect = hdr.getBoundingClientRect();
         const s1_rect = s1.getBoundingClientRect();
-        const s2_rect = s2.getBoundingClientRect();
-
         if (window.scrollY + hdr_rect.bottom > s1_rect.height)
         {
           hdr.classList.add("hdr_alt");
@@ -134,6 +130,7 @@
           hdr.classList.remove("hdr_alt");
         }
 
+        //const s2_rect = s2.getBoundingClientRect();
         /*if (window.innerHeight/2 > s2_rect.top)
         {
           if (!logo.classList.contains("fade_in_anim"))
@@ -152,12 +149,12 @@
   </head>
 
   <body>
-    <!--menu-buddy-panel 
+    <menu-buddy-panel 
       id="nav_panel" 
       menu-style-src="styles/panel.css" 
       show="true" 
-      fixed-width="350px">
-    </menu-buddy-panel-->
+      fixed-width="800px">
+    </menu-buddy-panel>
 
     <header id="hdr">
       <img id="hdr_logo" src="images/Brandkind Logo_FA_Full_white.png">
