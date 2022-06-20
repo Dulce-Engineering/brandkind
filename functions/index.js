@@ -4,12 +4,22 @@ const firebase = require('firebase-admin');
 const nodemailer = require('nodemailer');
 
 const config = fb_fns.config();
-const mail_options =
+/*const mail_options =
 {
   service: 'gmail',
   auth: {
     user: config.gmail.email,
     pass: config.gmail.password,
+  },
+};*/
+const mail_options =
+{
+  host: 'ventraip.email',
+  port: 465,
+  secure: true,
+  auth: {
+    user: config.ventraip.email,
+    pass: config.ventraip.password,
   },
 };
 const mailTransport = nodemailer.createTransport(mail_options);
@@ -22,7 +32,7 @@ async function Register(to)
   let res;
   const mailOptions = 
   {
-    from: "noreply@brandkind.com",
+    from: "it@brandkindcommunity.com",
     to,
     subject: "Welcome to BrandKind!",
     text: 
@@ -55,6 +65,7 @@ async function Register(to)
   try
   {
     const info = await mailTransport.sendMail(mailOptions);
+    console.log("Register(): info =", info);
     res = {ok: info.accepted.includes(to)};
   }
   catch (e)
