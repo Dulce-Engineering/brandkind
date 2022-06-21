@@ -36,9 +36,9 @@ async function Register(to)
     to,
     subject: "Welcome to BrandKind!",
     text: 
-      "BRANDKIND\n" +
-      "Email introduction\n\n" +
-      "Welcome to the Brandkind Community! We already love your generous spirit and can’t wait to get you " +
+      //"BRANDKIND\n" +
+      //"Email introduction\n\n" +
+      "\nWelcome to the Brandkind Community! We already love your generous spirit and can’t wait to get you " +
       "involved with the other nice and smart folks here.\n\n" +
       "We just need to get to know you even more so kindly complete the form at the following link.\n" +
       "https://brandkindcommunity.com/form.html\n\n" +

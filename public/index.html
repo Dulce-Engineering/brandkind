@@ -9,6 +9,7 @@
 
     <script type="module">
       import Context from "./lib/Context.js";
+      //import "https://decms-6dc54.firebaseapp.com/components/index_ext.js";
       import Menu_Buddy from "./node_modules/menu-buddy/Menu_Buddy.mjs";
       import Menu_Buddy_Button from "./node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
       import Menu_Buddy_Panel from "./node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
@@ -149,6 +150,8 @@
   </head>
 
   <body>
+    <de-project id="bk" key="brandkind"></de-project>
+
     <menu-buddy-panel 
       id="nav_panel" 
       menu-style-src="styles/panel.css" 
@@ -166,6 +169,7 @@
 
       <section id="s1">
         <article>
+          <h1><de-text key="s1_hdr" project-id="bk" renderType="text"></de-text></h1>
           <h1>Brands That Do Good Deserve To Succeed</h1>
           <p class="tiny-text">
             Imagine the impact small social enterprises could have if they had even 1% of the 
@@ -177,7 +181,6 @@
         </article>
         <de-carousel>
           <img src="images/carousel/hands.png" style="opacity: 1;">
-          <img src="images/carousel/coffee.png" style="opacity: 0;">
           <img src="images/carousel/drinks.png" style="opacity: 0;">
           <img src="images/carousel/wall.png" style="opacity: 0;">
         </de-carousel>
@@ -285,9 +288,9 @@
         <article>
           <h1>Be part of a unique business model.</h1>
           <p>We deliver pro-bono and low-bono services, funded by
-            the generosity of marketing professionals,  corporates 
+            the generosity of marketing professionals, corporates 
             and philanthropists.</p>
-          <p>We build community across our doers, givers nd recipients.</p>
+          <p>We build community across our doers, givers and recipients.</p>
           <p>Social Enterprises get the expertise they need while our
             members get the fulfilment, flexibility and fun they
             value as branding specialists.</p>
