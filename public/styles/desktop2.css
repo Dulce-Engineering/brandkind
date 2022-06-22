@@ -386,9 +386,9 @@
     vertical-align: top;
     padding: 0 40px 0 100px;
   }
-  #s7 p
+  #s7 span
   {
-    xheight: 180px;
+    margin: 0 30px;
   }
   #s7 h3
   {
