@@ -36,6 +36,7 @@
 
         //nav_panel.z_index_show = "15";
         //setTimeout(Init_Logo);
+        Scroll_Text();
       }
 
       function Init_Logo()
@@ -44,6 +45,25 @@
         //console.log(hdr_rect);
         s1_logo.style.top = hdr_rect.bottom + "px";
         s1_logo.hidden = false;
+      }
+
+      function Scroll_Text()
+      {
+        let pos = 0;
+        const footer_length = 2800;
+
+        requestAnimationFrame(Scroll_Text_Frame);
+        function Scroll_Text_Frame()
+        {
+          pos -= 2;
+          if (pos < -footer_length)
+          {
+            pos = window.innerWidth;
+          }
+
+          s7_footer.style.left = `${pos}px`;
+          requestAnimationFrame(Scroll_Text_Frame);
+        }
       }
 
       function Type_Logo_Text()
@@ -171,7 +191,7 @@
 
       <section id="s1">
         <article>
-          <h1><de-text key="s1_hdr" project-id="bk" renderType="text"></de-text></h1>
+          <!--h1><de-text key="s1_hdr" project-id="bk" renderType="text"></de-text></h1-->
           <h1>Brands That Do Good Deserve To Succeed</h1>
           <p class="tiny-text">
             Imagine the impact small social enterprises could have if they had even 1% of the 
@@ -199,7 +219,7 @@
           </p>
         </article>
         <hr>
-        <article>
+        <article class="hover-show">
           <div>
             <h1>WE ARE</h1>
             <h2>BRAND & MARKETING <br> PROFESSIONALS</h2>
@@ -208,7 +228,7 @@
             marketing expertise to create societal impact.</p>
         </article>
         <hr>
-        <article>
+        <article class="hover-show">
           <div>
             <h1>WE SERVE</h1>
             <h2>SOCIAL ENTERPRISES</h2>
@@ -217,7 +237,7 @@
             so they increase their brand value and impact in their community.</p>
         </article>
         <hr>
-        <article>
+        <article class="hover-show">
           <div>
             <h1>WE PARTNER WITH</h1>
             <h2>CORPORATES <br> PHILANTHROPISTS & IMPACT INVESTORS</h2>
@@ -331,9 +351,9 @@
           </li>
         </ol>
         <footer>
-          MARKET MAP > PURPOSE AND MANIFESTO > BRAND POSITIONING, BRAND ON A PAGE
+          <span id="s7_footer">MARKET MAP > PURPOSE AND MANIFESTO > BRAND POSITIONING, BRAND ON A PAGE
           LOGO, DESIGN, BRAND GUIDELINES > COMMUNICATIONS STRATEGY > MARKETING & CONTENT PLAN
-          WEBSITE DEVELOPMENT > SOCIAL MEDIA MANAGEMENT > NEW BIZ PITCHES & COLLATERALS
+          WEBSITE DEVELOPMENT > SOCIAL MEDIA MANAGEMENT > NEW BIZ PITCHES & COLLATERALS</span>
         </footer>
       </section>
 

@@ -117,6 +117,14 @@
     margin-top: 140px;
     margin-bottom: 140px;
   }
+  #s2 .hover-show p
+  {
+    display: none;
+  }
+  #s2 .hover-show:hover p
+  {
+    display: block;
+  }
   #s2 img
   {
     width: 444px;
@@ -212,6 +220,7 @@
   }
   #s4 article
   {
+    padding: 0 0 10% 0;
   }
   #s4 h1
   {
@@ -228,7 +237,7 @@
     font-size: 1.2rem;
     font-weight: 300;
     line-height: 1.7rem;
-    margin: 0 16% 10% 20%;
+    margin: 0 16% 20px 20%;
   }
   #s4 .carousel
   {
@@ -380,15 +389,24 @@
     font-weight: 300;
     font-size: 1.2rem;
     display: inline-block;
-    width: 10%;
+    width: 250px;
     position: relative;
     text-align: left;
     vertical-align: top;
     padding: 0 40px 0 100px;
   }
+  #s7 li p
+  {
+    display: none;
+    margin: 20px 0 15px 10px;
+  }
+  #s7 li:hover p
+  {
+    display: block;
+  }
   #s7 span
   {
-    margin: 0 30px;
+    position: relative;
   }
   #s7 h3
   {
@@ -399,12 +417,21 @@
     letter-spacing: -0.1rem;
     color: #000;
     text-align: center;
+    margin: 40px 0 60px 20px;
+  }
+  #s7 li:hover h3
+  {
+    display: block;
+    margin: 0px 0px 0px 0px;
   }
   #s7 footer
   {
     font-family: "Montserrat";
     font-weight: 300;
     font-size: 1.2rem;
+    white-space: nowrap;
+    margin: 0 20px 0 20px;
+    overflow: hidden;
   }
 
   #s8
