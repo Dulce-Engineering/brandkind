@@ -7,18 +7,23 @@
 
     <link href="/styles.css" rel="stylesheet">
 
+    <script src="/__/firebase/8.10.1/firebase-app.js"></script>
+    <script src="/__/firebase/8.10.1/firebase-analytics.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    
     <script type="module">
-      import Context from "./lib/Context.js";
-
       window.onload = Main;
+      import Utils from "./lib/Utils.js";
+      import config from "./lib/config.js";
+      const api = (await import(config.api_client_url)).default;
+
       function Main()
       {
-        const ctx = new Context();
-        Context.Set_Id_Shortcuts(document, window);
+        Utils.Set_Id_Shortcuts(document, window);
 
         const start_time = new Date();
 
-        save_reg_btn.addEventListener("click", async () => OnClick_SaveRegBtn(ctx, start_time));
+        save_reg_btn.addEventListener("click", async () => OnClick_SaveRegBtn(start_time));
         level.addEventListener("change", OnChange_FormLevel);
         EXP_SOC_ENT.addEventListener("change", OnChange_FormExpSoc);
         const section_pp_elems = section_pp.querySelectorAll("[id]");
@@ -28,7 +33,7 @@
         }
       }
 
-      async function OnClick_SaveRegBtn(ctx, start_time)
+      async function OnClick_SaveRegBtn(start_time)
       {
         invalid_data.hidden = true;
         please_wait.hidden = false;
@@ -39,9 +44,11 @@
           form.start_time = start_time.getTime();
           form.exec_time = Date.now() - form.start_time;
           
-          const fn_res = await ctx.Save_Registration(form);
-          //const fn_res = {data: false};
-          if (fn_res.data)
+          const fb_anl = firebase.analytics();
+          fb_anl.logEvent("save_form");
+
+          const fn_res = await api.Brandkind.Save_Registration(form);
+          if (fn_res)
           {
             window.location.href = "form_ok.html";
           }

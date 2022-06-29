@@ -423,6 +423,16 @@ class Utils
 
     return res;
   }
+
+  static Set_Id_Shortcuts(src_elem, dest_elem)
+  {
+    const elems = src_elem.querySelectorAll("[id]");
+    for (const elem of elems)
+    {
+      const id = elem.id;
+      dest_elem[id] = elem;
+    }
+  }
 }
 
 export default Utils;

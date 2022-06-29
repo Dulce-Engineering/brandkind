@@ -8,28 +8,34 @@
     <!--link rel="stylesheet" href="styles/mobile.css"-->
     <link rel="stylesheet" href="styles/desktop2.css">
 
+    <script src="https://decms-6dc54.firebaseapp.com/components/index_ext.js" type="module"></script>
+    <script src="/__/firebase/8.10.1/firebase-app.js"></script>
+    <script src="/__/firebase/8.10.1/firebase-analytics.js"></script>
+    <script src="/__/firebase/init.js"></script>
+
     <script type="module">
-      import Context from "./lib/Context.js";
-      //import "https://decms-6dc54.firebaseapp.com/components/index_ext.js";
+      window.onload = Main;
+      import config from "./lib/config.js";
+      import Utils from "./lib/Utils.js";
       import Menu_Buddy from "./node_modules/menu-buddy/Menu_Buddy.mjs";
       import Menu_Buddy_Button from "./node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
       import Menu_Buddy_Panel from "./node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
       import Carousel from "./components/Carousel.js";
+      const api = (await import(config.api_client_url)).default;
+
       customElements.define(Menu_Buddy.tname, Menu_Buddy);
       customElements.define(Menu_Buddy_Button.tname, Menu_Buddy_Button);
       customElements.define(Menu_Buddy_Panel.tname, Menu_Buddy_Panel);
       customElements.define(Carousel.tname, Carousel);
 
-      window.onload = Main;
       function Main()
       {
-        const ctx = new Context();
-        Context.Set_Id_Shortcuts(document, window);
+        Utils.Set_Id_Shortcuts(document, window);
 
         Init_Menu();
         menu_btn.addEventListener("click", OnClick_MenuBtn)
 
-        reg_btn.addEventListener("click", async () => OnClick_RegBtn(ctx));
+        reg_btn.addEventListener("click", OnClick_RegBtn);
 
         OnScroll();
         document.addEventListener("scroll", OnScroll);
@@ -120,13 +126,16 @@
         window.scrollBy(0, -hdr_rect.height);
       }
 
-      async function OnClick_RegBtn(ctx)
+      async function OnClick_RegBtn()
       {
         reg_wait.hidden = false;
         reg_ok.hidden = true;
         reg_fail.hidden = true;
 
-        const reg_res = await ctx.Register(reg_email.value);
+        const fb_anl = firebase.analytics();
+        fb_anl.logEvent("sign_up", {method: "landing page"});
+
+        const reg_res = await api.Brandkind.Register(reg_email.value);
         if (reg_res.ok)
         {
           reg_ok.hidden = false;
@@ -191,8 +200,8 @@
 
       <section id="s1">
         <article>
-          <!--h1><de-text key="s1_hdr" project-id="bk" renderType="text"></de-text></h1-->
-          <h1>Brands That Do Good Deserve To Succeed</h1>
+          <h1><de-text key="s1_hdr" project-id="bk" renderType="text"></de-text></h1>
+          <!--h1>Brands That Do Good Deserve To Succeed</h1-->
           <p class="tiny-text">
             Imagine the impact small social enterprises could have if they had even 1% of the 
             marketing resources of big corporate organisations?
