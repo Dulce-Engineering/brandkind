@@ -249,7 +249,11 @@ class Bk_Header extends HTMLElement
       <menu-buddy-panel id="main_menu2" menu-style-src="/components/menu-panel.css"></menu-buddy-panel>
 
       <div id="bk-header-bar">
-        <menu-buddy-btn id="main_menu" btn-style-src="/components/menu-btn.css" show-pos="bottom">
+        <menu-buddy-btn 
+          id="main_menu" 
+          menu-style-src="/components/menu.css"
+          btn-style-src="/components/menu-btn.css" 
+          show-pos="bottom">
           <img src="/images/menu_teal_24dp.svg">
         </menu-buddy-btn>
         <span id="title" class="bk-header-title">

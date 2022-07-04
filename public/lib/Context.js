@@ -21,6 +21,16 @@ class Context
     this.db = new Db(this.fb_db);
     this.cache = new Client_Cache_Local();
   }
+
+  static Set_Id_Shortcuts(src_elem, dest_elem)
+  {
+    const elems = src_elem.querySelectorAll("[id]");
+    for (const elem of elems)
+    {
+      const id = elem.id;
+      dest_elem[id] = elem;
+    }
+  }
 }
 
 export default Context;
