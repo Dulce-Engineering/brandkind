@@ -6,16 +6,15 @@
     <title>BrandKind - Registration Form</title>
 
     <link href="/styles.css" rel="stylesheet">
-
-    <script src="/__/firebase/8.10.1/firebase-app.js"></script>
-    <script src="/__/firebase/8.10.1/firebase-analytics.js"></script>
-    <script src="/__/firebase/init.js"></script>
     
     <script type="module">
+      let analytics_ctx = null;
       window.onload = Main;
-      import Utils from "./lib/Utils.js";
       import config from "./lib/config.js";
+      import Utils from "./lib/Utils.js";
       const api = (await import(config.api_client_url)).default;
+      import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+      import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 
       function Main()
       {
@@ -31,6 +30,9 @@
         {
           elem.addEventListener("change", OnChange_FormPP);
         }
+
+        const app_ctx = fb_app.initializeApp(config);
+        analytics_ctx = fb_analytics.getAnalytics(app_ctx);
       }
 
       async function OnClick_SaveRegBtn(start_time)
@@ -44,8 +46,7 @@
           form.start_time = start_time.getTime();
           form.exec_time = Date.now() - form.start_time;
           
-          const fb_anl = firebase.analytics();
-          fb_anl.logEvent("save_form");
+          fb_analytics.logEvent(analytics_ctx, "save_form");
 
           const fn_res = await api.Brandkind.Save_Registration(form);
           if (fn_res)

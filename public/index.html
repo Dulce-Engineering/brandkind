@@ -9,11 +9,9 @@
     <link rel="stylesheet" href="styles/desktop2.css">
 
     <script src="https://decms-6dc54.firebaseapp.com/components/index_ext.js" type="module"></script>
-    <script src="/__/firebase/8.10.1/firebase-app.js"></script>
-    <script src="/__/firebase/8.10.1/firebase-analytics.js"></script>
-    <script src="/__/firebase/init.js"></script>
 
     <script type="module">
+      let analytics_ctx = null;
       window.onload = Main;
       import config from "./lib/config.js";
       import Utils from "./lib/Utils.js";
@@ -22,6 +20,8 @@
       import Menu_Buddy_Panel from "./node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
       import Carousel from "./components/Carousel.js";
       const api = (await import(config.api_client_url)).default;
+      import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+      import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 
       customElements.define(Menu_Buddy.tname, Menu_Buddy);
       customElements.define(Menu_Buddy_Button.tname, Menu_Buddy_Button);
@@ -40,9 +40,10 @@
         OnScroll();
         document.addEventListener("scroll", OnScroll);
 
-        //nav_panel.z_index_show = "15";
-        //setTimeout(Init_Logo);
         Scroll_Text();
+
+        const app_ctx = fb_app.initializeApp(config);
+        analytics_ctx = fb_analytics.getAnalytics(app_ctx);
       }
 
       function Init_Logo()
@@ -132,8 +133,7 @@
         reg_ok.hidden = true;
         reg_fail.hidden = true;
 
-        const fb_anl = firebase.analytics();
-        fb_anl.logEvent("sign_up", {method: "landing page"});
+        fb_analytics.logEvent(analytics_ctx, "sign_up", {method: "landing page"});
 
         const reg_res = await api.Brandkind.Register(reg_email.value);
         if (reg_res.ok)
@@ -200,14 +200,14 @@
 
       <section id="s1">
         <article>
-          <h1><de-text key="s1_hdr" project-id="bk" renderType="text"></de-text></h1>
-          <!--h1>Brands That Do Good Deserve To Succeed</h1-->
+          <h1>
+            Brands That Do Good Deserve To Succeed
+          </h1>
           <p class="tiny-text">
-            Imagine the impact small social enterprises could have if they had even 1% of the 
-            marketing resources of big corporate organisations?
+            Imagine the impact small social enterprises could have if they had even 1% of the marketing resources of big corporate organisations?
           </p>
           <p class="small-text">
-            What if you could help make that happen? 
+            What if you could help make that happen?
           </p>
         </article>
         <de-carousel>
@@ -221,40 +221,31 @@
       <section id="s2">
         <article>
           <img src="images/logo-6.webp" alt="Brandkind logo">
-          <p>
-            We are a community of <b>brand & marketing specialists</b> bringing the strategic rigour & 
-            creative strength of large corporate organisations to social enterprises so they can 
-            create impact and sustainable growth.
-          </p>
+          <p><de-html key="s2_hdr" project-id="bk"></de-text></p>
         </article>
         <hr>
         <article class="hover-show">
           <div>
-            <h1>WE ARE</h1>
-            <h2>BRAND & MARKETING <br> PROFESSIONALS</h2>
+            <h1><de-text key="s2_hd1a" project-id="bk" renderType="text"></de-text></h1>
+            <h2><de-text key="s2_hd1b" project-id="bk" renderType="text"></de-text></h2>
           </div>
-          <p>We provide ways for our community members to share their brand & 
-            marketing expertise to create societal impact.</p>
+          <p><de-text key="s2_hd1_content" project-id="bk" renderType="text"></p>
         </article>
         <hr>
         <article class="hover-show">
           <div>
-            <h1>WE SERVE</h1>
-            <h2>SOCIAL ENTERPRISES</h2>
+            <h1><de-text key="s2_hd2a" project-id="bk" renderType="text"></de-text></h1>
+            <h2><de-text key="s2_hd2b" project-id="bk" renderType="text"></de-text></h2>
           </div>
-          <p>We deliver affordable and accessible brand & marketing expertise 
-            so they increase their brand value and impact in their community.</p>
+          <p><de-text key="s2_hd2_content" project-id="bk" renderType="text"></p>
         </article>
         <hr>
         <article class="hover-show">
           <div>
-            <h1>WE PARTNER WITH</h1>
-            <h2>CORPORATES <br> PHILANTHROPISTS & IMPACT INVESTORS</h2>
+            <h1><de-text key="s2_hd3a" project-id="bk" renderType="text"></de-text></h1>
+            <h2><de-text key="s2_hd3b" project-id="bk" renderType="text"></de-text></h2>
           </div>
-          <p>We provide opportunities to make progress on their ESG goals and 
-            build their reputation through collaboration and contribution to our programs.</p>
-          <p>We ensure their funding has greater impact by providing social 
-            enterprises with the expertise to leverage investment and support.</p>
+          <p><de-text key="s2_hd3_content" project-id="bk" renderType="text"></p>
         </article>
         <hr>
       </section>
