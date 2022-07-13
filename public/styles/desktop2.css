@@ -698,4 +698,30 @@
   {
     color: #fff;
   }
+
+  .wait
+  {
+    display: inline-block;
+    font-family: "Cormorant";
+    font-weight: 300;
+    font-size: 3rem;
+    animation-name: rotatewait;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    margin: 0;
+    padding: 0;
+    line-height: 3rem;
+  }
+  @keyframes rotatewait
+  {
+    from
+    {
+      transform: rotate(0deg);
+    }
+    to
+    {
+      transform: rotate(360deg);
+    }
+  }
 }
