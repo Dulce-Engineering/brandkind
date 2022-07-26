@@ -640,7 +640,6 @@
     background-color: #e07e3c;
     color: #fff;
     padding: 10% 10% 10% 10%;
-    display: none;
   }
   #s11 article
   {
@@ -651,7 +650,7 @@
   {
     font-family: "Cormorant";
     font-weight: 300;
-    font-size: 5rem;
+    font-size: 3rem;
     letter-spacing: -0.1rem;
     margin: 0 0 20px 0;
     text-align: center;
@@ -660,7 +659,7 @@
   {
     font-family: "Montserrat";
     font-weight: 300;
-    font-size: 1.4rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
   }
   #s11 p

@@ -11,8 +11,6 @@
     <script src="https://decms-6dc54.firebaseapp.com/components/index_ext.js" type="module"></script>
 
     <script type="module">
-      let analytics_ctx = null;
-      window.onload = Main;
       import config from "./lib/config.js";
       import Utils from "./lib/Utils.js";
       import Menu_Buddy from "./node_modules/menu-buddy/Menu_Buddy.mjs";
@@ -28,6 +26,10 @@
       customElements.define(Menu_Buddy_Panel.tname, Menu_Buddy_Panel);
       customElements.define(Carousel.tname, Carousel);
 
+      let analytics_ctx = null;
+
+      //window.onload = Main;
+      Main();
       function Main()
       {
         Utils.Set_Id_Shortcuts(document, window);
@@ -101,6 +103,7 @@
 
       function Init_Menu()
       {
+        console.log("Init_Menu()");
         const m =
         {
           title: "",
