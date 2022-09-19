@@ -46,5 +46,6 @@ const rpc_buddy = new RPC_Buddy
   ],
   RPC_Buddy.Express
 );
+rpc_buddy.client_cache_control = "max-age=2592000"; // 30 days
 
 exports.api = fb_fns.https.onRequest(app);
