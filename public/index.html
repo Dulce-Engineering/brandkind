@@ -17,7 +17,12 @@
       import Menu_Buddy_Button from "./node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
       import Menu_Buddy_Panel from "./node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
       import Carousel from "./components/Carousel.js";
-      const api = (await import(config.api_client_url)).default;
+
+      const config_env = config.get();
+      console.log("index.config_env =", config_env);
+      const api = (await import(config_env.api_client_url)).default;
+      api.Brandkind.server_host = config_env.api_server_host;
+
       import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
       import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 
@@ -28,7 +33,6 @@
 
       let analytics_ctx = null;
 
-      //window.onload = Main;
       Main();
       function Main()
       {
@@ -44,7 +48,7 @@
 
         Scroll_Text();
 
-        const app_ctx = fb_app.initializeApp(config);
+        const app_ctx = fb_app.initializeApp(config_env);
         analytics_ctx = fb_analytics.getAnalytics(app_ctx);
       }
 
@@ -391,8 +395,7 @@
       <section id="s10">
         <img src="images\Brandkind Logo_FA_Full_white.webp" alt="Brandkind logo">
         <de-text key="s10_hd" project-id="bk"></de-text>
-        <label for="reg_email">Enter your email now.</label>
-        <input id="reg_email" type="email">
+        <input id="reg_email" type="email" placeholder="Enter your email">
         <button id="reg_btn">Join Now</button>
         <p id="reg_wait" hidden>Please wait</p>
         <p id="reg_ok" hidden>Registration succeeded</p>

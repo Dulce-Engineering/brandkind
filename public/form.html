@@ -8,14 +8,20 @@
     <link href="/styles.css" rel="stylesheet">
     
     <script type="module">
-      let analytics_ctx = null;
-      window.onload = Main;
       import config from "./lib/config.js";
       import Utils from "./lib/Utils.js";
-      const api = (await import(config.api_client_url)).default;
+
+      const config_env = config.get();
+      console.log("index.config_env =", config_env);
+      const api = (await import(config_env.api_client_url)).default;
+      api.Brandkind.server_host = config_env.api_server_host;
+
       import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
       import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 
+      let analytics_ctx = null;
+
+      Main();
       function Main()
       {
         Utils.Set_Id_Shortcuts(document, window);
@@ -31,7 +37,7 @@
           elem.addEventListener("change", OnChange_FormPP);
         }
 
-        const app_ctx = fb_app.initializeApp(config);
+        const app_ctx = fb_app.initializeApp(config_env);
         analytics_ctx = fb_analytics.getAnalytics(app_ctx);
       }
 

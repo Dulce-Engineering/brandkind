@@ -628,6 +628,10 @@
     padding: 10px;
     width: 100%;
   }
+  #s10 #reg_email::placeholder
+  {
+    color: #fff;
+  }
   #s10 button
   {
     font-family: "Montserrat";
