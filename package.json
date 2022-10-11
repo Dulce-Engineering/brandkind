@@ -6,6 +6,7 @@
     "start": "firebase serve --port 80",
     "start2": "firebase serve --port 80 --host 192.168.0.13",
     "deploy": "firebase deploy",
+    "deploy-dev": "firebase hosting:channel:deploy dev",
     "deployh": "firebase deploy --only hosting",
     "deployf": "firebase deploy --only functions",
     "publish": "firebase deploy"

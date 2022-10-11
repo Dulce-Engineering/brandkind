@@ -677,6 +677,11 @@
     color: #fff;
   }
 
+  .recipe
+  {
+    width: 100%;
+  }
+
   .xwait
   {
     display: inline-block;
