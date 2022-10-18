@@ -10,12 +10,6 @@
     <script type="module">
       import config from "./lib/config.js";
       import Utils from "./lib/Utils.js";
-
-      const config_env = config.get();
-      console.log("index.config_env =", config_env);
-      const api = (await import(config_env.api_client_url)).default;
-      api.Brandkind.server_host = config_env.api_server_host;
-
       import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
       import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 
@@ -37,6 +31,7 @@
           elem.addEventListener("change", OnChange_FormPP);
         }
 
+        const config_env = config.get();
         const app_ctx = fb_app.initializeApp(config_env);
         analytics_ctx = fb_analytics.getAnalytics(app_ctx);
       }
@@ -54,7 +49,8 @@
           
           fb_analytics.logEvent(analytics_ctx, "save_form");
 
-          const fn_res = await api.Brandkind.Save_Registration(form);
+          const Brandkind = await config.get_Api();
+          const fn_res = await Brandkind.Save_Registration(form);
           if (fn_res)
           {
             window.location.href = "form_ok.html";

@@ -17,12 +17,6 @@
       import Menu_Buddy_Button from "./node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
       import Menu_Buddy_Panel from "./node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
       import Carousel from "./components/Carousel.js";
-
-      const config_env = config.get();
-      console.log("index.config_env =", config_env);
-      const api = (await import(config_env.api_client_url)).default;
-      api.Brandkind.server_host = config_env.api_server_host;
-
       import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
       import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 
@@ -48,6 +42,7 @@
 
         Scroll_Text();
 
+        const config_env = config.get();
         const app_ctx = fb_app.initializeApp(config_env);
         analytics_ctx = fb_analytics.getAnalytics(app_ctx);
       }
@@ -142,7 +137,8 @@
 
         fb_analytics.logEvent(analytics_ctx, "sign_up", {method: "landing page"});
 
-        const reg_res = await api.Brandkind.Register(reg_email.value);
+        const Brandkind = await config.get_Api();
+        const reg_res = await Brandkind.Register(reg_email.value);
         if (reg_res.ok)
         {
           reg_ok.hidden = false;
@@ -266,7 +262,7 @@
 
       <section id="s4">
         <div class="carousel">
-          <img src="images/plants.webp" alt="People working with plants">
+          <de-image key="s4_i" project-id="bk"></de-image>
         </div>
         <article>
           <h1><de-text key="s4_hd" project-id="bk" renderType="text"></de-text></h1>
@@ -300,7 +296,7 @@
 
       <section id="s6">
         <div class="carousel">
-          <img src="images/carousel/drinks.webp" alt="Women drinking">
+          <de-image key="s6_i" project-id="bk"></de-image>
         </div>
         <article>
           <h1><de-text key="s6_hd" project-id="bk" renderType="text"></de-text></h1>
@@ -371,7 +367,7 @@
               <span><de-text key="s8_q4_sig" project-id="bk" renderType="text"></de-text></span>
             </div>
           </de-carousel>
-          <img src="images/tyler-nix-sh3LSNbyj7k-unsplash.webp" alt="Woman laughing">
+          <de-image key="s8_i" project-id="bk"></de-image>
         </div>
       </section>
 
@@ -407,6 +403,11 @@
         <article>
           <h2><de-link key="s11_email" project-id="bk"></de-link></h2>
           <h2><de-link key="s11_phone" project-id="bk"></de-link></h2>
+        </article>
+        <h1>Follow Us</h1>
+        <article id="a11">
+          <a id="l1" href="https://www.linkedin.com/company/brandkind-community"><img src="/images/linkedin.svg"></a>
+          <a id="l2" href="https://www.instagram.com/brandkind_community/"><img src="/images/instagram.svg"></a>
         </article>
       </section>
     </main>

@@ -669,12 +669,13 @@
   {
     background-color: #e07e3c;
     color: #fff;
-    padding: 10% 10% 10% 10%;
+    padding: 10% 10% 5% 10%;
   }
   #s11 article
   {
     text-align: center;
     vertical-align: top;
+    margin: 0 0 50px 0;
   }
   #s11 h1
   {
@@ -701,6 +702,32 @@
   #s11 a
   {
     color: #fff;
+  }
+  #a11
+  {
+    font-size: 0;
+  }
+  #l1
+  {
+    background-color: white;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 8px 0 0 8px;
+  }
+  #l1 img
+  {
+    height: 55px;
+  }
+  #l2
+  {
+    background-color: white;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 0 8px 8px 0;
+  }
+  #l2 img
+  {
+    height: 55px;
   }
 
   .recipe
