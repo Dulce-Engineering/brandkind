@@ -731,6 +731,13 @@
     font-size: 1.4rem;
     text-transform: uppercase;
   }
+  #s11 h3
+  {
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
   .s11_sep
   {
     padding: 0 10px;
