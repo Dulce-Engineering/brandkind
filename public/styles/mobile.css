@@ -156,8 +156,7 @@
     font-size: 1.5rem;
     font-weight: 300;
     text-align: right;
-    margin: 0 5px 0 5px;
-    width: 50%;
+    margin: 0 10px 0 10px;
   }
   #s2 h2
   {
@@ -400,12 +399,13 @@
   {
     counter-increment: item;
     content: counter(item);
-    color: #05868e;
+    color: transparent;
     font-family: "Cormorant";
     font-size: 7rem;
     position: absolute;
     top: -50px;
     -webkit-text-stroke: 1px black;
+    z-index: -1;
   }
   #s7 li
   {
@@ -416,6 +416,7 @@
     flex-direction: column-reverse;
     position: relative;
     margin: 0 0 20px 0;
+    z-index: 0;
   }
   #s7 h3
   {
@@ -642,21 +643,6 @@
   {
     color: #fff;
   }
-  #s10 button
-  {
-    font-family: "Montserrat";
-    font-weight: 300;
-    font-size: 1.2rem;
-    background-color: #05868e;
-    border: none;
-    padding: 10px 20px;
-    margin: 0 10% 5% 10%;
-    border-radius: 30px;
-    color: #fff;
-    text-transform: uppercase;
-    cursor: pointer;
-    width: 80%;
-  }
   #s10 #reg_wait
   {
     font-family: "Montserrat";
@@ -674,6 +660,22 @@
     font-family: "Montserrat";
     font-weight: 300;
     font-size: 1.2rem;
+  }
+  #s10 .button
+  {
+    display: inline-block;
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 1.2rem;
+    background-color: #05868e;
+    border: none;
+    padding: 10px 50px;
+    margin: 0 0% 5% 0;
+    border-radius: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
   }
 
   #s11
@@ -701,7 +703,7 @@
   {
     font-family: "Montserrat";
     font-weight: 300;
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
   }
   #s11 h3

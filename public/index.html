@@ -17,8 +17,8 @@
       import Menu_Buddy_Button from "./node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
       import Menu_Buddy_Panel from "./node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
       import Carousel from "./components/Carousel.js";
-      import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
-      import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
+      //import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+      //import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 
       customElements.define(Menu_Buddy.tname, Menu_Buddy);
       customElements.define(Menu_Buddy_Button.tname, Menu_Buddy_Button);
@@ -35,16 +35,16 @@
         Init_Menu();
         menu_btn.addEventListener("click", OnClick_MenuBtn)
 
-        reg_btn.addEventListener("click", OnClick_RegBtn);
+        //reg_btn.addEventListener("click", OnClick_RegBtn);
 
         OnScroll();
         document.addEventListener("scroll", OnScroll);
 
         Scroll_Text();
 
-        const config_env = config.get();
-        const app_ctx = fb_app.initializeApp(config_env);
-        analytics_ctx = fb_analytics.getAnalytics(app_ctx);
+        //const config_env = config.get();
+        //const app_ctx = fb_app.initializeApp(config_env);
+        //analytics_ctx = fb_analytics.getAnalytics(app_ctx);
       }
 
       function Init_Logo()
@@ -102,7 +102,6 @@
 
       function Init_Menu()
       {
-        console.log("Init_Menu()");
         const m =
         {
           title: "",
@@ -233,7 +232,7 @@
         <article id="s8a1">
           <h1><de-text key="s8_hd" project-id="bk" renderType="text"></de-text></h1>
           <de-text key="s8_content" project-id="bk"></de-text>
-          <a href="#s11">Get Inspired Here</a>
+          <a href="#s10">Get Inspired Here</a>
         </article>
         <div>
           <de-carousel id="s8a2">
@@ -301,7 +300,7 @@
           <h1 class="large">We love our supporters.</h1>
           <img src="images/White_Box_Enterprises.png" class="wbe">
           <img src="images/Minter_Ellison.svg" class="me">
-          <img src="images/Social_Impact_Hub.png" class="sih">
+          <img src="images/Social_Impact_Hub.png" class="sih" hidden>
           <img src="images/Canva.svg" class="c">
         </article>
       </section>
@@ -395,11 +394,12 @@
         </article>
       </section>
 
-      <section id="s10" hidden>
+      <section id="s10">
         <img src="images\Brandkind Logo_FA_Full_white.webp" alt="Brandkind logo">
         <de-text key="s10_hd" project-id="bk"></de-text>
-        <input id="reg_email" type="email" placeholder="Enter your email">
-        <button id="reg_btn">Join Now</button>
+        <!--input id="reg_email" type="email" placeholder="Enter your email">
+        <button id="reg_btn">Join Now</button-->
+        <a class="button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdKm5A80zQ7n9fmDDyf1KfO4lWDdLQxHQegbdnRzA_TVA5DEA/viewform?usp=sf_link">Join Now</a>
         <p id="reg_wait" hidden>Please wait</p>
         <p id="reg_ok" hidden>Registration succeeded</p>
         <p id="reg_fail" hidden>Registration failed</p>
