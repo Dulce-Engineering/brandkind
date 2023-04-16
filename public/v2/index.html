@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="Home page of Brandkind. We are a community of brand & marketing specialists bringing the strategic rigour & creative strength of large corporate organisations to social enterprises so they can create impact and sustainable growth.">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BrandKind</title>
+    <link rel="stylesheet" href="/v2/styles/mobile.css">
+    <link rel="stylesheet" href="/v2/styles/desktop.css">
+
+    <script src="https://decms-6dc54.firebaseapp.com/components/index_ext.js" type="module"></script>
+
+    <script type="module">
+      import config from "/v1/lib/config.js";
+      import Utils from "/v1/lib/Utils.js";
+      import Menu_Buddy from "/node_modules/menu-buddy/Menu_Buddy.mjs";
+      import Menu_Buddy_Button from "/node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
+      import Menu_Buddy_Panel from "/node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
+      import Carousel from "/v1/components/Carousel.js";
+      //import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+      //import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
+
+      customElements.define(Menu_Buddy.tname, Menu_Buddy);
+      customElements.define(Menu_Buddy_Button.tname, Menu_Buddy_Button);
+      customElements.define(Menu_Buddy_Panel.tname, Menu_Buddy_Panel);
+      customElements.define(Carousel.tname, Carousel);
+
+      let analytics_ctx = null;
+
+      //Main();
+      function Main()
+      {
+        Utils.Set_Id_Shortcuts(document, window);
+
+        Init_Menu();
+        menu_btn.addEventListener("click", OnClick_MenuBtn);
+
+        //reg_btn.addEventListener("click", OnClick_RegBtn);
+
+        OnScroll();
+        document.addEventListener("scroll", OnScroll);
+
+        Scroll_Text();
+
+        //const config_env = config.get();
+        //const app_ctx = fb_app.initializeApp(config_env);
+        //analytics_ctx = fb_analytics.getAnalytics(app_ctx);
+        join_btn.addEventListener("click", OnClick_JoinBtn);
+        close_dlg_btn.addEventListener("click", OnClick_CloseDlgBtn);
+      }
+
+      function Init_Logo()
+      {
+        const hdr_rect = hdr.getBoundingClientRect();
+        //console.log(hdr_rect);
+        s1_logo.style.top = hdr_rect.bottom + "px";
+        s1_logo.hidden = false;
+      }
+
+      function Scroll_Text()
+      {
+        let pos = 0;
+        const footer_length = 2800;
+
+        requestAnimationFrame(Scroll_Text_Frame);
+        function Scroll_Text_Frame()
+        {
+          pos -= 2;
+          if (pos < -footer_length)
+          {
+            pos = window.innerWidth;
+          }
+
+          s7_footer.style.left = `${pos}px`;
+          requestAnimationFrame(Scroll_Text_Frame);
+        }
+      }
+
+      function Type_Logo_Text()
+      {
+        const text = logo_text.innerText;
+
+        const vis_elem = document.createElement("span");
+        vis_elem.style.opacity = 1;
+        const hid_elem = document.createElement("span");
+        hid_elem.style.opacity = 0;
+        hid_elem.innerText = text;
+        logo_text.replaceChildren(vis_elem, hid_elem);
+
+        logo_text.style.opacity = 1;
+        setTimeout(Add_Letter);
+
+        function Add_Letter()
+        {
+          const curr_length = vis_elem.innerText.length;
+          if (curr_length < text.length)
+          {
+            vis_elem.innerText = text.substring(0, curr_length + 1);
+            hid_elem.innerText = text.substring(curr_length + 1);
+            setTimeout(Add_Letter, 50);
+          }
+        }
+      }
+
+      function Init_Menu()
+      {
+        const m =
+        {
+          title: "",
+          class_name: "menu",
+          options: 
+          [
+            {title: "Home", section_id: "s1", on_click_fn}, 
+            {title: "Who We Are", section_id: "s2", on_click_fn},
+            {title: "Why We Exist", section_id: "s4", on_click_fn},
+            {title: "What We Do", section_id: "s7", on_click_fn},
+            {title: "Why Join Us", section_id: "s9", on_click_fn},
+            {title: "How To Join", section_id: "s10", on_click_fn},
+            {title: "Contact Us", section_id: "s11", on_click_fn},
+          ]
+        };
+
+        nav_panel.menu = m;
+      }
+
+      function on_click_fn(event, option)
+      {
+        location.hash = "#" + option.section_id;
+        const hdr_rect = hdr.getBoundingClientRect();
+        window.scrollBy(0, -hdr_rect.height);
+      }
+
+      async function OnClick_RegBtn()
+      {
+        reg_wait.hidden = false;
+        reg_ok.hidden = true;
+        reg_fail.hidden = true;
+
+        fb_analytics.logEvent(analytics_ctx, "sign_up", {method: "landing page"});
+
+        const Brandkind = await config.get_Api();
+        const reg_res = await Brandkind.Register(reg_email.value);
+        if (reg_res.ok)
+        {
+          reg_ok.hidden = false;
+        }
+        else
+        {
+          reg_fail.hidden = false;
+          console.error("Unable to send email to " + reg_email.value + ".", reg_res.message);
+        }
+
+        reg_wait.hidden = true;
+      }
+
+      function OnScroll()
+      {
+        const hdr_rect = hdr.getBoundingClientRect();
+        const s1_rect = s1.getBoundingClientRect();
+        if (window.scrollY + hdr_rect.bottom > s1_rect.height)
+        {
+          hdr.classList.add("hdr_alt");
+        }
+        else
+        {
+          hdr.classList.remove("hdr_alt");
+        }
+
+        //const s2_rect = s2.getBoundingClientRect();
+        /*if (window.innerHeight/2 > s2_rect.top)
+        {
+          if (!logo.classList.contains("fade_in_anim"))
+          {
+            logo.classList.add("fade_in_anim");
+            setTimeout(Type_Logo_Text, 4000);
+          }
+        }*/
+      }
+
+      function OnClick_MenuBtn()
+      {
+        nav_panel.Toggle();
+      }
+
+      function OnClick_JoinBtn()
+      {
+        join_dlg.showModal();
+      }
+
+      function OnClick_CloseDlgBtn()
+      {
+        join_dlg.close();
+      }
+    </script>
+  </head>
+
+  <body>
+    <de-project id="bk" key="brandkind"></de-project>
+
+    <menu-buddy-panel 
+      id="nav_panel" 
+      menu-style-src="/v1/styles/panel.css">
+    </menu-buddy-panel>
+
+    <header id="hdr">
+      <img id="hdr_logo" src="/v2/images/hdr_logo.svg" alt="Brandkind Logo">
+      <span></span>
+      <img id="menu_btn" src="/v2/images/menu.svg" alt="Menu Button">
+    </header>
+
+    <main>
+
+      <section>
+        <de-carousel>
+          <img src="/v2/images/carousel_hands.webp" style="opacity: 1;" alt="Painting of open hands">
+          <img src="/v2/images/carousel_karaoke.webp" style="opacity: 0;" alt="Man on microphone to audience">
+          <img src="/v2/images/carousel_drinks.webp" style="opacity: 0;" alt="Women drinking">
+          <img src="/v2/images/carousel_wall.webp" style="opacity: 0;" alt="Abstract painting">
+        </de-carousel>
+        <article>
+          <h1>
+            Brands That Do Good Deserve To Succeed
+          </h1>
+          <p>
+            Imagine the impact small social enterprises could have if they had even 1% of 
+            the marketing resources of big corporate organisations?
+          </p>
+          <a>
+            Learn More
+          </a>
+        </article>
+      </section>
+
+    </main>
+
+    <footer></footer>
+  </body>
+</html>
