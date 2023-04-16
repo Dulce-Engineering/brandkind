@@ -1,0 +1,81 @@
+:host
+{
+  box-shadow: 3px 3px 5px 0px #0006;
+  background-color: #ddd;
+  color: #000;
+  display: none;
+  position: fixed;
+  z-index: 1;
+}
+.menu 
+{
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  transition: width 0.25s;
+  box-sizing: border-box;
+  background-color: #ddd;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.menu_title
+{
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+  border: none;
+  margin: 0;
+  background-color: transparent;
+  cursor: pointer;
+  height: 30px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.menu_title span
+{
+  line-height: 30px;
+}
+.menu_title svg
+{
+  vertical-align: middle;
+  margin: 0px 5px 0px 5px;
+}
+.menu_title:hover
+{
+  background-color: #ccc;
+}
+
+.menu_option
+{
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+  border: none;
+  margin: 0;
+  background-color: transparent;
+  cursor: pointer;
+  height: 30px;
+  white-space: nowrap;
+}
+.menu_option span
+{
+  padding-left: 30px;
+  line-height: 30px;
+}
+.menu_option svg
+{
+  vertical-align: middle;
+  margin: 0px 10px 0px 5px;
+}
+.menu_option:hover
+{
+  background-color: #ccc;
+}
+.title_only
+{
+  padding-right: 20px;
+}

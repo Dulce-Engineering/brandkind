@@ -5,18 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BrandKind</title>
-    <link rel="stylesheet" href="styles/mobile.css">
-    <link rel="stylesheet" href="styles/desktop.css">
+    <link rel="stylesheet" href="/v1/styles/mobile.css">
+    <link rel="stylesheet" href="/v1/styles/desktop.css">
 
     <script src="https://decms-6dc54.firebaseapp.com/components/index_ext.js" type="module"></script>
 
     <script type="module">
-      import config from "./lib/config.js";
-      import Utils from "./lib/Utils.js";
-      import Menu_Buddy from "./node_modules/menu-buddy/Menu_Buddy.mjs";
-      import Menu_Buddy_Button from "./node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
-      import Menu_Buddy_Panel from "./node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
-      import Carousel from "./components/Carousel.js";
+      import config from "/v1/lib/config.js";
+      import Utils from "/v1/lib/Utils.js";
+      import Menu_Buddy from "/node_modules/menu-buddy/Menu_Buddy.mjs";
+      import Menu_Buddy_Button from "/node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
+      import Menu_Buddy_Panel from "/node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
+      import Carousel from "/v1/components/Carousel.js";
       //import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
       //import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 
@@ -33,7 +33,7 @@
         Utils.Set_Id_Shortcuts(document, window);
 
         Init_Menu();
-        menu_btn.addEventListener("click", OnClick_MenuBtn)
+        menu_btn.addEventListener("click", OnClick_MenuBtn);
 
         //reg_btn.addEventListener("click", OnClick_RegBtn);
 
@@ -45,6 +45,8 @@
         //const config_env = config.get();
         //const app_ctx = fb_app.initializeApp(config_env);
         //analytics_ctx = fb_analytics.getAnalytics(app_ctx);
+        join_btn.addEventListener("click", OnClick_JoinBtn);
+        close_dlg_btn.addEventListener("click", OnClick_CloseDlgBtn);
       }
 
       function Init_Logo()
@@ -179,6 +181,16 @@
       {
         nav_panel.Toggle();
       }
+
+      function OnClick_JoinBtn()
+      {
+        join_dlg.showModal();
+      }
+
+      function OnClick_CloseDlgBtn()
+      {
+        join_dlg.close();
+      }
     </script>
   </head>
 
@@ -187,7 +199,7 @@
 
     <menu-buddy-panel 
       id="nav_panel" 
-      menu-style-src="styles/panel.css">
+      menu-style-src="/v1/styles/panel.css">
     </menu-buddy-panel>
 
     <header id="hdr">
@@ -399,7 +411,7 @@
         <de-text key="s10_hd" project-id="bk"></de-text>
         <!--input id="reg_email" type="email" placeholder="Enter your email">
         <button id="reg_btn">Join Now</button-->
-        <a class="button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdKm5A80zQ7n9fmDDyf1KfO4lWDdLQxHQegbdnRzA_TVA5DEA/viewform?usp=sf_link">Join Now</a>
+        <a id="join_btn" class="button" target="_blank">Join Now</a>
         <p id="reg_wait" hidden>Please wait</p>
         <p id="reg_ok" hidden>Registration succeeded</p>
         <p id="reg_fail" hidden>Registration failed</p>
@@ -434,9 +446,27 @@
         </article>
         <article>
           <h3>&copy; 2022 Brandkind Community. All rights reserved.</h3>
+          <h2 class="s11_sep">|</h2> 
+          <h3><a href="/v1/privacy.html">Privacy Policy</a></h3>
         </article>
       </section>
+
     </main>
+
+    <dialog id="join_dlg">
+      <div id="content_dlg">
+        <a class="button" target="_self" 
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfzb69C_chVFjGVR780cdV49EJgyGO8U1faeLBubaObTjoicQ/viewform?usp=sharing">
+          I'm a branding professional</a>
+        <a class="button" target="_self" 
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfBE0Rr-j6WbmMRrZg7ASv5pH9PT7KOq6IF0r5fkNxtsgaZCQ/viewform">
+          I'm a social enterprise</a>
+        <a class="button" target="_self" 
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdL3VBrY_9G3ijMR1nUkthBeVTtCGELrgsEJYj61CI8_hNdPQ/viewform?usp=sharing">
+          I'm a corporate / supporter / intermediary</a>
+        <button id="close_dlg_btn">Cancel</button>
+      </div>
+    </dialog>
 
     <footer></footer>
   </body>
