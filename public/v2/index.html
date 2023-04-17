@@ -16,7 +16,7 @@
       import Menu_Buddy from "/node_modules/menu-buddy/Menu_Buddy.mjs";
       import Menu_Buddy_Button from "/node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
       import Menu_Buddy_Panel from "/node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
-      import Carousel from "/v1/components/Carousel.js";
+      import Carousel from "/v2/components/Carousel.js";
       //import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
       //import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 
@@ -210,7 +210,7 @@
 
     <main>
 
-      <section>
+      <section id="s1">
         <de-carousel>
           <img src="/v2/images/carousel_hands.webp" style="opacity: 1;" alt="Painting of open hands">
           <img src="/v2/images/carousel_karaoke.webp" style="opacity: 0;" alt="Man on microphone to audience">
@@ -218,9 +218,9 @@
           <img src="/v2/images/carousel_wall.webp" style="opacity: 0;" alt="Abstract painting">
         </de-carousel>
         <article>
-          <h1>
+          <h2>
             Brands That Do Good Deserve To Succeed
-          </h1>
+          </h2>
           <p>
             Imagine the impact small social enterprises could have if they had even 1% of 
             the marketing resources of big corporate organisations?
@@ -228,6 +228,36 @@
           <a>
             Learn More
           </a>
+        </article>
+      </section>
+
+      <section id="s2">
+        <img src="/v2/images/painting.jpg">
+        <article>
+          <h3>
+            We are a social enterprise helping other social enterprises
+          </h3>
+          <p>
+            We believe that enterprises with a social purpose are the future. We can do more to support them.
+          </p>
+          <de-carousel show-remote>
+            <div style="opacity: 1;">
+              "Your recent fundraising bake-off and the on-going marketing support are invaluable help in our work to train more refugees"
+              <span>Cindy, Chair, The Bread and Butter Project</span>
+            </div>
+            <div style="opacity: 0;">
+              "You have helped us crystallise what we stand for. The brand one-pager guides everything we do"
+              <span>Sam, Benevolence Financial Group</span>
+            </div>
+            <div style="opacity: 0;">
+              "From rebranding me from Nick Tiling to the ongoing marketing programs, you have become part of this movement to improve my fellow refugees' lives"
+              <span>Hedayat, Founder, CommUnity Construction</span>
+            </div>
+            <div style="opacity: 0;">
+              "Your help in creating our messaging as we pivoted after Covid has been fantastic"
+              <span>Geert, Founder, FarmWall</span>
+            </div>
+          </de-carousel>
         </article>
       </section>
 
