@@ -1,6 +1,6 @@
 import Utils from "../lib/Utils.js";
 
-class Carousel extends HTMLElement 
+class De_Carousel extends HTMLElement 
 {
   static tname = "de-carousel";
 
@@ -187,4 +187,5 @@ class Carousel extends HTMLElement
   }
 }
 
-export default Carousel;
+Utils.Register_Element(De_Carousel);
+export default De_Carousel;

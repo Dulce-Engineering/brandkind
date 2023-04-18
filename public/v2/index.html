@@ -16,14 +16,15 @@
       import Menu_Buddy from "/node_modules/menu-buddy/Menu_Buddy.mjs";
       import Menu_Buddy_Button from "/node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
       import Menu_Buddy_Panel from "/node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
-      import Carousel from "/v2/components/Carousel.js";
+      import "/v2/components/De_Carousel.js";
+      import "/v2/components/De_Article.js";
+      import "/v2/components/De_Accordion.js";
       //import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
       //import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 
       customElements.define(Menu_Buddy.tname, Menu_Buddy);
       customElements.define(Menu_Buddy_Button.tname, Menu_Buddy_Button);
       customElements.define(Menu_Buddy_Panel.tname, Menu_Buddy_Panel);
-      customElements.define(Carousel.tname, Carousel);
 
       let analytics_ctx = null;
 
@@ -261,8 +262,214 @@
         </article>
       </section>
 
+      <section id="s3">
+        <img src="/v2/images/painting.jpg">
+        <h3>
+          We love connecting those who want to help with those who need help.
+        </h3>
+        <p>
+          In our way, we have started to create impact in the last 12 months
+        </p>
+        <de-accordion class="style-1">
+          <de-article title="60+ COMMUNITY MEMBERS">
+            La ventura va guiando nuestras cosas mejor de lo que acertáramos a desear, 
+            porque ves allí, amigo Sancho Panza, donde se descubren treinta, o pocos más, 
+            desaforados gigantes, con quien pienso hacer batalla y quitarles a todos las vidas, 
+            con cuyos despojos comenzaremos a enriquecer; que ésta es buena guerra, y es gran 
+            servicio de Dios quitar tan mala simiente de sobre la faz de la tierra.
+          </de-article>
+          <de-article title="{XX} PARTNERSHIPS wITH COOPERATIONS">
+            Mire vuestra merced —respondió Sancho— que aquellos que allí se parecen no son 
+            gigantes, sino molinos de viento, y lo que en ellos parecen brazos son las aspas, 
+            que, volteadas del viento, hacen andar la piedra del molino.          
+          </de-article>
+          <de-article title="20+ PROJECTS TO DATE">
+            Bien parece —respondió don Quijote— que no estás cursado en esto de las aventuras: 
+            ellos son gigantes; y si tienes miedo, quítate de ahí, y ponte en oración en el 
+            espacio que yo voy a entrar con ellos en fiera y desigual batalla.          
+          </de-article>
+        </de-accordion>
+        <a>
+          Contact Us
+        </a>
+      </section>
+
+      <section id="s4">
+        <h3>
+          We aim to bridge the world of corporates and social enterprises
+        </h3>
+        <p>
+          We do this through the power of branding and a generous marketing community. 
+          Get in touch when you are a:
+        </p>
+        <de-accordion class="style-2">
+          <de-article title="Branding Professional" sub-title="- willing to participate">
+            We provide ways for our community members to share their brand & marketing 
+            expertise to create societal impact.
+          </de-article>
+          <de-article title="Social Enterprise" sub-title="- Who needs branding help">
+            We deliver affordable and accessible brand & marketing expertise so they 
+            increase their brand value and impact in their community.
+          </de-article>
+          <de-article title="Supporter" sub-title="- who wants to create impact">
+            We provide opportunities to make progress on their ESG goals and build their 
+            reputation through collaboration and contribution to our programs.
+            We ensure their funding has greater impact by providing social enterprises with 
+            the expertise to leverage investment and support.
+          </de-article>
+        </de-accordion>
+        <p class="heading">
+          We love our supporters.
+        </p>
+        <div class="logos">
+          <img src="images/White_Box_Enterprises.png">
+          <img src="images/Minter_Ellison.svg">
+          <img src="images/Canva.svg">
+        </div>
+      </section>
+
+      <section id="s5">
+        <h3>
+          Be part of our unique business model.
+        </h3>
+        <p>
+          We deliver pro-bono and low-bono services, funded by the generosity of marketing 
+          professionals, corporates and philanthropists. We build community across our doers, 
+          givers and recipients. Social Enterprises get the expertise they need while our 
+          members get the fulfilment, flexibility and fun they value as branding specialists.
+        </p>
+        <de-accordion title="OUR Services:" class="style-3">
+          <de-article title="1. CONSULTANCY" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
+            Bien parece —respondió don Quijote— que no estás cursado en esto de las aventuras: 
+            ellos son gigantes; y si tienes miedo, quítate de ahí, y ponte en oración en el espacio 
+            que yo voy a entrar con ellos en fiera y desigual batalla.          
+          </de-article>
+          <de-article title="2. BRANDING & MARKETING" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
+            Y, diciendo esto, dio de espuelas a su caballo Rocinante, sin atender a las voces que
+            su escudero Sancho le daba, advirtiéndole que, sin duda alguna, eran molinos de viento,
+            y no gigantes, aquellos que iba a acometer. Pero él iba tan puesto en que eran
+            gigantes, que ni oía las voces de su escudero Sancho ni echaba de ver, aunque
+            estaba ya bien cerca, lo que eran; antes, iba diciendo en voces altas:          
+          </de-article>
+          <de-article title="3. COACHING" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
+            Non fuyades, cobardes y viles criaturas, que un solo caballero es el que os acomete.
+            Levantóse en esto un poco de viento y las grandes aspas comenzaron a moverse, lo 
+            cual visto por don Quijote, dijo:          
+          </de-article>
+          <de-article title="4. CAPABILITY BUILDING" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
+            ¡Válame Dios! —dijo Sancho—. ¿No le dije yo a vuestra merced que mirase bien lo 
+            que hacía, que no eran sino molinos de viento, y no lo podía ignorar sino quien
+            llevase otros tales en la cabeza?          
+          </de-article>
+        </de-accordion>
+        <a>
+          Contact Us
+        </a>
+      </section>
+
+      <section id="s6">
+        <h3>
+          We have started making impact in the community.
+        </h3>
+        <p>
+          Our founding members have delivered branding projects across sectors and we can't 
+          wait to grow so we can help even more social enterprises
+        </p>
+        <img src="/v2/images/community_construction.jpg">
+        <div class="img-title">COMMUNITY CONSTRUCTION</div>
+        <div class="img-description">REBRAND, MARKETING & COMMS</div>
+        <img src="/v2/images/auntys_ginger_tonic.jpg">
+        <div class="img-title">AUNTY’S GINGER TONIC</div>
+        <div class="img-description">REBRAND, B2B & B2B ADVISORY & COMMS</div>
+        <img src="/v2/images/hotel_etico.jpg">
+        <div class="img-title">HOTEL ETICO</div>
+        <div class="img-description">BRAND REFRESH, B2B & B2B MARKETING COMMS</div>
+      </section>
+
+      <section id="s7">
+        <h3>
+          Ready to be part of the brandkind community and create brands with impact?
+        </h3>
+        <a>
+          Join Us
+        </a>
+      </section>
+
+      <section id="s8">
+        <h3>
+          FAQ
+        </h3>
+        <p>
+          A la mano de Dios —dijo Sancho—; yo lo creo todo así como vuestra merced lo dice; 
+          pero enderécese un poco, que parece que va de medio lado, y debe de ser del 
+          molimiento de la caída.
+        </p>
+        <de-accordion class="style-4">
+          <de-article title="How does it work?">
+            blah, blah, blah...
+          </de-article>
+          <de-article title="What’s this pro vs low bono gig?">
+            blah, blah, blah...
+          </de-article>
+          <de-article title="How are you able to give low rates?">
+            blah, blah, blah...
+          </de-article>
+          <de-article title="How much does this cost?">
+            blah, blah, blah...
+          </de-article>
+          <de-article title="Why do you give low rates?">
+            blah, blah, blah...
+          </de-article>
+          <de-article title="What is brand and marketing?">
+            blah, blah, blah...
+          </de-article>
+          <de-article title="Why do you give low rates?">
+            blah, blah, blah...
+          </de-article>
+          <de-article title="Do you build websites or manage social media?">
+            blah, blah, blah...
+          </de-article>
+          <de-article title="Who can join brandkind community?">
+            blah, blah, blah...
+          </de-article>
+          <de-article title="Can I recommend a friend to brandkind?">
+            blah, blah, blah...
+          </de-article>
+          <de-article title="How else can I help if I can’t find time to work on projects?">
+            blah, blah, blah...
+          </de-article>
+        </de-accordion>
+      </section>
+
     </main>
 
-    <footer></footer>
+    <footer>
+      <h3>
+        We'd love to connect with you.
+      </h3>
+      <p class="style-1">
+        <a href="mailto:hello@brandkindcommunity.com">hello@brandkindcommunity.com</a><br>
+        <br>
+        <a href="tel:0401711354">0401 711 354</a>
+      </p>
+      <div>
+        <a href="https://www.linkedin.com/company/brandkind-community">
+          <img src="/v2/images/linkedin.png">
+        </a>
+        <a href="https://www.instagram.com/brandkind_community/">
+          <img src="/v2/images/instagram.png">
+        </a>
+      </div>
+      <h4>
+        ACKNOWLEDGEMENT OF COUNTRY
+      </h4>
+      <p class="style-2">
+        We respect and honour Aboriginal and Torres Strait Islander Elders past, present and emerging. We acknowledge the stories, traditions and living cultures of Aboriginal and Torres Strait Islander peoples on this land and commit to building a brighter future together.
+      </p>
+      <p class="style-3">
+        © 2022 BRANDKIND COMMUNITY. ALL RIGHTS RESERVED. | 
+        <a href="/v1/privacy.html">Privacy Policy</a>
+      </p>
+    </footer>
   </body>
 </html>
