@@ -13,41 +13,33 @@
     <script type="module">
       import config from "/v1/lib/config.js";
       import Utils from "/v1/lib/Utils.js";
-      import Menu_Buddy from "/node_modules/menu-buddy/Menu_Buddy.mjs";
-      import Menu_Buddy_Button from "/node_modules/menu-buddy/Menu_Buddy_Btn.mjs";
-      import Menu_Buddy_Panel from "/node_modules/menu-buddy/Menu_Buddy_Panel.mjs";
       import "/v2/components/De_Carousel.js";
       import "/v2/components/De_Article.js";
       import "/v2/components/De_Accordion.js";
+      import "/v2/components/De_Menu.js";
       //import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
       //import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 
-      customElements.define(Menu_Buddy.tname, Menu_Buddy);
-      customElements.define(Menu_Buddy_Button.tname, Menu_Buddy_Button);
-      customElements.define(Menu_Buddy_Panel.tname, Menu_Buddy_Panel);
-
       let analytics_ctx = null;
 
-      //Main();
+      Main();
       function Main()
       {
         Utils.Set_Id_Shortcuts(document, window);
 
-        Init_Menu();
-        menu_btn.addEventListener("click", OnClick_MenuBtn);
-
         //reg_btn.addEventListener("click", OnClick_RegBtn);
 
-        OnScroll();
-        document.addEventListener("scroll", OnScroll);
+        //OnScroll();
+        //document.addEventListener("scroll", OnScroll);
 
-        Scroll_Text();
+        //Scroll_Text();
 
         //const config_env = config.get();
         //const app_ctx = fb_app.initializeApp(config_env);
         //analytics_ctx = fb_analytics.getAnalytics(app_ctx);
-        join_btn.addEventListener("click", OnClick_JoinBtn);
-        close_dlg_btn.addEventListener("click", OnClick_CloseDlgBtn);
+
+        join_btn.addEventListener("click", () => join_dlg.showModal());
+        close_dlg_btn.addEventListener("click", () => join_dlg.close());
       }
 
       function Init_Logo()
@@ -103,27 +95,6 @@
         }
       }
 
-      function Init_Menu()
-      {
-        const m =
-        {
-          title: "",
-          class_name: "menu",
-          options: 
-          [
-            {title: "Home", section_id: "s1", on_click_fn}, 
-            {title: "Who We Are", section_id: "s2", on_click_fn},
-            {title: "Why We Exist", section_id: "s4", on_click_fn},
-            {title: "What We Do", section_id: "s7", on_click_fn},
-            {title: "Why Join Us", section_id: "s9", on_click_fn},
-            {title: "How To Join", section_id: "s10", on_click_fn},
-            {title: "Contact Us", section_id: "s11", on_click_fn},
-          ]
-        };
-
-        nav_panel.menu = m;
-      }
-
       function on_click_fn(event, option)
       {
         location.hash = "#" + option.section_id;
@@ -177,36 +148,28 @@
           }
         }*/
       }
-
-      function OnClick_MenuBtn()
-      {
-        nav_panel.Toggle();
-      }
-
-      function OnClick_JoinBtn()
-      {
-        join_dlg.showModal();
-      }
-
-      function OnClick_CloseDlgBtn()
-      {
-        join_dlg.close();
-      }
     </script>
   </head>
 
   <body>
     <de-project id="bk" key="brandkind"></de-project>
 
-    <menu-buddy-panel 
-      id="nav_panel" 
-      menu-style-src="/v1/styles/panel.css">
-    </menu-buddy-panel>
-
     <header id="hdr">
       <img id="hdr_logo" src="/v2/images/hdr_logo.svg" alt="Brandkind Logo">
       <span></span>
-      <img id="menu_btn" src="/v2/images/menu.svg" alt="Menu Button">
+      <de-menu 
+        open-src="/v2/images/menu.svg" 
+        close-src="/v2/images/cross_black.svg" 
+        title-src="/v2/images/hdr_logo.svg">
+        <span slot="menu"><a href="#s2">About Us</a></span>
+        <span slot="menu"><a href="#s3">What We Do</a></span>
+        <span slot="menu"><a href="#s5">Community</a></span>
+        <span slot="menu"><a href="#s9">Contact Us</a></span>
+        <span slot="footer">
+          © 2022 BRANDKIND COMMUNITY. ALL RIGHTS RESERVED. | 
+          <a href="/v1/privacy.html">Privacy Policy</a>
+        </span>
+      </de-menu>
     </header>
 
     <main>
@@ -226,7 +189,7 @@
             Imagine the impact small social enterprises could have if they had even 1% of 
             the marketing resources of big corporate organisations?
           </p>
-          <a>
+          <a class="button" href="#s2">
             Learn More
           </a>
         </article>
@@ -263,7 +226,7 @@
       </section>
 
       <section id="s3">
-        <img src="/v2/images/painting.jpg">
+        <img src="/v2/images/carousel_wall.webp" height="253">
         <h3>
           We love connecting those who want to help with those who need help.
         </h3>
@@ -272,24 +235,24 @@
         </p>
         <de-accordion class="style-1">
           <de-article title="60+ COMMUNITY MEMBERS">
-            La ventura va guiando nuestras cosas mejor de lo que acertáramos a desear, 
-            porque ves allí, amigo Sancho Panza, donde se descubren treinta, o pocos más, 
-            desaforados gigantes, con quien pienso hacer batalla y quitarles a todos las vidas, 
-            con cuyos despojos comenzaremos a enriquecer; que ésta es buena guerra, y es gran 
-            servicio de Dios quitar tan mala simiente de sobre la faz de la tierra.
+            <ul>
+              <li>60+ senior strategists, creative directors, designers, comms and marketing specialists who have built great brands you buy and love!</li>
+              <li>Across Australia and in Dubai and Manila</li>
+            </ul>
           </de-article>
-          <de-article title="{XX} PARTNERSHIPS wITH COOPERATIONS">
-            Mire vuestra merced —respondió Sancho— que aquellos que allí se parecen no son 
-            gigantes, sino molinos de viento, y lo que en ellos parecen brazos son las aspas, 
-            que, volteadas del viento, hacen andar la piedra del molino.          
+          <de-article title="PARTNERSHIPS wITH COOPERATIONS">
+            <ul>
+              <li>Top tier global and national businesses looking to share their teams’ talent and time</li>
+            </ul>      
           </de-article>
           <de-article title="20+ PROJECTS TO DATE">
-            Bien parece —respondió don Quijote— que no estás cursado en esto de las aventuras: 
-            ellos son gigantes; y si tienes miedo, quítate de ahí, y ponte en oración en el 
-            espacio que yo voy a entrar con ellos en fiera y desigual batalla.          
+            <ul>
+              <li>Across SE types: supporting refugees, First Nations people, those with disability and other disadvantaged communities and eco- sustainability orgs</li>
+              <li>From construction to coffee cups, bakeries to beverages  and hotels to </li>
+            </ul>         
           </de-article>
         </de-accordion>
-        <a>
+        <a class="button" href="#s9">
           Contact Us
         </a>
       </section>
@@ -340,29 +303,41 @@
         </p>
         <de-accordion title="OUR Services:" class="style-3">
           <de-article title="1. CONSULTANCY" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
-            Bien parece —respondió don Quijote— que no estás cursado en esto de las aventuras: 
-            ellos son gigantes; y si tienes miedo, quítate de ahí, y ponte en oración en el espacio 
-            que yo voy a entrar con ellos en fiera y desigual batalla.          
+            <ul>
+              <li>How do I identify the real market I compete in, for whom, and what is the best business idea to meet my target’s needs?</li>
+              <li>How do I translate my business vision and purpose into a brand that delivers customer value and lives up to its values? </li>
+              <li>How do I bring my brand to life visually, in look and feel and communicate this consistently across internal and external customers?</li>
+              <li>How do I develop relevant messages and communicate effectively with limited resources across marketing channels?</li>
+              <li>How do I consistently engage with my customers and stakeholders for long-term growth?</li>
+            </ul>          
           </de-article>
           <de-article title="2. BRANDING & MARKETING" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
-            Y, diciendo esto, dio de espuelas a su caballo Rocinante, sin atender a las voces que
-            su escudero Sancho le daba, advirtiéndole que, sin duda alguna, eran molinos de viento,
-            y no gigantes, aquellos que iba a acometer. Pero él iba tan puesto en que eran
-            gigantes, que ni oía las voces de su escudero Sancho ni echaba de ver, aunque
-            estaba ya bien cerca, lo que eran; antes, iba diciendo en voces altas:          
+            <ul>
+              <li>Brand Positioning Strategy</li>
+              <li>Manifestos</li>
+              <li>Marketing and Communications Plans</li>
+              <li>Brand identity, logos and style guides</li>
+              <li>Marketing Collaterals</li>
+              <li>Marketing Campaigns</li>
+              <li>Website Design (through partners)</li>
+              <li>Social Media Content Creation and Management (through partners)</li>
+            </ul>         
           </de-article>
           <de-article title="3. COACHING" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
-            Non fuyades, cobardes y viles criaturas, que un solo caballero es el que os acomete.
-            Levantóse en esto un poco de viento y las grandes aspas comenzaron a moverse, lo 
-            cual visto por don Quijote, dijo:          
+            <ul>
+              <li>Mentoring Programs</li>
+              <li>Advisory Board and Panels</li>
+              <li>Impact Speed dating Events </li>
+            </ul>        
           </de-article>
           <de-article title="4. CAPABILITY BUILDING" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
-            ¡Válame Dios! —dijo Sancho—. ¿No le dije yo a vuestra merced que mirase bien lo 
-            que hacía, que no eran sino molinos de viento, y no lo podía ignorar sino quien
-            llevase otros tales en la cabeza?          
+            <ul>
+              <li>Masterclasses</li>
+              <li>Brandkind Academy (to be launched in 2023)</li>
+            </ul>        
           </de-article>
         </de-accordion>
-        <a>
+        <a class="button" href="#s9">
           Contact Us
         </a>
       </section>
@@ -390,7 +365,7 @@
         <h3>
           Ready to be part of the brandkind community and create brands with impact?
         </h3>
-        <a>
+        <a class="button" id="join_btn">
           Join Us
         </a>
       </section>
@@ -400,50 +375,51 @@
           FAQ
         </h3>
         <p>
-          A la mano de Dios —dijo Sancho—; yo lo creo todo así como vuestra merced lo dice; 
-          pero enderécese un poco, que parece que va de medio lado, y debe de ser del 
-          molimiento de la caída.
+          
         </p>
         <de-accordion class="style-4">
+          <de-article title="What is brandkind?">
+            We are a community of brand and marketing professionals who give our time and effort in helping social enterprises add value to their company through marketing through pro bono or low bono projects.
+          </de-article>
           <de-article title="How does it work?">
-            blah, blah, blah...
+            We are building a community of professionals, SEs and other organizations. Register and we will get in touch with you on how you can be part of this community.
           </de-article>
           <de-article title="What’s this pro vs low bono gig?">
-            blah, blah, blah...
+            We provide a mix of both right now. We are moving to a model of low bono as the first option with our day rates at 50% of market rates. Pro-bono will be available depending on resource availability (funding and professionals) and urgency/need. There are also hybrid models (eg, pro-bono strategy and low bono design work)
           </de-article>
           <de-article title="How are you able to give low rates?">
-            blah, blah, blah...
+            The professionals themselves charge only half their rates if not none to be able to support the cause of the social enterprises.
           </de-article>
           <de-article title="How much does this cost?">
-            blah, blah, blah...
+            We are moving to a model of low bono with our day rates at 50% of market rates. Pro bono will depend on the resource availability and will entail project management fees.
           </de-article>
           <de-article title="Why do you give low rates?">
-            blah, blah, blah...
+            Social enterprises do not have huge funding unlike corporates. By meeting the enterprises where they are at, we are supporting their cause and making an impact in our communities.
           </de-article>
           <de-article title="What is brand and marketing?">
-            blah, blah, blah...
+            Brand and marketing effectively communicates the brand's product and services to its existing and target customers. With so many established companies right now, a successful brand identity will give our social enterprises a head start enabling them to sustain their business and pursue their cause.
           </de-article>
-          <de-article title="Why do you give low rates?">
-            blah, blah, blah...
+          <de-article title="Do you make logos and taglines?">
+            We do more than that, we create brand strategies, develop brand identity and implement communications and marketing plans.
           </de-article>
           <de-article title="Do you build websites or manage social media?">
-            blah, blah, blah...
+            Our focus is strategy, identity and comms/marketing planning development. We are able to outsource these ‘activation’ services for now. We will look at expanding to this in the future. (We will also consider moving further upstream and being involved in product and service design)
           </de-article>
           <de-article title="Who can join brandkind community?">
-            blah, blah, blah...
+            If you work in branding and marketing, we welcome you to join us. Whether you are a full-time employee, part-time or run your own gig, we give you the flexibility to join us to fit your life and work commitments. We welcome people of varying levels of experience in the social enterprise and for purpose sector. Geography is also not an issue. We have active members in Melbourne and Brisbane and Dubai and Manila!
           </de-article>
           <de-article title="Can I recommend a friend to brandkind?">
-            blah, blah, blah...
+            Please do! We will get them to go through the same process where our core team will do a meet and greet and assess our ‘mutual fit’ with each other.
           </de-article>
           <de-article title="How else can I help if I can’t find time to work on projects?">
-            blah, blah, blah...
+            You can tell your mates (see above) and your company ESG officer about us. We will also have ad-hoc events (like this) where you can support in quick mentoring sessions or perhaps even be a speaker or trainer.
           </de-article>
         </de-accordion>
       </section>
 
     </main>
 
-    <footer>
+    <footer id="s9">
       <h3>
         We'd love to connect with you.
       </h3>
@@ -453,10 +429,10 @@
         <a href="tel:0401711354">0401 711 354</a>
       </p>
       <div>
-        <a href="https://www.linkedin.com/company/brandkind-community">
+        <a href="https://www.linkedin.com/company/brandkind-community" class="img">
           <img src="/v2/images/linkedin.png">
         </a>
-        <a href="https://www.instagram.com/brandkind_community/">
+        <a href="https://www.instagram.com/brandkind_community/" class="img">
           <img src="/v2/images/instagram.png">
         </a>
       </div>
@@ -471,5 +447,21 @@
         <a href="/v1/privacy.html">Privacy Policy</a>
       </p>
     </footer>
+    
+    <dialog id="join_dlg">
+      <div class="content_dlg">
+        <a class="button" target="_self" 
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfzb69C_chVFjGVR780cdV49EJgyGO8U1faeLBubaObTjoicQ/viewform?usp=sharing">
+          I'm a branding professional</a>
+        <a class="button" target="_self" 
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfBE0Rr-j6WbmMRrZg7ASv5pH9PT7KOq6IF0r5fkNxtsgaZCQ/viewform">
+          I'm a social enterprise</a>
+        <a class="button" target="_self" 
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdL3VBrY_9G3ijMR1nUkthBeVTtCGELrgsEJYj61CI8_hNdPQ/viewform?usp=sharing">
+          I'm a corporate / supporter / intermediary</a>
+        <button id="close_dlg_btn">Cancel</button>
+      </div>
+    </dialog>
+
   </body>
 </html>

@@ -18,6 +18,38 @@
     align-items: center;
   }
 
+  button
+  {
+    padding: 14px 24px;
+    margin: 0 22px 30px 22px;
+    border: 2px solid #05868E;
+    border-radius: 6px 0px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #05868E;
+    display: inline-block; 
+    text-decoration: none;
+    background-color: unset;
+  }
+  button:focus-visible
+  {
+    margin: 1px 23px 31px 23px;
+    border: 1px solid #69B6BB;
+    box-shadow: 0px 0px 0px 2px #B4DADD;
+    outline: none;
+  }
+  button:active
+  {
+    background: #05868E;
+    border: 2px solid #69B6BB;
+    color: #fff;
+  }
+
   section
   {
     margin: 0 0 80px 0;
@@ -61,7 +93,7 @@
     color: #5C5C5C;
     margin: 0 22px 30px 22px;
   }
-  section a
+  section a.button
   {
     padding: 14px 24px;
     margin: 0 22px 30px 22px;
@@ -76,11 +108,176 @@
     text-transform: uppercase;
     color: #05868E;
     display: inline-block; 
+    text-decoration: none;
+  }
+  section a.button:focus-visible
+  {
+    margin: 1px 23px 31px 23px;
+    border: 1px solid #69B6BB;
+    box-shadow: 0px 0px 0px 2px #B4DADD;
+    outline: none;
+  }
+  section a.button:active
+  {
+    background: #05868E;
+    border: 2px solid #69B6BB;
+    color: #fff;
   }
   section img
   {
     margin: 0 0 30px 0;
     width: 100%;
+  }
+
+  footer
+  {
+    background-color: #05868E;
+    padding: 60px 22px 80px 22px;
+  }
+  footer h3
+  {
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0 0 30px 0;
+  }
+  footer p.style-1
+  {
+    margin: 0 0 30px 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 4vw;
+    letter-spacing: 0.021em;
+    text-decoration-line: underline;
+    color: #FFFFFF;
+    text-transform: uppercase;
+  }
+  footer div
+  {
+    padding: 0 0 30px 0;
+    border-bottom: 1px solid #fff;
+    margin: 0 0 30px 0;
+  }
+  footer a
+  {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #fff;
+  }
+  footer a.img
+  {
+    margin: 0 20px 0 0;
+    font-size: 0;
+  }
+  footer a:focus-visible
+  {
+    border-radius: 4px;
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+  footer img
+  {
+    width: 40px;
+  }
+  footer h4
+  {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0.015em;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    margin: 0 0 24px 0;
+  }
+  footer p.style-2
+  {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0 0 24px 0;
+  }
+  footer p.style-3
+  {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  de-menu dialog
+  {
+    width: 100%;
+    max-width: initial;
+    height: 100%;
+    max-height: initial;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  de-menu .content
+  {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  de-menu main
+  {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #181818;
+    margin: 0 22px;
+  }
+  de-menu main a
+  {
+    color: inherit;
+    text-decoration: none;
+  }
+  de-menu footer
+  {
+    background-color: initial;
+    padding: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    color: #5C5C5C;
+    margin: 0 22px 30px 22px;
+  }
+  de-menu footer a
+  {
+    color: inherit;
+    text-decoration: underline;
   }
 
   de-carousel
@@ -460,89 +657,28 @@
     margin: 0 0 62px 0;
   }
 
-  footer
+  #join_dlg
   {
-    background-color: #05868E;
-    padding: 60px 22px 80px 22px;
+    width: 80%;
+    padding: 22px 0 0 0;
   }
-  footer h3
+  #join_dlg .content_dlg
+  {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #join_dlg a
   {
     font-family: 'Cormorant';
     font-style: normal;
     font-weight: 700;
-    font-size: 36px;
-    line-height: 36px;
+    font-size: 25px;
+    line-height: 23px;
+    text-decoration: none;
+    margin: 0 22px 30px 22px;
     letter-spacing: -0.02em;
     text-transform: uppercase;
-    color: #FFFFFF;
-    margin: 0 0 30px 0;
-  }
-  footer p.style-1
-  {
-    margin: 0 0 30px 0;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 4vw;
-    xline-height: 28.8px;
-    letter-spacing: 0.021em;
-    text-decoration-line: underline;
-    color: #FFFFFF;
-    text-transform: uppercase;
-  }
-  footer div
-  {
-    padding: 0 0 30px 0;
-    border-bottom: 1px solid #fff;
-    margin: 0 0 30px 0;
-  }
-  footer a
-  {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    color: #fff;
-  }
-  footer img
-  {
-    width: 40px;
-    margin: 0 20px 0 0;;
-  }
-  footer h4
-  {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 26px;
-    letter-spacing: 0.015em;
-    text-transform: capitalize;
-    color: #FFFFFF;
-    margin: 0 0 24px 0;
-  }
-  footer p.style-2
-  {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0.03em;
-    color: #FFFFFF;
-    text-decoration: none;
-    margin: 0 0 24px 0;
-  }
-  footer p.style-3
-  {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    letter-spacing: 0.03em;
-    color: #FFFFFF;
-    text-decoration: none;
-    padding: 0;
-    margin: 0;
+    color: #181818;
   }
 }

@@ -21,7 +21,6 @@
   "dependencies": {
     "cache-buddy": "^1.1.0",
     "filter-buddy": "^1.1.1",
-    "menu-buddy": "^1.2.8",
     "header-buddy": "^1.0.0",
     "table-buddy": "^1.0.3"
   }

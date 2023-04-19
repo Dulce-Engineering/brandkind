@@ -1058,10 +1058,10 @@ class Utils
       {
         for (const slot_elem of slot_elems)
         {
-          const content_elem = src_elems.querySelector(`[slot='${slot_elem.name}']`);
-          if (content_elem)
+          const content_elems = src_elems.querySelectorAll(`[slot='${slot_elem.name}']`);
+          if (!Utils.isEmpty(content_elems))
           {
-            slot_elem.replaceWith(content_elem);
+            slot_elem.replaceWith(...content_elems);
           }
         }
       }
