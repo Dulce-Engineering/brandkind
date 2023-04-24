@@ -22,20 +22,25 @@ class De_Article extends HTMLElement
 
   // API ==========================================================================================
   
+  Is_Hidden()
+  {
+    return this.content_panel.style.maxHeight == "";
+  }
+
   Close()
   {
-    this.content_panel.hidden = true;
-    this.open_img.hidden = !this.content_panel.hidden;
-    this.close_img.hidden = this.content_panel.hidden;
+    this.content_panel.style.maxHeight = null;
+    this.open_img.hidden = !this.Is_Hidden();
+    this.close_img.hidden = this.Is_Hidden();
   }
 
   // Events =======================================================================================
 
   On_Click_Expand()
   {
-    this.content_panel.hidden = !this.content_panel.hidden;
-    this.open_img.hidden = !this.content_panel.hidden;
-    this.close_img.hidden = this.content_panel.hidden;
+    this.content_panel.style.maxHeight = this.content_panel.scrollHeight + "px";
+    this.open_img.hidden = !this.Is_Hidden();
+    this.close_img.hidden = this.Is_Hidden();
   }
 
   // Rendering ====================================================================================
@@ -44,16 +49,19 @@ class De_Article extends HTMLElement
   {
     const content_elems = [...this.childNodes];
 
+    const close_src = this.getAttribute("close-src") || "/v2/images/minus_white.svg";
+    const open_src = this.getAttribute("open-src") || "/v2/images/plus_white.svg";
+
     const html = `
       <h4 cid="header">
         <span cid="title_panel"></span>
         <button cid="expand_btn">
-          <img cid="open_img" src="/v2/images/plus_blue.svg">
-          <img cid="close_img" src="/v2/images/minus_blue.svg" hidden>
+          <img cid="open_img" src="${open_src}">
+          <img cid="close_img" src="${close_src}" hidden>
         </button>
       </h4>
       <h5 cid="sub_title_panel" hidden></h5>
-      <div cid="content_panel" class="content_panel" hidden></div>
+      <div cid="content_panel" class="content_panel"></div>
     `;
     const elem = Utils.toDocument(html);
     this.replaceChildren(elem);

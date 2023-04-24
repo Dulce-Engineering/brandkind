@@ -302,7 +302,8 @@
 
   de-carousel
   {
-    display: block;
+    display: flex;
+    flex-direction: column;
     height: 278px;
     margin: 0 0 30px 0;
   }
@@ -369,12 +370,27 @@
   de-carousel .remote_panel .prev_btn
   {
     margin-right: 30px;
+    width: 24px;
+    height: 24px;
   }
   de-carousel .remote_panel .next_btn
   {
     margin-left: 30px;
+    width: 24px;
+    height: 24px;
   }
-  
+  de-carousel .dim
+  {
+    opacity: 0.5;
+  }
+
+  de-article .content_panel
+  {
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+    display: block;
+    overflow: hidden;
+  }
   de-accordion.style-1 de-article
   {
     margin: 0 22px 30px 22px;
@@ -425,7 +441,7 @@
   }
   de-accordion.style-2 de-article
   {
-    margin: 0 22px 32px 22px;
+    margin: 32px 22px 0 22px;
     display: block;
     border-bottom: 1px solid #D7D7D7;
   }
@@ -604,18 +620,146 @@
   .logos
   {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 22px 0 22px;
+    gap: 20px;
   }
   .logos img
   {
-    width: 21%;
+    width: 79px;
     margin: 0;
+    height: 35px;
+    object-fit: contain;
   }
 
+  #s1
+  {
+    background-color: #05868E;
+    border-radius: 0 0 24px 0;
+  }
+  #s1 h2
+  {
+    color: #fff;
+  }
+  #s1 p
+  {
+    color: #fff;
+  }
+  #s1 a.button
+  {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  #s2
+  {
+    background-color: #87037B;
+    border-radius: 0 0 24px 0;
+  }
+  #s2 article
+  {
+    display: flex;
+    flex-direction: column;
+  }
+  #s2 h3
+  {
+    color: #fff;
+  }
+  #s2 p
+  {
+    color: #fff;
+  }
+  #s2 de-carousel
+  {
+    margin: 0 0 80px 0;
+  }
+  #s2 de-carousel .content_panel div
+  {
+    color: #fff;
+  }
+  #s2 de-carousel .content_panel span
+  {
+    color: #fff;
+  }
+
+  #s3
+  {
+    background-color: #05868E;
+    border-radius: 0 0 24px 0;
+  }
+  #s3 h3
+  {
+    color: #fff;
+  }
+  #s3 p
+  {
+    color: #fff;
+  }
+  #s3 de-accordion de-article h4
+  {
+    color: #fff;
+  }
+  #s3 de-accordion de-article .content_panel
+  {
+    color: #fff;
+  }
+  #s3 a.button
+  {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  #s4 de-accordion
+  {
+    background-color: #87037B;
+    display: flex;
+    flex-direction: column;
+  }
+  #s4 de-accordion de-article
+  {
+    border-bottom: 1px solid #000;
+  }
+  #s4 de-accordion de-article h4
+  {
+    color: #fff;
+  }
+  #s4 de-accordion de-article h5
+  {
+    color: #fff;
+  }
+  #s4 de-accordion de-article .content_panel
+  {
+    color: #fff;
+  }
+  #s4 a.link
+  {
+    color: #fff;
+  }
+  #s4 de-accordion de-article:last-child
+  {
+    border-bottom: none;
+  }
+
+  #s6
+  {
+    background-color: #072B31;
+    border-radius: 0 24px 0 0;
+    padding-bottom: 42px;
+    margin-bottom: 0;
+  }
+  #s6 h3
+  {
+    color: #fff;
+    padding: 60px 0 0 0;
+    border-bottom: none;
+  }
   #s6 p
   {
     margin: 0 22px 60px 22px;
+    color: #fff;
   }
   #s6 img
   {
@@ -630,7 +774,7 @@
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0.03em;
-    color: #181818;
+    color: #fff;
     margin: 0 22px 0 22px;
   }
   #s6 div.img-description
@@ -641,15 +785,75 @@
     font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.03em;
-    color: #747474;
+    color: #fffa;
     margin: 0 22px 31px 22px;
   }
+  #s6 .trans-frame
+  {
+    position: relative;
+    margin: 0 22px 8px 22px;
+    width: calc(100% - 44px);
+    height: calc(100vw - 44px);
+  }
+  #s6 .trans-img
+  {
+    position: absolute;
+    margin: 0;
+    width: 100%;
+  }
+  #s6 .trans-text
+  {
+    position: absolute;
+    width: calc(100% - 90px);;
+    height: calc(100% - 140px);
+    background-color: #05868Edd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 9vw;
+    line-height: 150%;
+    letter-spacing: -0.011em;
+    xtext-decoration-line: underline;
+    color: #fff;
+    padding: 70px 45px;
+    opacity: 0;
+    transition: opacity 1s;
+  }
 
+  #s7
+  {
+    background-image: url(/v2/images/shapes.png);
+    background-position: 73% 0;
+    background-size: cover;
+    padding: 100px 0 100px 0;
+    background-repeat: no-repeat;
+    margin: 0;
+  }
   #s7 h3
   {
     border: none;
     padding: 0;
     margin: 0 22px 30px 22px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #s7 h3 span
+  {
+    color: #000;
+    background-color: #fff;
+    margin: 0 0 8px 0;
+    padding: 0 4px 0 4px;
+  }
+  #s7 a.button
+  {
+    background-color: #05868E;
+    color: #fff;
+    margin-bottom: 0;
+    border: none;  
   }
 
   #s8

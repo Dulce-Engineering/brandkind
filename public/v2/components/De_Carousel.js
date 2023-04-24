@@ -139,10 +139,10 @@ class De_Carousel extends HTMLElement
       const html = `
         <div cid="imgs_panel" class="content_panel"></div>
         <div class="remote_panel">
-          <img cid="prev_btn" class="prev_btn" src="/v2/images/arrow_left_blue.svg">
-          <img cid="prev_off_btn" class="prev_btn" src="/v2/images/arrow_left_grey.svg">
-          <img cid="next_off_btn" class="next_btn" src="/v2/images/arrow_right_grey.svg">
-          <img cid="next_btn" class="next_btn" src="/v2/images/arrow_right_blue.svg">
+          <img cid="prev_btn" class="prev_btn" src="/v2/images/arrow_left_white.svg">
+          <img cid="prev_off_btn" class="prev_btn dim" src="/v2/images/arrow_left_white.svg">
+          <img cid="next_off_btn" class="next_btn dim" src="/v2/images/arrow_right_white.svg">
+          <img cid="next_btn" class="next_btn" src="/v2/images/arrow_right_white.svg">
         </div>
       `;
       const elem = Utils.toDocument(html);
@@ -155,13 +155,14 @@ class De_Carousel extends HTMLElement
       for (const img of this.imgs)
       {
         img.dot_grey = document.createElement("img");
-        img.dot_grey.src = "/v2/images/circle_grey.svg";
+        img.dot_grey.src = "/v2/images/circle_white.svg";
         img.dot_grey.img = img;
         img.dot_grey.classList.add("dot");
+        img.dot_grey.classList.add("dim");
         img.dot_grey.addEventListener("click", this.On_Click_Dot);
 
         img.dot_blue = document.createElement("img");
-        img.dot_blue.src = "/v2/images/circle_blue.svg";
+        img.dot_blue.src = "/v2/images/circle_white.svg";
         img.dot_blue.hidden = true;
         img.dot_blue.classList.add("dot");
 

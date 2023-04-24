@@ -40,6 +40,19 @@
 
         join_btn.addEventListener("click", () => join_dlg.showModal());
         close_dlg_btn.addEventListener("click", () => join_dlg.close());
+
+        const elems = document.querySelectorAll("#s6 .trans-text");
+        for (const elem of elems)
+        {
+          elem.addEventListener("click", On_Click_Trans_Text);
+        }
+      }
+
+      function On_Click_Trans_Text(event)
+      {
+        const text_elem = event.currentTarget;
+        text_elem.style.opacity = 1;
+        setTimeout(() => text_elem.style.opacity = 0, 5000);
       }
 
       function Init_Logo()
@@ -196,7 +209,7 @@
       </section>
 
       <section id="s2">
-        <img src="/v2/images/painting.jpg" height="252">
+        <img src="/v2/images/plants.png" height="252">
         <article>
           <h3>
             We are a social enterprise helping other social enterprises
@@ -300,6 +313,7 @@
           <img src="images/White_Box_Enterprises.png">
           <img src="images/Minter_Ellison.svg">
           <img src="images/Canva.svg">
+          <a href="https://dulceengineering.com.au/"><img src="images/Dulce_Engineering.png"></a>
         </div>
       </section>
 
@@ -362,20 +376,38 @@
           Our founding members have delivered branding projects across sectors and we can't 
           wait to grow so we can help even more social enterprises
         </p>
-        <img src="/v2/images/community_construction.jpg">
+
+        <div class="trans-frame">
+          <img src="/v2/images/community_construction.jpg" class="trans-img">
+          <div class="trans-text">
+            <span style="text-decoration: underline;">Professional branding</span>
+            helped win procurement bids</div>
+        </div>
         <div class="img-title">COMMUNITY CONSTRUCTION</div>
         <div class="img-description">REBRAND, MARKETING & COMMS</div>
-        <img src="/v2/images/auntys_ginger_tonic.jpg">
+
+        <div class="trans-frame">
+          <img src="/v2/images/auntys_ginger_tonic.jpg" class="trans-img">
+          <span class="trans-text">
+            <span style="text-decoration: underline;">Strong new branding</span> 
+            to compete with major beverage players</span>
+        </div>
         <div class="img-title">AUNTY’S GINGER TONIC</div>
         <div class="img-description">REBRAND, B2B & B2B ADVISORY & COMMS</div>
-        <img src="/v2/images/hotel_etico.jpg">
+
+        <div class="trans-frame">
+          <img src="/v2/images/hotel_etico.jpg" class="trans-img">
+          <span class="trans-text">
+            <span style="text-decoration: underline;">Refreshed strategy & identity</span>
+            for wider audience reach</span>
+        </div>
         <div class="img-title">HOTEL ETICO</div>
         <div class="img-description">BRAND REFRESH, B2B & B2B MARKETING COMMS</div>
       </section>
 
       <section id="s7">
         <h3>
-          Ready to be part of the brandkind community and create brands with impact?
+          <span>Ready</span><span>to</span><span>be</span><span>part</span><span>of</span><span>the</span><span>brandkind</span><span>community</span><span>and</span><span>create</span><span>brands</span><span>with</span><span>impact?</span>
         </h3>
         <a class="button" id="join_btn">
           Join Us
@@ -387,44 +419,44 @@
           FAQ
         </h3>
         <p>
-          BEING KIND AND CREATING AN IMPACT SHOULDN'T BE TOO CONFUSING. LET'S TRY TO KEEP IT 
+          BEING KIND AND CREATING AN IMPACT SHOULDN'T BE TOO CONFUSING. LET'S TRY TO 
           BREAK IT DOWN HERE.
         </p>
         <de-accordion class="style-4">
-          <de-article title="What is brandkind?">
+          <de-article open-src="/v2/images/plus_purple.svg" close-src="/v2/images/minus_purple.svg" title="What is brandkind?">
             We are a community of brand and marketing professionals who give our time and effort in helping social enterprises add value to their company through marketing through pro bono or low bono projects.
           </de-article>
-          <de-article title="How does it work?">
+          <de-article open-src="/v2/images/plus_purple.svg" close-src="/v2/images/minus_purple.svg" title="How does it work?">
             We are building a community of professionals, SEs and other organizations. Register and we will get in touch with you on how you can be part of this community.
           </de-article>
-          <de-article title="What’s this pro vs low bono gig?">
+          <de-article open-src="/v2/images/plus_purple.svg" close-src="/v2/images/minus_purple.svg" title="What’s this pro vs low bono gig?">
             We provide a mix of both right now. We are moving to a model of low bono as the first option with our day rates at 50% of market rates. Pro-bono will be available depending on resource availability (funding and professionals) and urgency/need. There are also hybrid models (eg, pro-bono strategy and low bono design work)
           </de-article>
-          <de-article title="How are you able to give low rates?">
+          <de-article open-src="/v2/images/plus_purple.svg" close-src="/v2/images/minus_purple.svg" title="How are you able to give low rates?">
             The professionals themselves charge only half their rates if not none to be able to support the cause of the social enterprises.
           </de-article>
-          <de-article title="How much does this cost?">
+          <de-article open-src="/v2/images/plus_purple.svg" close-src="/v2/images/minus_purple.svg" title="How much does this cost?">
             We are moving to a model of low bono with our day rates at 50% of market rates. Pro bono will depend on the resource availability and will entail project management fees.
           </de-article>
-          <de-article title="Why do you give low rates?">
+          <de-article open-src="/v2/images/plus_purple.svg" close-src="/v2/images/minus_purple.svg" title="Why do you give low rates?">
             Social enterprises do not have huge funding unlike corporates. By meeting the enterprises where they are at, we are supporting their cause and making an impact in our communities.
           </de-article>
-          <de-article title="What is brand and marketing?">
+          <de-article open-src="/v2/images/plus_purple.svg" close-src="/v2/images/minus_purple.svg" title="What is brand and marketing?">
             Brand and marketing effectively communicates the brand's product and services to its existing and target customers. With so many established companies right now, a successful brand identity will give our social enterprises a head start enabling them to sustain their business and pursue their cause.
           </de-article>
-          <de-article title="Do you make logos and taglines?">
+          <de-article open-src="/v2/images/plus_purple.svg" close-src="/v2/images/minus_purple.svg" title="Do you make logos and taglines?">
             We do more than that, we create brand strategies, develop brand identity and implement communications and marketing plans.
           </de-article>
-          <de-article title="Do you build websites or manage social media?">
+          <de-article open-src="/v2/images/plus_purple.svg" close-src="/v2/images/minus_purple.svg" title="Do you build websites or manage social media?">
             Our focus is strategy, identity and comms/marketing planning development. We are able to outsource these ‘activation’ services for now. We will look at expanding to this in the future. (We will also consider moving further upstream and being involved in product and service design)
           </de-article>
-          <de-article title="Who can join brandkind community?">
+          <de-article open-src="/v2/images/plus_purple.svg" close-src="/v2/images/minus_purple.svg" title="Who can join brandkind community?">
             If you work in branding and marketing, we welcome you to join us. Whether you are a full-time employee, part-time or run your own gig, we give you the flexibility to join us to fit your life and work commitments. We welcome people of varying levels of experience in the social enterprise and for purpose sector. Geography is also not an issue. We have active members in Melbourne and Brisbane and Dubai and Manila!
           </de-article>
-          <de-article title="Can I recommend a friend to brandkind?">
+          <de-article open-src="/v2/images/plus_purple.svg" close-src="/v2/images/minus_purple.svg" title="Can I recommend a friend to brandkind?">
             Please do! We will get them to go through the same process where our core team will do a meet and greet and assess our ‘mutual fit’ with each other.
           </de-article>
-          <de-article title="How else can I help if I can’t find time to work on projects?">
+          <de-article open-src="/v2/images/plus_purple.svg" close-src="/v2/images/minus_purple.svg" title="How else can I help if I can’t find time to work on projects?">
             You can tell your mates (see above) and your company ESG officer about us. We will also have ad-hoc events (like this) where you can support in quick mentoring sessions or perhaps even be a speaker or trainer.
           </de-article>
         </de-accordion>
