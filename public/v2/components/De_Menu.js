@@ -67,6 +67,8 @@ class De_Menu extends HTMLElement
 
     this.open_btn.src = this.getAttribute("open-src");
     this.open_btn.addEventListener("click", this.On_Click_Open_Btn);
+
+    this.hidden = false;
   }
 }
 

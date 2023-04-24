@@ -22,7 +22,7 @@ class De_Article extends HTMLElement
 
   // API ==========================================================================================
   
-  Is_Hidden()
+  Is_Closed()
   {
     return this.content_panel.style.maxHeight == "";
   }
@@ -30,17 +30,29 @@ class De_Article extends HTMLElement
   Close()
   {
     this.content_panel.style.maxHeight = null;
-    this.open_img.hidden = !this.Is_Hidden();
-    this.close_img.hidden = this.Is_Hidden();
+    this.open_img.hidden = false;
+    this.close_img.hidden = true;
+  }
+
+  Open()
+  {
+    this.content_panel.style.maxHeight = this.content_panel.scrollHeight + "px";
+    this.open_img.hidden = true;
+    this.close_img.hidden = false;
   }
 
   // Events =======================================================================================
 
   On_Click_Expand()
   {
-    this.content_panel.style.maxHeight = this.content_panel.scrollHeight + "px";
-    this.open_img.hidden = !this.Is_Hidden();
-    this.close_img.hidden = this.Is_Hidden();
+    if (this.Is_Closed())
+    {
+      this.Open();
+    }
+    else
+    {
+      this.Close();
+    }
   }
 
   // Rendering ====================================================================================
