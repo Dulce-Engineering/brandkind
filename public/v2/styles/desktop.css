@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300;500;700&family=Montserrat:wght@300;500;700&display=swap');      
 
-@media (max-width: 545px)
+@media (min-width: 545px)
 {
   body
   {
@@ -136,12 +136,6 @@
     margin: 16px 0 0 0;
     display: block;
   }
-  section a.link:focus-visible
-  {
-  }
-  section a.link:active
-  {
-  }
   section img
   {
     margin: 0 0 30px 0;
@@ -244,68 +238,31 @@
     margin: 0;
   }
 
+  de-menu
+  {
+    flex-grow: 1;
+  }
   de-menu .desktop-menu
   {
-    display: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: min(2vw, 18px);
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    gap: 4%;
+    justify-content: flex-end;
+  }
+  de-menu .desktop-menu a
+  {
+    text-decoration: none;
+    color: #181818;
   }
   de-menu .open-btn
   {
-    display: inline-block;
-  }
-  de-menu dialog
-  {
-    width: 100%;
-    max-width: initial;
-    height: 100%;
-    max-height: initial;
-    margin: 0;
-    padding: 0;
-    border: none;
-  }
-  de-menu .content
-  {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-  }
-  de-menu main
-  {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    font-family: 'Cormorant';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 36px;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    color: #181818;
-    margin: 0 22px;
-  }
-  de-menu main a
-  {
-    color: inherit;
-    text-decoration: none;
-  }
-  de-menu footer
-  {
-    background-color: initial;
-    padding: 0;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0.03em;
-    color: #5C5C5C;
-    margin: 0 22px 30px 22px;
-  }
-  de-menu footer a
-  {
-    color: inherit;
-    text-decoration: underline;
+    display: none;
   }
 
   de-carousel
@@ -645,8 +602,30 @@
 
   #s1
   {
+    position: relative;
+    display: flex;
+  }
+  #s1 de-carousel
+  {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 30%;
+    height: unset;
+    margin: 0;
+    z-index: -1;
+  }
+  #s1 de-carousel .content_panel
+  {
+    margin: 0;
+  }
+  #s1 article
+  {
     background-color: #05868E;
     border-radius: 0 0 24px 0;
+    padding: 40px 5% 80px 5%;
+    margin: 100px 30% 100px 0;
   }
   #s1 h2
   {
@@ -664,13 +643,28 @@
 
   #s2
   {
-    background-color: #87037B;
-    border-radius: 0 0 24px 0;
+    position: relative;
+    display: flex;
+  }
+  #s2 img
+  {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 40%;
+    height: unset;
+    margin: 0;
+    z-index: -1;
   }
   #s2 article
   {
     display: flex;
     flex-direction: column;
+    background-color: #87037B;
+    border-radius: 0 0 24px 0;
+    padding: 40px 70px 80px 70px;
+    margin: 100px 0 0 50%;
   }
   #s2 h3
   {

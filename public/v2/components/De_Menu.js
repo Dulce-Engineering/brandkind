@@ -39,7 +39,10 @@ class De_Menu extends HTMLElement
   Render()
   {
     const html = `
-      <img cid="open_btn">
+      <div cid="desktop_menu" class="desktop-menu">
+      </div>
+
+      <img cid="open_btn" class="open-btn">
       <dialog cid="menu">
         <div class="content">
           <header>
@@ -67,6 +70,12 @@ class De_Menu extends HTMLElement
 
     this.open_btn.src = this.getAttribute("open-src");
     this.open_btn.addEventListener("click", this.On_Click_Open_Btn);
+
+    for (const menu_elem of this.menu_content.children)
+    {
+      const new_elem = menu_elem.cloneNode(true);
+      this.desktop_menu.append(new_elem);
+    }
 
     this.hidden = false;
   }
