@@ -65,14 +65,16 @@ class De_Article extends HTMLElement
     const open_src = this.getAttribute("open-src") || "/v2/images/plus_white.svg";
 
     const html = `
-      <h4 cid="header">
-        <span cid="title_panel"></span>
+      <header cid="header">
+        <div class="title">
+          <h4 cid="title_panel"></h4>
+          <h5 cid="sub_title_panel" hidden></h5>
+        </div>
         <button cid="expand_btn">
           <img cid="open_img" src="${open_src}">
           <img cid="close_img" src="${close_src}" hidden>
         </button>
-      </h4>
-      <h5 cid="sub_title_panel" hidden></h5>
+      </header>
       <div cid="content_panel" class="content_panel"></div>
     `;
     const elem = Utils.toDocument(html);

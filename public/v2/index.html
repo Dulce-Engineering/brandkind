@@ -7,161 +7,7 @@
     <title>BrandKind</title>
     <link rel="stylesheet" href="/v2/styles/mobile.css">
     <link rel="stylesheet" href="/v2/styles/desktop.css">
-
-    <script src="https://decms-6dc54.firebaseapp.com/components/index_ext.js" type="module"></script>
-
-    <script type="module">
-      import config from "/v1/lib/config.js";
-      import Utils from "/v1/lib/Utils.js";
-      import "/v2/components/De_Carousel.js";
-      import "/v2/components/De_Article.js";
-      import "/v2/components/De_Accordion.js";
-      import "/v2/components/De_Menu.js";
-      //import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
-      //import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
-
-      let analytics_ctx = null;
-
-      Main();
-      function Main()
-      {
-        Utils.Set_Id_Shortcuts(document, window);
-
-        //reg_btn.addEventListener("click", OnClick_RegBtn);
-
-        //OnScroll();
-        //document.addEventListener("scroll", OnScroll);
-
-        //Scroll_Text();
-
-        //const config_env = config.get();
-        //const app_ctx = fb_app.initializeApp(config_env);
-        //analytics_ctx = fb_analytics.getAnalytics(app_ctx);
-
-        join_btn.addEventListener("click", () => join_dlg.showModal());
-        close_dlg_btn.addEventListener("click", () => join_dlg.close());
-
-        const elems = document.querySelectorAll("#s6 .trans-text");
-        for (const elem of elems)
-        {
-          elem.addEventListener("click", On_Click_Trans_Text);
-        }
-      }
-
-      function On_Click_Trans_Text(event)
-      {
-        const text_elem = event.currentTarget;
-        text_elem.style.opacity = 1;
-        setTimeout(() => text_elem.style.opacity = 0, 5000);
-      }
-
-      function Init_Logo()
-      {
-        const hdr_rect = hdr.getBoundingClientRect();
-        //console.log(hdr_rect);
-        s1_logo.style.top = hdr_rect.bottom + "px";
-        s1_logo.hidden = false;
-      }
-
-      function Scroll_Text()
-      {
-        let pos = 0;
-        const footer_length = 2800;
-
-        requestAnimationFrame(Scroll_Text_Frame);
-        function Scroll_Text_Frame()
-        {
-          pos -= 2;
-          if (pos < -footer_length)
-          {
-            pos = window.innerWidth;
-          }
-
-          s7_footer.style.left = `${pos}px`;
-          requestAnimationFrame(Scroll_Text_Frame);
-        }
-      }
-
-      function Type_Logo_Text()
-      {
-        const text = logo_text.innerText;
-
-        const vis_elem = document.createElement("span");
-        vis_elem.style.opacity = 1;
-        const hid_elem = document.createElement("span");
-        hid_elem.style.opacity = 0;
-        hid_elem.innerText = text;
-        logo_text.replaceChildren(vis_elem, hid_elem);
-
-        logo_text.style.opacity = 1;
-        setTimeout(Add_Letter);
-
-        function Add_Letter()
-        {
-          const curr_length = vis_elem.innerText.length;
-          if (curr_length < text.length)
-          {
-            vis_elem.innerText = text.substring(0, curr_length + 1);
-            hid_elem.innerText = text.substring(curr_length + 1);
-            setTimeout(Add_Letter, 50);
-          }
-        }
-      }
-
-      function on_click_fn(event, option)
-      {
-        location.hash = "#" + option.section_id;
-        const hdr_rect = hdr.getBoundingClientRect();
-        window.scrollBy(0, -hdr_rect.height);
-      }
-
-      async function OnClick_RegBtn()
-      {
-        reg_wait.hidden = false;
-        reg_ok.hidden = true;
-        reg_fail.hidden = true;
-
-        fb_analytics.logEvent(analytics_ctx, "sign_up", {method: "landing page"});
-
-        const Brandkind = await config.get_Api();
-        const reg_res = await Brandkind.Register(reg_email.value);
-        if (reg_res.ok)
-        {
-          reg_ok.hidden = false;
-        }
-        else
-        {
-          reg_fail.hidden = false;
-          console.error("Unable to send email to " + reg_email.value + ".", reg_res.message);
-        }
-
-        reg_wait.hidden = true;
-      }
-
-      function OnScroll()
-      {
-        const hdr_rect = hdr.getBoundingClientRect();
-        const s1_rect = s1.getBoundingClientRect();
-        if (window.scrollY + hdr_rect.bottom > s1_rect.height)
-        {
-          hdr.classList.add("hdr_alt");
-        }
-        else
-        {
-          hdr.classList.remove("hdr_alt");
-        }
-
-        //const s2_rect = s2.getBoundingClientRect();
-        /*if (window.innerHeight/2 > s2_rect.top)
-        {
-          if (!logo.classList.contains("fade_in_anim"))
-          {
-            logo.classList.add("fade_in_anim");
-            setTimeout(Type_Logo_Text, 4000);
-          }
-        }*/
-      }
-    </script>
+    <xscript src="https://decms-6dc54.firebaseapp.com/components/index_ext.js" type="module"></xscript>
   </head>
 
   <body>
@@ -241,34 +87,30 @@
 
       <section id="s3">
         <img src="/v2/images/carousel_wall.webp" height="253">
-        <h3>
-          We love connecting those who want to help with those who need help
-        </h3>
-        <p>
-          In our way, we have started to create impact in the last 12 months
-        </p>
-        <de-accordion class="style-1">
-          <de-article title="60+ COMMUNITY MEMBERS">
-            <ul>
-              <li>60+ senior strategists, creative directors, designers, comms and marketing specialists who have built great brands you buy and love!</li>
-              <li>Across Australia and in Dubai and Manila</li>
-            </ul>
-          </de-article>
-          <de-article title="PARTNERSHIPS wITH COOPERATIONS">
-            <ul>
-              <li>Top tier global and national businesses looking to share their teams’ talent and time</li>
-            </ul>      
-          </de-article>
-          <de-article title="20+ PROJECTS TO DATE">
-            <ul>
-              <li>Across SE types: supporting refugees, First Nations people, those with disability and other disadvantaged communities and eco- sustainability orgs</li>
-              <li>From construction to coffee cups, bakeries to beverages  and hotels to </li>
-            </ul>         
-          </de-article>
-        </de-accordion>
-        <a class="button" href="#s9">
-          Contact Us
-        </a>
+        <div class="main-article">
+          <h3>We love connecting those who want to help with those who need help</h3>
+          <p>In our way, we have started to create impact in the last 12 months</p>
+          <de-accordion class="style-1">
+            <de-article title="60+ COMMUNITY MEMBERS">
+              <ul>
+                <li>60+ senior strategists, creative directors, designers, comms and marketing specialists who have built great brands you buy and love!</li>
+                <li>Across Australia and in Dubai and Manila</li>
+              </ul>
+            </de-article>
+            <de-article title="PARTNERSHIPS wITH COOPERATIONS">
+              <ul>
+                <li>Top tier global and national businesses looking to share their teams’ talent and time</li>
+              </ul>      
+            </de-article>
+            <de-article title="20+ PROJECTS TO DATE">
+              <ul>
+                <li>Across SE types: supporting refugees, First Nations people, those with disability and other disadvantaged communities and eco- sustainability orgs</li>
+                <li>From construction to coffee cups, bakeries to beverages  and hotels to </li>
+              </ul>         
+            </de-article>
+          </de-accordion>
+          <a class="button" href="#s9">Contact Us</a>
+        </div>
       </section>
 
       <section id="s4">
@@ -319,54 +161,56 @@
       </section>
 
       <section id="s5">
-        <h3>
-          Be part of our unique business model
-        </h3>
-        <p>
-          We deliver pro-bono and low-bono services, funded by the generosity of marketing 
-          professionals, corporates and philanthropists. We build community across our doers, 
-          givers and recipients. Social Enterprises get the expertise they need while our 
-          members get the fulfilment, flexibility and fun they value as branding specialists.
-        </p>
-        <de-accordion title="OUR Services:" class="style-3">
-          <de-article title="1. CONSULTANCY" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
-            <ul>
-              <li>How do I identify the real market I compete in, for whom, and what is the best business idea to meet my target’s needs?</li>
-              <li>How do I translate my business vision and purpose into a brand that delivers customer value and lives up to its values? </li>
-              <li>How do I bring my brand to life visually, in look and feel and communicate this consistently across internal and external customers?</li>
-              <li>How do I develop relevant messages and communicate effectively with limited resources across marketing channels?</li>
-              <li>How do I consistently engage with my customers and stakeholders for long-term growth?</li>
-            </ul>          
-          </de-article>
-          <de-article title="2. BRANDING & MARKETING" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
-            <ul>
-              <li>Brand Positioning Strategy</li>
-              <li>Manifestos</li>
-              <li>Marketing and Communications Plans</li>
-              <li>Brand identity, logos and style guides</li>
-              <li>Marketing Collaterals</li>
-              <li>Marketing Campaigns</li>
-              <li>Website Design (through partners)</li>
-              <li>Social Media Content Creation and Management (through partners)</li>
-            </ul>         
-          </de-article>
-          <de-article title="3. COACHING" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
-            <ul>
-              <li>Mentoring Programs</li>
-              <li>Advisory Board and Panels</li>
-              <li>Impact Speed dating Events </li>
-            </ul>        
-          </de-article>
-          <de-article title="4. CAPABILITY BUILDING" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
-            <ul>
-              <li>Masterclasses</li>
-              <li>Brandkind Academy (to be launched in 2023)</li>
-            </ul>        
-          </de-article>
-        </de-accordion>
-        <a class="button" href="#s9">
-          Contact Us
-        </a>
+        <div class="text">
+          <article>
+            <h3>
+              Be part of our unique business model
+            </h3>
+            <p>
+              We deliver pro-bono and low-bono services, funded by the generosity of marketing 
+              professionals, corporates and philanthropists. We build community across our doers, 
+              givers and recipients. Social Enterprises get the expertise they need while our 
+              members get the fulfilment, flexibility and fun they value as branding specialists.
+            </p>
+          </article>
+          <de-accordion title="OUR Services:" class="style-3">
+            <de-article title="1. CONSULTANCY" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
+              <ul>
+                <li>How do I identify the real market I compete in, for whom, and what is the best business idea to meet my target’s needs?</li>
+                <li>How do I translate my business vision and purpose into a brand that delivers customer value and lives up to its values? </li>
+                <li>How do I bring my brand to life visually, in look and feel and communicate this consistently across internal and external customers?</li>
+                <li>How do I develop relevant messages and communicate effectively with limited resources across marketing channels?</li>
+                <li>How do I consistently engage with my customers and stakeholders for long-term growth?</li>
+              </ul>          
+            </de-article>
+            <de-article title="2. BRANDING & MARKETING" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
+              <ul>
+                <li>Brand Positioning Strategy</li>
+                <li>Manifestos</li>
+                <li>Marketing and Communications Plans</li>
+                <li>Brand identity, logos and style guides</li>
+                <li>Marketing Collaterals</li>
+                <li>Marketing Campaigns</li>
+                <li>Website Design (through partners)</li>
+                <li>Social Media Content Creation and Management (through partners)</li>
+              </ul>         
+            </de-article>
+            <de-article title="3. COACHING" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
+              <ul>
+                <li>Mentoring Programs</li>
+                <li>Advisory Board and Panels</li>
+                <li>Impact Speed dating Events </li>
+              </ul>        
+            </de-article>
+            <de-article title="4. CAPABILITY BUILDING" src-open="/v2/images/plus_white.svg" src-close="/v2/images/minus_white.svg">
+              <ul>
+                <li>Masterclasses</li>
+                <li>Brandkind Academy (to be launched in 2023)</li>
+              </ul>        
+            </de-article>
+          </de-accordion>
+        </div>
+        <a class="button" href="#s9">Contact Us</a>
       </section>
 
       <section id="s6">
@@ -514,4 +358,157 @@
     </dialog>
 
   </body>
+
+  <script type="module">
+    import config from "/v1/lib/config.js";
+    import Utils from "/v1/lib/Utils.js";
+    import "/v2/components/De_Carousel.js";
+    import "/v2/components/De_Article.js";
+    import "/v2/components/De_Accordion.js";
+    import "/v2/components/De_Menu.js";
+    //import * as fb_app from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+    //import * as fb_analytics from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
+
+    let analytics_ctx = null;
+
+    Main();
+    function Main()
+    {
+      Utils.Set_Id_Shortcuts(document, window);
+
+      //reg_btn.addEventListener("click", OnClick_RegBtn);
+
+      //OnScroll();
+      //document.addEventListener("scroll", OnScroll);
+
+      //Scroll_Text();
+
+      //const config_env = config.get();
+      //const app_ctx = fb_app.initializeApp(config_env);
+      //analytics_ctx = fb_analytics.getAnalytics(app_ctx);
+
+      join_btn.addEventListener("click", () => join_dlg.showModal());
+      close_dlg_btn.addEventListener("click", () => join_dlg.close());
+
+      const elems = document.querySelectorAll("#s6 .trans-text");
+      for (const elem of elems)
+      {
+        elem.addEventListener("click", On_Click_Trans_Text);
+      }
+    }
+
+    function On_Click_Trans_Text(event)
+    {
+      const text_elem = event.currentTarget;
+      text_elem.style.opacity = 1;
+      setTimeout(() => text_elem.style.opacity = 0, 5000);
+    }
+
+    function Init_Logo()
+    {
+      const hdr_rect = hdr.getBoundingClientRect();
+      //console.log(hdr_rect);
+      s1_logo.style.top = hdr_rect.bottom + "px";
+      s1_logo.hidden = false;
+    }
+
+    function Scroll_Text()
+    {
+      let pos = 0;
+      const footer_length = 2800;
+
+      requestAnimationFrame(Scroll_Text_Frame);
+      function Scroll_Text_Frame()
+      {
+        pos -= 2;
+        if (pos < -footer_length)
+        {
+          pos = window.innerWidth;
+        }
+
+        s7_footer.style.left = `${pos}px`;
+        requestAnimationFrame(Scroll_Text_Frame);
+      }
+    }
+
+    function Type_Logo_Text()
+    {
+      const text = logo_text.innerText;
+
+      const vis_elem = document.createElement("span");
+      vis_elem.style.opacity = 1;
+      const hid_elem = document.createElement("span");
+      hid_elem.style.opacity = 0;
+      hid_elem.innerText = text;
+      logo_text.replaceChildren(vis_elem, hid_elem);
+
+      logo_text.style.opacity = 1;
+      setTimeout(Add_Letter);
+
+      function Add_Letter()
+      {
+        const curr_length = vis_elem.innerText.length;
+        if (curr_length < text.length)
+        {
+          vis_elem.innerText = text.substring(0, curr_length + 1);
+          hid_elem.innerText = text.substring(curr_length + 1);
+          setTimeout(Add_Letter, 50);
+        }
+      }
+    }
+
+    function on_click_fn(event, option)
+    {
+      location.hash = "#" + option.section_id;
+      const hdr_rect = hdr.getBoundingClientRect();
+      window.scrollBy(0, -hdr_rect.height);
+    }
+
+    async function OnClick_RegBtn()
+    {
+      reg_wait.hidden = false;
+      reg_ok.hidden = true;
+      reg_fail.hidden = true;
+
+      fb_analytics.logEvent(analytics_ctx, "sign_up", {method: "landing page"});
+
+      const Brandkind = await config.get_Api();
+      const reg_res = await Brandkind.Register(reg_email.value);
+      if (reg_res.ok)
+      {
+        reg_ok.hidden = false;
+      }
+      else
+      {
+        reg_fail.hidden = false;
+        console.error("Unable to send email to " + reg_email.value + ".", reg_res.message);
+      }
+
+      reg_wait.hidden = true;
+    }
+
+    function OnScroll()
+    {
+      const hdr_rect = hdr.getBoundingClientRect();
+      const s1_rect = s1.getBoundingClientRect();
+      if (window.scrollY + hdr_rect.bottom > s1_rect.height)
+      {
+        hdr.classList.add("hdr_alt");
+      }
+      else
+      {
+        hdr.classList.remove("hdr_alt");
+      }
+
+      //const s2_rect = s2.getBoundingClientRect();
+      /*if (window.innerHeight/2 > s2_rect.top)
+      {
+        if (!logo.classList.contains("fade_in_anim"))
+        {
+          logo.classList.add("fade_in_anim");
+          setTimeout(Type_Logo_Text, 4000);
+        }
+      }*/
+    }
+  </script>
 </html>

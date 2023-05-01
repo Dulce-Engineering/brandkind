@@ -243,6 +243,10 @@
     padding: 0;
     margin: 0;
   }
+  .desktop
+  {
+    display: none !important;
+  }
 
   de-menu .desktop-menu
   {
@@ -392,6 +396,14 @@
     opacity: 0.5;
   }
 
+  de-article header
+  {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 8px;
+  }
   de-article .content_panel
   {
     max-height: 0;
@@ -399,6 +411,7 @@
     display: block;
     overflow: hidden;
   }
+  
   de-accordion.style-1 de-article
   {
     margin: 0 22px 30px 22px;
@@ -406,7 +419,7 @@
   }
   de-accordion.style-1 de-article h4
   {
-    margin: 0 0 24px 0;
+    margin: 0 0 0 0;
     padding: 0;
     display: flex;
     align-items: center;
@@ -455,7 +468,7 @@
   }
   de-accordion.style-2 de-article h4
   {
-    margin: 0 0 4px 0;
+    margin: 0 0 0 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -470,7 +483,7 @@
   }
   de-accordion.style-2 de-article h5
   {
-    margin: 0 0 29px 0;
+    margin: 0 0 0 0;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
